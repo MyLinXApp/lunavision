@@ -1,0 +1,42 @@
+{
+  "name": "Barbershop Aso3",
+  "tagline": "Schnell & unkompliziert per WhatsApp",
+  "logo": "💈",
+  "pill": "Kein Login • Kein Abo • Direkt per WhatsApp",
+
+  "headline": "Termin online anfragen",
+  "subline": "Wähle deinen Service – WhatsApp öffnet sich automatisch mit einer vorbereiteten Nachricht.",
+
+  "waNumber": "491767287484688",
+  "address": "Edigheimer Str. 23, 68723 Ludwigshafen am Rhein",
+  "hours": "Mo–Fr 09–18 Uhr • Sa 10–18 Uhr • So geschlossen",
+
+  "phone": "0176 7287484688",
+  "phoneTel": "+491767287484688",
+
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Edigheimer%20Str.%2023%2C%2068723%20Ludwigshafen%20am%20Rhein",
+
+  "privacyUrl": "#",
+
+  "extraPrompt": "Name:\nWunschtermin:\n",
+
+  "cancelQuick": {
+    "msg": "Ich möchte meinen Termin ändern/absagen.",
+    "prompt": "Name:\nTermin-Datum/Uhrzeit:\nNeue Wunschzeit (optional):\nGrund (optional):\n"
+  },
+
+  "services": [
+    { "icon": "✂️", "title": "Herrenhaarschnitt", "desc": "Kurz / Mittel / Lang", "msg": "Ich möchte einen Termin für Herrenhaarschnitt." },
+    { "icon": "🧔", "title": "Bart trimmen", "desc": "Kontur / Pflege", "msg": "Ich möchte einen Termin für Bart trimmen." },
+    { "icon": "🔥", "title": "Schnitt + Bart", "desc": "Komplettpaket", "msg": "Ich möchte einen Termin für Schnitt + Bart." },
+    { "icon": "👦", "title": "Kinderhaarschnitt", "desc": "Bis 12 Jahre", "msg": "Ich möchte einen Termin für Kinderhaarschnitt." },
+
+    {
+      "icon": "❌",
+      "title": "Termin ändern/absagen",
+      "desc": "Schnell per WhatsApp",
+      "msg": "Ich möchte meinen Termin ändern/absagen.",
+      "prompt": "Name:\nTermin-Datum/Uhrzeit:\nNeue Wunschzeit (optional):\nGrund (optional):\n"
+    }
+  ]
+}

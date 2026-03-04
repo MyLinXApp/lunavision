@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Termin anfragen</title>
+
+  <style>
+    :root{
+      --bg:#0B0F1C;
+      --bg2:#0f1730;
+      --card: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+      --text:#F5F7FA;
+      --muted: rgba(245,247,250,.72);
+      --accent:#C7A75A;
+      --accent2:#E7D19B;
+      --shadow: 0 16px 44px rgba(0,0,0,.38);
+      --r: 18px;
+      --max: 980px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 18% 10%, rgba(199,167,90,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(231,209,155,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 56px}
+
+    /* Premium top header */
+    .hero{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      border-radius:22px;
+      box-shadow: var(--shadow);
+      padding:18px 18px 16px;
+      backdrop-filter: blur(8px);
+    }
+    .heroTop{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; gap:12px; align-items:center;
+      min-width:0;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(199,167,90,.12);
+      display:grid; place-items:center;
+      font-weight:1000;
+      color:var(--accent2);
+      flex:0 0 auto;
+    }
+    .titleBox{min-width:0}
+    .shopTitle{
+      font-size:20px;
+      font-weight:1000;
+      letter-spacing:-.3px;
+      margin:0;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width: 72vw;
+    }
+    .shopSub{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      white-space:pre-line;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:12px;
+      color:var(--muted);
+      user-select:none;
+    }
+    .heroHint{
+      margin-top:12px;
+      color: rgba(245,247,250,.70);
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    /* Cards */
+    .card{
+      margin-top:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border-radius:22px;
+      box-shadow: 0 14px 34px rgba(0,0,0,.28);
+      padding:18px;
+    }
+    .cardTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; flex-wrap:wrap;
+    }
+    .cardTitle h2{
+      margin:0;
+      font-size:16px;
+      font-weight:1000;
+      letter-spacing:-.2px;
+    }
+    .cardTitle .muted{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.4;
+    }
+
+    /* Service grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){ .grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
+    @media (max-width: 560px){ .grid{grid-template-columns:1fr;} }
+
+    .serviceBtn{
+      text-align:left;
+      width:100%;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:14px;
+      cursor:pointer;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      color:var(--text);
+      min-height:76px;
+      position:relative;
+      overflow:hidden;
+    }
+    .serviceBtn::after{
+      content:"";
+      position:absolute; inset:-40px -60px auto auto;
+      width:160px; height:160px;
+      background: radial-gradient(circle at 30% 30%, rgba(199,167,90,.22), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .serviceBtn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(199,167,90,.55);
+      background: rgba(255,255,255,.04);
+    }
+    .serviceBtn strong{
+      display:block;
+      font-weight:1000;
+      letter-spacing:-.15px;
+    }
+    .serviceBtn small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      line-height:1.35;
+    }
+
+    /* Form */
+    .formRow{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (max-width: 640px){ .formRow{grid-template-columns:1fr;} }
+
+    label{display:block; font-size:12px; color:var(--muted); margin:0 0 6px}
+    input, select{
+      width:100%;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      border-radius:16px;
+      padding:12px 12px;
+      outline:none;
+      font-size:14px;
+    }
+    input:focus, select:focus{
+      border-color: rgba(199,167,90,.55);
+      box-shadow: 0 0 0 3px rgba(199,167,90,.12);
+    }
+
+    .btnRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      font-weight:1000;
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      transition: transform .12s ease, border-color .12s ease, opacity .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(199,167,90,.55)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+      color:#0B0F1C;
+      border-color:transparent;
+      box-shadow: 0 12px 26px rgba(199,167,90,.14);
+    }
+    .btn.primary:hover{opacity:.95}
+    .hidden{display:none !important}
+
+    /* Error */
+    .error{
+      margin-top:12px;
+      border:1px solid rgba(239,68,68,.35);
+      background: rgba(239,68,68,.08);
+      color: rgba(254,226,226,.95);
+      border-radius:16px;
+      padding:10px 12px;
+      font-size:13px;
+      line-height:1.35;
+      white-space:pre-line;
+    }
+
+    /* Footer */
+    .tiny{
+      font-size:12px;
+      color:rgba(245,247,250,.62);
+      margin-top:18px;
+      line-height:1.45;
+      text-align:center;
+    }
+    .by{ opacity:.9; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Premium header -->
+    <div class="hero">
+      <div class="heroTop">
+        <div class="brand">
+          <div class="logo" id="logoBox">LV</div>
+          <div class="titleBox">
+            <h1 class="shopTitle" id="shopTitle">Termin anfragen</h1>
+            <div class="shopSub" id="shopAddress">Lädt…</div>
+          </div>
+        </div>
+
+        <div class="pill">🌙 Google → WhatsApp</div>
+      </div>
+
+      <div class="heroHint" id="heroHint">
+        Wähle einen Service und schicke eine kurze Terminanfrage. Du bekommst die Bestätigung direkt per WhatsApp.
+      </div>
+    </div>
+
+    <!-- Step 1: Services -->
+    <div class="card" id="stepServices">
+      <div class="cardTitle">
+        <h2>Service auswählen</h2>
+        <div class="muted">Tippe einen Service an, danach Datum & Uhrzeit.</div>
+      </div>
+
+      <div class="grid" id="servicesGrid"></div>
+      <div id="errBox" class="error hidden"></div>
+    </div>
+
+    <!-- Step 2: Date/Time -->
+    <div class="card hidden" id="stepDateTime">
+      <div class="cardTitle">
+        <h2>Wunschtermin</h2>
+        <div class="muted" id="selectedServiceLine"></div>
+      </div>
+
+      <div class="formRow">
+        <div>
+          <label for="custName">Name</label>
+          <input id="custName" placeholder="z.B. Marco" />
+        </div>
+        <div>
+          <label for="datePick">Datum</label>
+          <input id="datePick" type="date" />
+        </div>
+      </div>
+
+      <div class="formRow">
+        <div>
+          <label for="timePick">Uhrzeit (nur während Öffnungszeiten)</label>
+          <select id="timePick">
+            <option value="" selected disabled>Bitte erst Datum wählen</option>
+          </select>
+        </div>
+        <div>
+          <label for="notes">Notiz (optional)</label>
+          <input id="notes" placeholder="z.B. wenn möglich ohne Wartezeit" />
+        </div>
+      </div>
+
+      <div class="btnRow">
+        <button class="btn" id="backToServices">← Zurück</button>
+        <button class="btn primary" id="openWhatsApp">WhatsApp öffnen</button>
+      </div>
+
+      <div class="tiny" style="text-align:left; margin-top:12px;">
+        Hinweis: Das ist bewusst kein Live-Kalender. Du sendest eine strukturierte Anfrage – Bestätigung kommt per WhatsApp.
+      </div>
+    </div>
+
+    <div class="tiny by">by LunaVision</div>
+  </div>
+
+  <script>
+    const qs = (k) => new URLSearchParams(location.search).get(k);
+    const $ = (id) => document.getElementById(id);
+
+    const UI = {
+      title: $("shopTitle"),
+      addr: $("shopAddress"),
+      hint: $("heroHint"),
+      grid: $("servicesGrid"),
+      err: $("errBox"),
+      stepServices: $("stepServices"),
+      stepDateTime: $("stepDateTime"),
+      selectedLine: $("selectedServiceLine"),
+      name: $("custName"),
+      date: $("datePick"),
+      time: $("timePick"),
+      notes: $("notes"),
+      back: $("backToServices"),
+      open: $("openWhatsApp"),
+      logoBox: $("logoBox"),
+    };
+
+    let shop = null;
+    let selectedServiceObj = null;
+
+    function showError(msg){
+      UI.err.textContent = msg;
+      UI.err.classList.remove("hidden");
+    }
+    function clearError(){
+      UI.err.textContent = "";
+      UI.err.classList.add("hidden");
+    }
+    function normalizePhone(p){
+      return String(p || "").replace(/[^\d]/g,"");
+    }
+    function pad2(n){ return String(n).padStart(2,"0"); }
+
+    function parseTimeToMinutes(t){
+      if(!t) return null;
+      const m = String(t).trim().match(/^(\d{1,2}):(\d{2})$/);
+      if(!m) return null;
+      const hh = parseInt(m[1],10);
+      const mm = parseInt(m[2],10);
+      if(hh<0 || hh>23 || mm<0 || mm>59) return null;
+      return hh*60 + mm;
+    }
+
+    function minutesToTime(min){
+      const hh = Math.floor(min/60);
+      const mm = min % 60;
+      return `${pad2(hh)}:${pad2(mm)}`;
+    }
+
+    function weekdayKeyFromDateISO(dateISO){
+      const d = new Date(dateISO + "T12:00:00");
+      const day = d.getDay(); // 0=Sun
+      return ["sun","mon","tue","wed","thu","fri","sat"][day];
+    }
+
+    function normalizeHoursKey(k){
+      const s = String(k||"").toLowerCase().trim();
+      const map = {
+        "mo":"mon","mon":"mon","monday":"mon","montag":"mon",
+        "di":"tue","tue":"tue","tuesday":"tue","dienstag":"tue",
+        "mi":"wed","wed":"wed","wednesday":"wed","mittwoch":"wed",
+        "do":"thu","thu":"thu","thursday":"thu","donnerstag":"thu",
+        "fr":"fri","fri":"fri","friday":"fri","freitag":"fri",
+        "sa":"sat","sat":"sat","saturday":"sat","samstag":"sat",
+        "so":"sun","sun":"sun","sunday":"sun","sonntag":"sun"
+      };
+      return map[s] || s;
+    }
+
+    function parseRange(val){
+      if(!val) return null;
+
+      if(typeof val === "object" && val.open && val.close){
+        const o = parseTimeToMinutes(val.open);
+        const c = parseTimeToMinutes(val.close);
+        if(o===null || c===null || c<=o) return null;
+        return { open:o, close:c };
+      }
+
+      const s = String(val).toLowerCase().trim();
+      if(s === "closed" || s === "geschlossen") return null;
+
+      const m = s.match(/(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})/);
+      if(!m) return null;
+
+      const o = parseTimeToMinutes(m[1]);
+      const c = parseTimeToMinutes(m[2]);
+      if(o===null || c===null || c<=o) return null;
+      return { open:o, close:c };
+    }
+
+    function getOpenCloseForDate(shop, dateISO){
+      const hours = shop && (shop.hours || shop.openingHours);
+      if(!hours || typeof hours !== "object") return null;
+
+      const dayKey = weekdayKeyFromDateISO(dateISO);
+
+      // direct day match
+      for(const k of Object.keys(hours)){
+        const nk = normalizeHoursKey(k);
+        if(nk === dayKey){
+          return parseRange(hours[k]);
+        }
+      }
+
+      // explicit "mon-fri" shortcut (also supports "mo-fr")
+      for(const k of Object.keys(hours)){
+        const raw = String(k).toLowerCase().trim();
+        const isMonFri =
+          raw === "mon-fri" || raw === "mo-fr" || raw.includes("mon-fri") || raw.includes("mo-fr") ||
+          /^(mon|mo)\s*-\s*(fri|fr)\b/.test(raw);
+        if(isMonFri && ["mon","tue","wed","thu","fri"].includes(dayKey)){
+          return parseRange(hours[k]);
+        }
+      }
+
+      // generic ranges like "mon-sat"
+      for(const k of Object.keys(hours)){
+        const raw = String(k).toLowerCase().trim();
+        const m2 = raw.match(/(mon|mo|tue|di|wed|mi|thu|do|fri|fr|sat|sa|sun|so)\s*-\s*(mon|mo|tue|di|wed|mi|thu|do|fri|fr|sat|sa|sun|so)/i);
+        if(m2){
+          const a = normalizeHoursKey(m2[1]);
+          const b = normalizeHoursKey(m2[2]);
+          const order = ["mon","tue","wed","thu","fri","sat","sun"];
+          const ia = order.indexOf(a), ib = order.indexOf(b), id = order.indexOf(dayKey);
+          if(ia>=0 && ib>=0 && id>=0 && ia <= id && id <= ib){
+            return parseRange(hours[k]);
+          }
+        }
+      }
+
+      return null;
+    }
+
+    function buildTimeOptions(selectEl, openMin, closeMin, stepMin){
+      selectEl.innerHTML = "";
+
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Bitte Uhrzeit wählen";
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      selectEl.appendChild(placeholder);
+
+      // last start time = close - step
+      const last = closeMin - stepMin;
+      for(let t=openMin; t<=last; t+=stepMin){
+        const opt = document.createElement("option");
+        opt.value = minutesToTime(t);
+        opt.textContent = minutesToTime(t);
+        selectEl.appendChild(opt);
+      }
+
+      // if shop has weird times and we produced no options
+      if(selectEl.options.length === 1){
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Heute keine Slots verfügbar";
+        opt.disabled = true;
+        selectEl.appendChild(opt);
+      }
+    }
+
+    function updateSlotsForSelectedDate(){
+      if(!shop) return;
+
+      const dateISO = UI.date.value;
+      if(!dateISO){
+        UI.time.innerHTML = `<option value="" selected disabled>Bitte erst Datum wählen</option>`;
+        return;
+      }
+
+      const hours = getOpenCloseForDate(shop, dateISO);
+      if(!hours){
+        UI.time.innerHTML = `<option value="" selected disabled>Geschlossen an diesem Tag</option>`;
+        return;
+      }
+
+      const step = Math.max(5, parseInt(shop.slotMinutes || shop.slot || 30, 10) || 30);
+      buildTimeOptions(UI.time, hours.open, hours.close, step);
+    }
+
+    function fmtDateISOToDE(iso){
+      if(!iso) return "";
+      const [y,m,d] = iso.split("-");
+      if(!y||!m||!d) return iso;
+      return `${d}.${m}.${y}`;
+    }
+
+    function escapeHtml(str){
+      return String(str||"").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"
+      }[m]));
+    }
+
+    function pickWhatsAppNumber(shop){
+      // prefer waNumber / whatsappNumber; fallback phoneTel/phone; also fix accidental double country (e.g. 491767... with extra 49)
+      const candidates = [
+        shop.waNumber,
+        shop.whatsappNumber,
+        shop.whatsapp,
+        shop.phoneTel,
+        shop.phone
+      ].filter(Boolean);
+
+      for(const c of candidates){
+        let n = normalizePhone(c);
+        if(!n) continue;
+
+        // If someone typed "491..." but also another "49" (e.g. 49176727471400) we keep as-is.
+        // WhatsApp expects E164 digits w/out plus. Germany numbers: start with 49.
+        // Very simple sanity: if starts with 0 -> remove leading 0 and prepend 49 (only for DE use)
+        if(n.startsWith("0")){
+          n = "49" + n.replace(/^0+/, "");
+        }
+        return n;
+      }
+      return "";
+    }
+
+    function getHoursText(shop){
+      // show nicely; prefer hoursText; fallback string hours; fallback formatted object
+      if(shop.hoursText) return String(shop.hoursText);
+      if(typeof shop.hours === "string") return shop.hours;
+      if(typeof shop.openingHours === "string") return shop.openingHours;
+
+      const h = shop.hours || shop.openingHours;
+      if(h && typeof h === "object"){
+        // minimal formatting
+        const parts = [];
+        const order = ["mon-fri","mon","tue","wed","thu","fri","sat","sun"];
+        const seen = new Set();
+        for(const k of order){
+          for(const kk of Object.keys(h)){
+            const raw = String(kk).toLowerCase();
+            if(seen.has(kk)) continue;
+            if(raw === k){
+              parts.push(`${kk}: ${h[kk]}`);
+              seen.add(kk);
+            }
+          }
+        }
+        // add remaining keys
+        for(const kk of Object.keys(h)){
+          if(seen.has(kk)) continue;
+          parts.push(`${kk}: ${h[kk]}`);
+        }
+        return parts.join(" • ");
+      }
+
+      return "";
+    }
+
+    async function init(){
+      try{
+        const shopPath = qs("shop");
+        if(!shopPath){
+          showError("Fehlender Parameter:\n?shop=shops/kunden/<slug>");
+          return;
+        }
+
+        const url = `/${shopPath.replace(/\/$/,"")}/data.json`;
+        const res = await fetch(url, { cache: "no-store" });
+        if(!res.ok) throw new Error(`Konnte data.json nicht laden:\n${url}`);
+        shop = await res.json();
+
+        // header texts
+        const name = shop.shopName || shop.name || "Termin anfragen";
+        const addr = shop.location || shop.address || "";
+        const hoursTxt = getHoursText(shop);
+
+        UI.title.textContent = name;
+        UI.addr.textContent = [addr, hoursTxt].filter(Boolean).join("\n");
+
+        // logo emoji if present
+        const logo = (shop.logo || shop.logoEmoji || "").toString().trim();
+        if(logo){
+          UI.logoBox.textContent = logo.slice(0, 3);
+        }else{
+          UI.logoBox.textContent = "LV";
+        }
+
+        // hint texts if present
+        if(shop.subline) UI.hint.textContent = String(shop.subline);
+
+        // services
+        const raw = shop.services || shop.serviceList || [];
+        const list = Array.isArray(raw) ? raw : [];
+        if(list.length === 0){
+          showError("Keine Services in data.json gefunden.\nBitte Feld 'services' befüllen.");
+          return;
+        }
+
+        UI.grid.innerHTML = "";
+        list.forEach((s, idx) => {
+          const title =
+            (typeof s === "string") ? s :
+            (s && (s.name || s.title || s.label)) ? (s.name || s.title || s.label) :
+            `Service ${idx+1}`;
+
+          const icon = (typeof s === "object" && s && s.icon) ? String(s.icon) : "";
+          const desc = (typeof s === "object" && s && s.desc) ? String(s.desc) : "";
+          const duration = (typeof s === "object" && s && s.duration) ? String(s.duration) : "";
+          const price = (typeof s === "object" && s && s.price) ? String(s.price) : "";
+
+          const metaParts = [];
+          if(desc) metaParts.push(desc);
+          if(duration) metaParts.push(`${duration} min`);
+          if(price) metaParts.push(`${price} €`);
+          const meta = metaParts.length ? metaParts.join(" • ") : "Schnelle WhatsApp-Anfrage";
+
+          const btn = document.createElement("button");
+          btn.className = "serviceBtn";
+          btn.type = "button";
+          btn.innerHTML = `<strong>${escapeHtml(icon ? (icon + " " + title) : title)}</strong><small>${escapeHtml(meta)}</small>`;
+
+          btn.addEventListener("click", () => {
+            clearError();
+            selectedServiceObj = (typeof s === "object" && s) ? s : { title };
+
+            const label = title;
+            UI.selectedLine.innerHTML = `Service: <strong>${escapeHtml(label)}</strong>`;
+
+            UI.stepServices.classList.add("hidden");
+            UI.stepDateTime.classList.remove("hidden");
+
+            // IMPORTANT: attach change handler once and build slots immediately
+            updateSlotsForSelectedDate();
+            setTimeout(()=> UI.date.focus(), 120);
+          });
+
+          UI.grid.appendChild(btn);
+        });
+
+        // date change => slots
+        UI.date.addEventListener("change", updateSlotsForSelectedDate);
+
+      } catch(e){
+        showError(String(e.message || e));
+      }
+    }
+
+    UI.back.addEventListener("click", ()=>{
+      UI.stepDateTime.classList.add("hidden");
+      UI.stepServices.classList.remove("hidden");
+      clearError();
+    });
+
+    UI.open.addEventListener("click", ()=>{
+      clearError();
+
+      if(!shop){
+        showError("Shopdaten fehlen.");
+        return;
+      }
+      if(!selectedServiceObj){
+        showError("Bitte zuerst einen Service auswählen.");
+        return;
+      }
+
+      const num = pickWhatsAppNumber(shop);
+      if(!num){
+        showError("Keine WhatsApp-Nummer gefunden.\nBitte in data.json 'waNumber' setzen (z.B. 4917...).");
+        return;
+      }
+
+      if(!UI.date.value){
+        showError("Bitte Datum auswählen.");
+        return;
+      }
+      if(!UI.time.value){
+        showError("Bitte eine Uhrzeit auswählen.");
+        return;
+      }
+
+      const serviceTitle = selectedServiceObj.title || selectedServiceObj.name || selectedServiceObj.label || "Service";
+      const baseMsg = (selectedServiceObj.msg || "").trim(); // optional per service
+      const serviceLine = baseMsg ? baseMsg : `Ich möchte einen Termin für ${serviceTitle}.`;
+
+      const customerName = (UI.name.value || "").trim();
+      const dateISO = UI.date.value;
+      const time = UI.time.value;
+      const note = (UI.notes.value || "").trim();
+
+      // optional extra prompt (global)
+      const extraPrompt = (shop.extraPrompt || "").trim();
+
+      const msg =
+        `${serviceLine}\n\n` +
+        (extraPrompt ? `${extraPrompt}\n` : "") +
+        `Name: ${customerName || "-"}\n` +
+        `Wunschtermin: ${fmtDateISOToDE(dateISO)} ${time}\n` +
+        (note ? `Notiz: ${note}\n` : "");
+
+      const waUrl = `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
+    });
+
+    init();
+  </script>
+</body>
+</html>

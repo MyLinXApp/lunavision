@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LunaVision — AI Booking & Automation</title>
+  <meta name="description" content="LunaVision installiert ein intelligentes WhatsApp-Buchungssystem auf Ihrer Website – damit Sie nie wieder eine Terminanfrage verpassen." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <style>
+    :root{
+      --bg:#0B0F1C;
+      --bg2:#0f1730;
+      --card: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+      --text: #F5F7FA;
+      --muted: rgba(245,247,250,.75);
+      --accent:#C7A75A;
+      --accent2:#E7D19B;
+      --shadow2: 0 10px 26px rgba(0,0,0,.28);
+      --r: 18px;
+      --max: 1100px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 18% 10%, rgba(199,167,90,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(231,209,155,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .section{padding:74px 0}
+    .card{
+      border:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border-radius:var(--r);
+      box-shadow:var(--shadow2);
+      padding:18px;
+    }
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+      transition:transform .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+      font-weight:800;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      background: rgba(255,255,255,.03);
+    }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(199,167,90,.55)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+      color:#0B0F1C;
+      border-color:transparent;
+      box-shadow: 0 12px 26px rgba(199,167,90,.16);
+    }
+    .btn.primary:hover{opacity:.95}
+    .h1{font-size:46px; line-height:1.05; margin:14px 0 10px; letter-spacing:-.6px}
+    .h2{font-size:30px; margin:0 0 12px}
+    .h3{font-size:18px; margin:0 0 8px}
+    .lead{font-size:18px; color:var(--muted); line-height:1.55; max-width:62ch}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,28,.60);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .topbar .inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      min-width:0;
+    }
+    .brandText{display:flex; flex-direction:column; line-height:1.05; min-width:0}
+    .brandName{font-size:15px; font-weight:900; letter-spacing:.3px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .brandTag{font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+    .logo{
+      width:30px;height:30px;border-radius:12px;
+      object-fit:contain;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:4px;
+      flex:0 0 auto;
+    }
+    nav{display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav a.link{
+      text-decoration:none;
+      font-size:14px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      transition:background .12s ease, color .12s ease;
+    }
+    nav a.link:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    .lang{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--text);
+      border-radius:12px;
+      padding:10px 12px;
+      font-weight:900;
+      cursor:pointer;
+    }
+    .lang:hover{border-color:rgba(199,167,90,.55)}
+    @media (max-width: 820px){
+      .h1{font-size:38px}
+      nav a.link{display:none}
+    }
+
+    /* Hero */
+    .hero{padding:74px 0 30px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:24px;
+      align-items:start;
+    }
+    @media (max-width: 900px){.heroGrid{grid-template-columns:1fr}}
+    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+
+    .stats{display:grid; gap:14px}
+    .stat{
+      display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:center;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+    }
+    .icon{
+      width:38px; height:38px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(199,167,90,.12);
+      display:grid; place-items:center;
+      color: var(--accent2);
+      font-weight:1000;
+      font-size:13px;
+    }
+    .k{font-size:13px; color:var(--muted)}
+    .v{font-size:14px; font-weight:900}
+
+    /* Grids */
+    .grid{display:grid; gap:18px}
+
+    /* Features: 3 columns desktop, 1 on small */
+    .features{grid-template-columns:repeat(3,1fr)}
+    @media (max-width: 900px){
+      .features{grid-template-columns:1fr}
+    }
+
+    /* Pricing: ALWAYS tries to keep them side-by-side, wraps only if too narrow */
+    .pricing{
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 980px){
+      .pricing{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px){
+      .pricing{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    ul.clean{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+    li.item{display:flex; gap:10px; color:var(--muted); line-height:1.45}
+    .check{
+      width:18px; height:18px; border-radius:6px;
+      background: rgba(16,185,129,.16);
+      border:1px solid rgba(16,185,129,.32);
+      display:grid; place-items:center; flex:0 0 auto;
+      color:#a7f3d0;
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    /* Pricing cards */
+    .price{padding:20px}
+    .amount{font-size:34px; font-weight:1000; letter-spacing:-.4px; margin:10px 0 6px}
+    .sub{color:var(--muted); margin:0 0 10px}
+    .badge{
+      display:inline-flex; align-items:center;
+      border:1px solid rgba(199,167,90,.32);
+      background: rgba(199,167,90,.14);
+      color: var(--accent2);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:1000;
+      width:fit-content;
+    }
+
+    /* FAQ / Legal */
+    details{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      background: rgba(255,255,255,.03);
+      padding:14px;
+    }
+    details summary{
+      cursor:pointer;
+      font-weight:900;
+      list-style:none;
+    }
+    details summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color:var(--muted); line-height:1.55}
+    .legal{
+      font-size:13px;
+      color:rgba(245,247,250,.78);
+      line-height:1.55;
+    }
+    .legal h3{margin:0 0 10px; font-size:16px}
+    .legal h4{margin:18px 0 8px; font-size:14px}
+    footer{
+      padding:46px 0 64px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .tiny{font-size:12px; color:rgba(245,247,250,.62); line-height:1.45}
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      background: rgba(11,15,28,.92);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 10px 26px rgba(0,0,0,.28);
+      color: rgba(245,247,250,.92);
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: 13px;
+      z-index: 9999;
+      display: none;
+      max-width: 92vw;
+      text-align:center;
+    }
+    .toast strong{ color: #E7D19B; }
+
+    /* simple toggles for DE/EN legal */
+    .langBlock{ display:none; }
+    .langBlock.active{ display:block; }
+  </style>
+</head>
+
+<body>
+  <!-- zentrale Einstellungen -->
+  <script>
+    window.LV = {
+      whatsappBase: "https://wa.me/491742555178?text=",
+      texts: {
+        hero: "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20eure%20Services.",
+        p1:   "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20das%20WhatsApp%20Booking%20Setup%20(Paket%201%20%E2%80%94%20849%E2%82%AC).",
+        p2:   "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20die%20Premium%20Landingpage%20(Paket%202%20%E2%80%94%20390%E2%82%AC).",
+        p3:   "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20Maintenance%20%26%20Optimization%20(Paket%203%20%E2%80%94%20149%E2%82%AC%2FMonat)."
+      },
+      logoPath: "assets/logo.png",
+      email: "info@lunavision.org"
+    };
+  </script>
+
+  <header class="topbar">
+    <div class="wrap">
+      <div class="inner">
+        <a class="brand" href="#top" aria-label="LunaVision Home">
+          <img class="logo" id="lvLogo" src="assets/logo.png" alt="LunaVision Logo" />
+          <div class="brandText">
+            <div class="brandName">LunaVision</div>
+            <div class="brandTag" data-i18n="tagline">AI Booking & Automation</div>
+          </div>
+        </a>
+
+        <nav aria-label="Navigation">
+          <a class="link" href="#features" data-i18n="nav_features">Features</a>
+          <a class="link" href="#pricing" data-i18n="nav_pricing">Pakete</a>
+          <a class="link" href="#faq" data-i18n="nav_faq">FAQ</a>
+          <a class="link" href="#legal" data-i18n="nav_legal">AGB & Impressum</a>
+          <button class="lang" id="langBtn" aria-label="Sprache wechseln">EN</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <span class="pill" data-i18n="pill">🌙 DSGVO-minimiert • Ohne Abo-Zwang • Für lokale Dienstleister</span>
+
+        <div class="heroGrid">
+          <div>
+            <h1 class="h1" data-i18n="hero_title">Automate Conversations.<br/>Grow Effortlessly.</h1>
+
+            <p class="lead" data-i18n="hero_lead">
+              LunaVision installiert ein intelligentes WhatsApp-Buchungssystem auf Ihrer Website –
+              damit Sie nie wieder eine Terminanfrage verpassen.
+            </p>
+
+            <div class="ctaRow">
+              <a class="btn primary waBtn" id="waHero" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">WhatsApp Anfrage</a>
+              <a class="btn" href="#pricing" data-i18n="cta_pricing">Pakete ansehen</a>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="icon">24/7</div>
+              <div>
+                <div class="k" data-i18n="s1k">Mehr Buchungen</div>
+                <div class="v" data-i18n="s1v">Anfragen auch nach Ladenschluss</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="icon">✔</div>
+              <div>
+                <div class="k" data-i18n="s2k">Professioneller Eindruck</div>
+                <div class="v" data-i18n="s2v">Struktur statt WhatsApp-Chaos</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="icon">€</div>
+              <div>
+                <div class="k" data-i18n="s3k">Einmalig</div>
+                <div class="v" data-i18n="s3v">Setup statt SaaS-Abo</div>
+              </div>
+            </div>
+            <div class="stat">
+              <div class="icon">🛡</div>
+              <div>
+                <div class="k" data-i18n="s4k">DSGVO-minimiert</div>
+                <div class="v" data-i18n="s4v">Ohne Datenbank (Setup-Variante)</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2 class="h2" data-i18n="features_title">Main Selling Points</h2>
+        <p class="lead" data-i18n="features_lead">Warum das für Geschäftsinhaber zählt: Ergebnis, Einfachheit, Vertrauen.</p>
+
+        <div class="grid features" style="margin-top:18px">
+          <div class="card">
+            <div class="h3" data-i18n="f1t">Mehr Buchungen</div>
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="f1a">Terminanfragen 24/7 über Website & Google</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1b">Kürzester Weg: Google → WhatsApp → Termin</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1c">Weniger Hin-und-Her – mehr echte Buchungen</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="h3" data-i18n="f2t">Weniger Stress</div>
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="f2a">Weniger Unterbrechungen während der Arbeit</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f2b">Strukturierte Anfrage statt Chat-Chaos</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f2c">Absage/Änderung mit einem Klick</span></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="h3" data-i18n="f3t">Individuelle Lösung</div>
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="f3a">Branding: Logo & Farben</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f3b">Einrichtung inkl. Google-Terminseite (Bonus)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f3c">White-Label Look – professionell & klar</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <h2 class="h2" data-i18n="pricing_title">Pakete</h2>
+        <p class="lead" data-i18n="pricing_lead">Transparent. Klar. Ohne versteckte Kosten.</p>
+
+        <div class="grid pricing" style="margin-top:18px">
+          <div class="card price">
+            <div class="badge" data-i18n="p1name">Paket 1 — WhatsApp Booking Setup</div>
+            <div class="amount">849 €</div>
+            <p class="sub" data-i18n="once">einmalig</p>
+
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="p1a">Strukturierte Termin-Anfrage (Service, Name, Zeit)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1b">WhatsApp-Weiterleitung mit vorbereitetem Text</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1c">Bis zu 5 Services</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1d">Bis zu 5 Mitarbeiter (optional)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1e">Branding (Logo & Farben)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1f">Absage/Änderung integriert</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1g">Google-Terminseite inklusive (Link für Google-Profil)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1h">Installation auf bestehender Website (falls vorhanden)</span></li>
+            </ul>
+
+            <p class="muted" style="margin-top:10px" data-i18n="p1note">Kein Abo. Keine API. Keine versteckten Kosten.</p>
+
+            <div style="margin-top:12px">
+              <a class="btn primary waBtn" id="waP1" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">WhatsApp Anfrage</a>
+            </div>
+          </div>
+
+          <div class="card price">
+            <div class="badge" data-i18n="p2name">Paket 2 — Premium Landingpage</div>
+            <div class="amount">390 €</div>
+            <p class="sub" data-i18n="once">einmalig</p>
+
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="p2a">Moderne 1-Seiten-Website</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2b">Mobil optimiert</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2c">Services/Preise/Standort-Section</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2d">Impressum & Datenschutz (Bereiche)</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2e">SEO-Grundstruktur</span></li>
+            </ul>
+
+            <p class="muted" style="margin-top:10px" data-i18n="p2note">
+              Hinweis: Dieses Paket ist die Website. WhatsApp Booking (Paket 1) kann später ergänzt werden.
+            </p>
+
+            <div style="margin-top:12px">
+              <a class="btn primary waBtn" id="waP2" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">WhatsApp Anfrage</a>
+            </div>
+          </div>
+
+          <div class="card price">
+            <div class="badge" data-i18n="p3name">Paket 3 — Maintenance & Optimization</div>
+            <div class="amount">149 €</div>
+            <p class="sub" data-i18n="permonth">pro Monat (optional)</p>
+
+            <ul class="clean">
+              <li class="item"><span class="check">✓</span><span data-i18n="p3a">Anpassung von Services & Texten</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p3b">Mitarbeiter-Updates</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p3c">Design-Optimierung</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p3d">Performance-Verbesserung</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p3e">Technischer Support</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p3f">1 größere Anpassung pro Quartal</span></li>
+            </ul>
+
+            <div style="margin-top:12px">
+              <a class="btn primary waBtn" id="waP3" href="#" target="_blank" rel="noopener noreferrer" data-i18n="cta_demo">WhatsApp Anfrage</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap">
+        <h2 class="h2" data-i18n="faq_title">FAQ</h2>
+
+        <div class="grid" style="margin-top:18px; gap:12px">
+          <details>
+            <summary data-i18n="q1">Ist das „EU/DSGVO-konform“?</summary>
+            <p data-i18n="a1">
+              Die Setup-Variante ist DSGVO-minimiert konzipiert (keine Datenbank, keine Website-Speicherung; Übermittlung nach Einwilligung).
+              WhatsApp ist ein Drittanbieter – darüber muss der jeweilige Betrieb in seiner Datenschutzerklärung informieren.
+            </p>
+          </details>
+
+          <details>
+            <summary data-i18n="q2">Brauche ich WhatsApp Business API?</summary>
+            <p data-i18n="a2">
+              Für das Setup-Paket nicht. Es wird eine WhatsApp-Nachricht vorbereitet/weitergeleitet. API-Automationen sind ein separates, komplexeres Projekt.
+            </p>
+          </details>
+
+          <details>
+            <summary data-i18n="q3">Wozu die Google-Terminseite?</summary>
+            <p data-i18n="a3">
+              Damit Sie im Google Unternehmensprofil einen „Termin“-Button hinterlegen können. Ein Klick → WhatsApp öffnet sich mit vorbereiteter Nachricht.
+              Ideal für Kunden, die über Google suchen und sofort buchen wollen.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL -->
+    <section class="section" id="legal">
+      <div class="wrap">
+        <h2 class="h2" data-i18n="legal_title">AGB & Impressum</h2>
+
+        <div class="grid" style="margin-top:18px; grid-template-columns: 1fr; gap:12px">
+
+          <!-- DE: AGB -->
+          <div class="card legal langBlock" id="agb_de">
+            <h3>Allgemeine Geschäftsbedingungen (AGB)</h3>
+
+            <h4>1. Geltungsbereich</h4>
+            <p>
+              Diese AGB gelten für Verträge zwischen <strong>LunaVision</strong> (nachfolgend „Anbieter“) und dem Kunden über die angebotenen Leistungen
+              (Setup, Landingpage, Maintenance). Sofern nicht anders vereinbart, richten sich Leistungen primär an Unternehmer (§ 14 BGB).
+            </p>
+
+            <h4>2. Leistungsbeschreibung</h4>
+            <p>
+              Der Anbieter erbringt je nach gebuchtem Paket die vereinbarten Leistungen:
+              <br/>• <strong>Setup</strong>: Konfiguration und Einbindung eines WhatsApp-Booking-Flows (ohne API-Backend), Branding, Öffnungszeiten-Logik, Google-Terminseite.
+              <br/>• <strong>Landingpage</strong>: Erstellung einer 1-Seiten-Website gemäß vereinbartem Umfang (ohne Booking-Bot, sofern nicht zusätzlich gebucht).
+              <br/>• <strong>Maintenance</strong>: Laufende Anpassungen und technische Unterstützung gemäß Paketbeschreibung.
+            </p>
+
+            <h4>3. Mitwirkungspflichten des Kunden</h4>
+            <p>
+              Der Kunde stellt rechtzeitig die erforderlichen Inhalte bereit (z.B. Logo, Texte, Öffnungszeiten, Services, Mitarbeiterliste, WhatsApp-Nummer)
+              und sorgt für notwendige Zugänge (Hosting/DNS/Website). Verzögerungen durch fehlende Mitwirkung verlängern Lieferfristen entsprechend.
+            </p>
+
+            <h4>4. Abnahme</h4>
+            <p>
+              Nach Bereitstellung der Leistung hat der Kunde diese innerhalb von 7 Tagen zu prüfen. Erfolgt keine Rüge wesentlicher Mängel,
+              gilt die Leistung als abgenommen. Unwesentliche Abweichungen berechtigen nicht zur Verweigerung der Abnahme.
+            </p>
+
+            <h4>5. Preise & Zahlung</h4>
+            <p>
+              Es gelten die im Angebot vereinbarten Preise. Einmalige Leistungen sind nach Rechnungsstellung fällig.
+              Maintenance wird monatlich im Voraus oder gemäß Vereinbarung abgerechnet.
+            </p>
+
+            <h4>6. Nutzungsrechte</h4>
+            <p>
+              Der Kunde erhält ein einfaches Nutzungsrecht an den gelieferten Ergebnissen für den eigenen Geschäftsbetrieb.
+              Weiterverkauf/Weitergabe an Dritte ist ohne schriftliche Zustimmung nicht gestattet, sofern nicht ausdrücklich vereinbart.
+            </p>
+
+            <h4>7. Drittanbieter & Plattformen</h4>
+            <p>
+              Soweit Leistungen die Nutzung von Drittanbietern (z.B. WhatsApp/Hosting/Domainanbieter) beinhalten, gelten zusätzlich deren Bedingungen.
+              Der Anbieter schuldet nicht die dauerhafte Verfügbarkeit dieser Plattformen.
+            </p>
+
+            <h4>8. Gewährleistung</h4>
+            <p>
+              Der Anbieter behebt berechtigte Mängel innerhalb angemessener Frist. Kein Mangel liegt vor, wenn eine Einschränkung auf Umständen
+              außerhalb des Einflussbereichs des Anbieters beruht (z.B. Änderungen durch Drittanbieter, Hosting-Ausfälle, falsche Kundendaten).
+            </p>
+
+            <h4>9. Haftung</h4>
+            <p>
+              Der Anbieter haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper, Gesundheit.
+              Bei einfacher Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) und begrenzt
+              auf den vertragstypischen, vorhersehbaren Schaden.
+            </p>
+
+            <h4>10. Datenschutz</h4>
+            <p>
+              Jede Partei beachtet die anwendbaren Datenschutzvorschriften. Bei Bedarf kann eine Vereinbarung zur Auftragsverarbeitung (AVV) vereinbart werden.
+              Für Inhalte/Einwilligungen im Zusammenhang mit WhatsApp ist der jeweilige Betrieb verantwortlich.
+            </p>
+
+            <h4>11. Laufzeit & Kündigung (Maintenance)</h4>
+            <p>
+              Maintenance ist monatlich kündbar mit einer Frist von 14 Tagen zum Monatsende, sofern nicht anders vereinbart.
+              Bereits erbrachte Leistungen bleiben zu vergüten.
+            </p>
+
+            <h4>12. Schlussbestimmungen</h4>
+            <p>
+              Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts.
+              Gerichtsstand ist – soweit gesetzlich zulässig – Ludwigshafen am Rhein.
+              Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam.
+            </p>
+          </div>
+
+          <!-- EN: GTC (ONLY visible in EN) -->
+          <div class="card legal langBlock" id="agb_en">
+            <h3>General Terms and Conditions (GTC)</h3>
+
+            <h4>1. Scope</h4>
+            <p>
+              These GTC apply to contracts between <strong>LunaVision</strong> (hereinafter referred to as the “Provider”) and the customer regarding the offered services
+              (Setup, Landing Page, Maintenance). Unless otherwise agreed, the services are primarily intended for entrepreneurs within the meaning of Section 14 of the German Civil Code (BGB).
+            </p>
+
+            <h4>2. Description of Services</h4>
+            <p>
+              Depending on the booked package, the Provider shall deliver the agreed services:
+              <br/>• <strong>Setup</strong>: Configuration and integration of a WhatsApp booking flow (without API backend), branding, business hours logic, Google appointment page.
+              <br/>• <strong>Landing Page</strong>: Creation of a one-page website according to the agreed scope (without booking functionality unless additionally booked).
+              <br/>• <strong>Maintenance</strong>: Ongoing adjustments and technical support in accordance with the package description.
+            </p>
+
+            <h4>3. Customer’s Obligations to Cooperate</h4>
+            <p>
+              The customer shall provide all required content in a timely manner (e.g., logo, texts, opening hours, services, staff list, WhatsApp number) and ensure necessary access (hosting/DNS/website).
+              Delays caused by missing cooperation shall extend delivery deadlines accordingly.
+            </p>
+
+            <h4>4. Acceptance</h4>
+            <p>
+              After delivery, the customer must review the service within 7 days. If no notice of material defects is given within this period, the service shall be deemed accepted.
+              Minor deviations do not entitle the customer to refuse acceptance.
+            </p>
+
+            <h4>5. Prices & Payment</h4>
+            <p>
+              The prices agreed in the offer shall apply. One-time services are due upon invoicing. Maintenance is billed monthly in advance or as otherwise agreed.
+            </p>
+
+            <h4>6. Rights of Use</h4>
+            <p>
+              The customer receives a non-exclusive right to use the delivered results for their own business operations. Resale or transfer to third parties is not permitted without written consent,
+              unless explicitly agreed otherwise.
+            </p>
+
+            <h4>7. Third-Party Providers & Platforms</h4>
+            <p>
+              If services involve the use of third-party providers (e.g., WhatsApp/hosting/domain providers), their respective terms and conditions shall also apply.
+              The Provider does not guarantee the permanent availability of these platforms.
+            </p>
+
+            <h4>8. Warranty</h4>
+            <p>
+              The Provider shall remedy justified defects within a reasonable period of time. No defect shall be deemed to exist if a limitation is caused by circumstances beyond the Provider’s control
+              (e.g., changes by third-party providers, hosting outages, incorrect customer data).
+            </p>
+
+            <h4>9. Liability</h4>
+            <p>
+              The Provider shall be liable without limitation in cases of intent and gross negligence as well as for injury to life, body, or health.
+              In cases of ordinary negligence, the Provider shall only be liable for breaches of essential contractual obligations (cardinal obligations) and limited to the typical, foreseeable damage.
+            </p>
+
+            <h4>10. Data Protection</h4>
+            <p>
+              Each party shall comply with applicable data protection laws. If required, a data processing agreement (DPA) may be concluded.
+              The respective business is responsible for content and consent related to WhatsApp usage.
+            </p>
+
+            <h4>11. Term & Termination (Maintenance)</h4>
+            <p>
+              Maintenance can be terminated monthly with a notice period of 14 days to the end of the month, unless otherwise agreed.
+              Services already rendered remain payable.
+            </p>
+
+            <h4>12. Final Provisions</h4>
+            <p>
+              German law shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG).
+              The place of jurisdiction – where legally permissible – is Ludwigshafen am Rhein.
+              Should individual provisions be invalid, the remainder of the contract shall remain unaffected.
+            </p>
+          </div>
+
+          <!-- DE: Impressum -->
+          <div class="card legal langBlock" id="impressum_de">
+            <h3 data-i18n="imp_title">Impressum</h3>
+
+            <p>
+              <strong>Verantwortlicher i.S.d. § 5 TMG / § 18 MStV:</strong><br/>
+              M. Giglio<br/>
+              Kranichstr. 11<br/>
+              67069 Ludwigshafen am Rhein<br/>
+              E-Mail: <a id="lvEmail" href="mailto:info@lunavision.org">info@lunavision.org</a>
+            </p>
+
+            <p>
+              <strong>EU-Streitschlichtung:</strong><br/>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>
+            </p>
+
+            <p class="tiny">
+              Als Kleingewerbe wird keine USt-IdNr. angegeben (sofern nicht vorhanden/erforderlich).
+            </p>
+          </div>
+
+          <!-- EN: Imprint (ONLY visible in EN) -->
+          <div class="card legal langBlock" id="impressum_en">
+            <h3>Imprint</h3>
+
+            <p>
+              <strong>Responsible according to Section 5 TMG / Section 18 MStV:</strong><br/>
+              M. Giglio<br/>
+              Kranichstr. 11<br/>
+              67069 Ludwigshafen am Rhein<br/>
+              Germany<br/>
+              Email: <a id="lvEmailEn" href="mailto:info@lunavision.org">info@lunavision.org</a>
+            </p>
+
+            <p>
+              <strong>EU Dispute Resolution</strong><br/>
+              The European Commission provides a platform for online dispute resolution (ODR):<br/>
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>
+            </p>
+
+            <p class="tiny">
+              As a small business (Kleingewerbe), no VAT ID is provided (if not available/required).
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="tiny">
+        © <span id="year"></span> LunaVision — <span class="muted">AI Booking & Automation</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="lvToast"><strong>Hinweis:</strong> Weiterleitung zu WhatsApp…</div>
+
+  <script>
+    // ===== Init: Logo, Email, Year, WhatsApp =====
+    (function(){
+      const logoPath = (window.LV && window.LV.logoPath) ? window.LV.logoPath : "assets/logo.png";
+      const email = (window.LV && window.LV.email) ? window.LV.email : "";
+      const base = (window.LV && window.LV.whatsappBase) ? window.LV.whatsappBase : "https://wa.me/491742555178?text=";
+
+      // logo
+      const logo = document.getElementById("lvLogo");
+      if (logo) logo.src = logoPath;
+
+      // email DE
+      const emailEl = document.getElementById("lvEmail");
+      if (emailEl && email) {
+        emailEl.textContent = email;
+        emailEl.href = "mailto:" + email;
+      }
+      // email EN
+      const emailEnEl = document.getElementById("lvEmailEn");
+      if (emailEnEl && email) {
+        emailEnEl.textContent = email;
+        emailEnEl.href = "mailto:" + email;
+      }
+
+      // year
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // toast
+      const toast = document.getElementById("lvToast");
+      function showToast(){
+        if(!toast) return;
+        toast.style.display = "block";
+        clearTimeout(window.__lv_toast_t);
+        window.__lv_toast_t = setTimeout(()=>{ toast.style.display = "none"; }, 1600);
+      }
+
+      function bindWa(id, text){
+        const a = document.getElementById(id);
+        if(!a) return;
+        const url = base + text;
+
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+
+        a.addEventListener("click", (e)=>{
+          e.preventDefault();
+          showToast();
+          setTimeout(()=> window.open(url, "_blank", "noopener,noreferrer"), 250);
+        }, { passive:false });
+      }
+
+      bindWa("waHero", window.LV.texts.hero);
+      bindWa("waP1", window.LV.texts.p1);
+      bindWa("waP2", window.LV.texts.p2);
+      bindWa("waP3", window.LV.texts.p3);
+    })();
+
+    // ===== Language toggle (DE/EN) =====
+    const I18N = {
+      de: {
+        tagline: "AI Booking & Automation",
+        nav_features: "Features",
+        nav_pricing: "Pakete",
+        nav_faq: "FAQ",
+        nav_legal: "AGB & Impressum",
+        cta_demo: "WhatsApp Anfrage",
+        cta_pricing: "Pakete ansehen",
+        pill: "🌙 DSGVO-minimiert • Ohne Abo-Zwang • Für lokale Dienstleister",
+        hero_title: "Automate Conversations.<br/>Grow Effortlessly.",
+        hero_lead: "LunaVision installiert ein intelligentes WhatsApp-Buchungssystem auf Ihrer Website – damit Sie nie wieder eine Terminanfrage verpassen.",
+        s1k: "Mehr Buchungen", s1v: "Anfragen auch nach Ladenschluss",
+        s2k: "Professioneller Eindruck", s2v: "Struktur statt WhatsApp-Chaos",
+        s3k: "Einmalig", s3v: "Setup statt SaaS-Abo",
+        s4k: "DSGVO-minimiert", s4v: "Ohne Datenbank (Setup-Variante)",
+        features_title: "Main Selling Points",
+        features_lead: "Warum das für Geschäftsinhaber zählt: Ergebnis, Einfachheit, Vertrauen.",
+        f1t:"Mehr Buchungen", f1a:"Terminanfragen 24/7 über Website & Google", f1b:"Kürzester Weg: Google → WhatsApp → Termin", f1c:"Weniger Hin-und-Her – mehr echte Buchungen",
+        f2t:"Weniger Stress", f2a:"Weniger Unterbrechungen während der Arbeit", f2b:"Strukturierte Anfrage statt Chat-Chaos", f2c:"Absage/Änderung mit einem Klick",
+        f3t:"Individuelle Lösung", f3a:"Branding: Logo & Farben", f3b:"Einrichtung inkl. Google-Terminseite (Bonus)", f3c:"White-Label Look – professionell & klar",
+        pricing_title:"Pakete",
+        pricing_lead:"Transparent. Klar. Ohne versteckte Kosten.",
+        once:"einmalig",
+        permonth:"pro Monat (optional)",
+        p1name:"Paket 1 — WhatsApp Booking Setup",
+        p1a:"Strukturierte Termin-Anfrage (Service, Name, Zeit)",
+        p1b:"WhatsApp-Weiterleitung mit vorbereitetem Text",
+        p1c:"Bis zu 5 Services",
+        p1d:"Bis zu 5 Mitarbeiter (optional)",
+        p1e:"Branding (Logo & Farben)",
+        p1f:"Absage/Änderung integriert",
+        p1g:"Google-Terminseite inklusive (Link für Google-Profil)",
+        p1h:"Installation auf bestehender Website (falls vorhanden)",
+        p1note:"Kein Abo. Keine API. Keine versteckten Kosten.",
+        p2name:"Paket 2 — Premium Landingpage",
+        p2a:"Moderne 1-Seiten-Website",
+        p2b:"Mobil optimiert",
+        p2c:"Services/Preise/Standort-Section",
+        p2d:"Impressum & Datenschutz (Bereiche)",
+        p2e:"SEO-Grundstruktur",
+        p2note:"Hinweis: Dieses Paket ist die Website. WhatsApp Booking (Paket 1) kann später ergänzt werden.",
+        p3name:"Paket 3 — Maintenance & Optimization",
+        p3a:"Anpassung von Services & Texten",
+        p3b:"Mitarbeiter-Updates",
+        p3c:"Design-Optimierung",
+        p3d:"Performance-Verbesserung",
+        p3e:"Technischer Support",
+        p3f:"1 größere Anpassung pro Quartal",
+        faq_title:"FAQ",
+        q1:"Ist das „EU/DSGVO-konform“?",
+        a1:"Die Setup-Variante ist DSGVO-minimiert konzipiert (keine Datenbank, keine Website-Speicherung; Übermittlung nach Einwilligung). WhatsApp ist ein Drittanbieter – darüber muss der jeweilige Betrieb in seiner Datenschutzerklärung informieren.",
+        q2:"Brauche ich WhatsApp Business API?",
+        a2:"Für das Setup-Paket nicht. Es wird eine WhatsApp-Nachricht vorbereitet/weitergeleitet. API-Automationen sind ein separates, komplexeres Projekt.",
+        q3:"Wozu die Google-Terminseite?",
+        a3:"Damit Sie im Google Unternehmensprofil einen „Termin“-Button hinterlegen können. Ein Klick → WhatsApp öffnet sich mit vorbereiteter Nachricht. Ideal für Kunden, die über Google suchen und sofort buchen wollen.",
+        legal_title:"AGB & Impressum",
+        imp_title:"Impressum"
+      },
+      en: {
+        tagline: "AI Booking & Automation",
+        nav_features: "Features",
+        nav_pricing: "Packages",
+        nav_faq: "FAQ",
+        nav_legal: "Terms & Imprint",
+        cta_demo: "WhatsApp Request",
+        cta_pricing: "View Packages",
+        pill: "🌙 GDPR-minded • No subscription pressure • For service businesses",
+        hero_title: "Automate Conversations.<br/>Grow Effortlessly.",
+        hero_lead: "LunaVision installs a WhatsApp booking flow so you never miss appointment requests again.",
+        s1k: "More bookings", s1v: "Requests even after closing",
+        s2k: "Professional look", s2v: "Structure instead of chat chaos",
+        s3k: "One-time", s3v: "Setup instead of SaaS",
+        s4k: "GDPR-minded", s4v: "No database (setup variant)",
+        features_title: "Main Selling Points",
+        features_lead: "Why owners care: results, simplicity, trust.",
+        f1t:"More bookings", f1a:"24/7 requests via website & Google", f1b:"Fastest path: Google → WhatsApp → booking", f1c:"Less back-and-forth, more bookings",
+        f2t:"Less stress", f2a:"Fewer interruptions while working", f2b:"Structured requests instead of chat chaos", f2c:"Cancel/change with one click",
+        f3t:"Tailored solution", f3a:"Branding: logo & colors", f3b:"Setup incl. Google booking page (bonus)", f3c:"Professional, white-label appearance",
+        pricing_title:"Packages",
+        pricing_lead:"Transparent. Clear. No hidden costs.",
+        once:"one-time",
+        permonth:"per month (optional)",
+        p1name:"Package 1 — WhatsApp Booking Setup",
+        p1a:"Structured request (service, name, time)",
+        p1b:"WhatsApp redirect with prefilled message",
+        p1c:"Up to 5 services",
+        p1d:"Up to 5 staff (optional)",
+        p1e:"Branding (logo & colors)",
+        p1f:"Cancel/change included",
+        p1g:"Google booking page included (Google profile link)",
+        p1h:"Install on existing website (if available)",
+        p1note:"No subscription. No API. No hidden fees.",
+        p2name:"Package 2 — Premium Landing Page",
+        p2a:"Modern one-page website",
+        p2b:"Mobile optimized",
+        p2c:"Services/pricing/location section",
+        p2d:"Imprint & privacy sections",
+        p2e:"Basic SEO structure",
+        p2note:"Note: This package is the website. WhatsApp booking (package 1) can be added later.",
+        p3name:"Package 3 — Maintenance & Optimization",
+        p3a:"Service & text updates",
+        p3b:"Staff updates",
+        p3c:"Design optimization",
+        p3d:"Performance improvements",
+        p3e:"Technical support",
+        p3f:"1 larger change per quarter",
+        faq_title:"FAQ",
+        q1:"Is this GDPR compliant?",
+        a1:"The setup variant minimizes data processing (no database, no website storage; transmission after consent). WhatsApp is a third party — businesses must inform users in their privacy policy.",
+        q2:"Do I need WhatsApp Business API?",
+        a2:"Not for this setup. A message is prepared/redirected. API automation is a separate, more complex project.",
+        q3:"Why the Google booking page?",
+        a3:"So you can add a “Book” button in your Google Business Profile. One click → WhatsApp opens with a prefilled message. Ideal for high-intent Google traffic.",
+        legal_title:"Terms & Imprint",
+        imp_title:"Imprint"
+      }
+    };
+
+    let lang = "de";
+    const langBtn = document.getElementById("langBtn");
+
+    function toggleLegalBlocks(){
+      const deBlocks = ["agb_de","impressum_de"];
+      const enBlocks = ["agb_en","impressum_en"];
+      [...deBlocks, ...enBlocks].forEach(id=>{
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.classList.remove("active");
+      });
+      const active = (lang === "de") ? deBlocks : enBlocks;
+      active.forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) el.classList.add("active");
+      });
+    }
+
+    function applyI18n(){
+      document.querySelectorAll("[data-i18n]").forEach(node=>{
+        const key = node.getAttribute("data-i18n");
+        const val = (I18N[lang] && I18N[lang][key]) ? I18N[lang][key] : null;
+        if(val === null) return;
+        if(key === "hero_title") node.innerHTML = val;
+        else node.textContent = val;
+      });
+      if (langBtn) langBtn.textContent = (lang === "de") ? "EN" : "DE";
+      document.documentElement.lang = lang;
+
+      toggleLegalBlocks();
+    }
+
+    if (langBtn){
+      langBtn.addEventListener("click", ()=>{
+        lang = (lang === "de") ? "en" : "de";
+        applyI18n();
+      });
+    }
+
+    // Smooth scroll only for internal anchors
+    document.addEventListener("click", (e)=>{
+      const a = e.target.closest("a[href^='#']");
+      if(!a) return;
+      const id = a.getAttribute("href");
+      const el = document.querySelector(id);
+      if(!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:"smooth", block:"start"});
+      history.replaceState(null, "", id);
+    });
+
+    applyI18n();
+  </script>
+</body>
+</html>
