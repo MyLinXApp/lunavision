@@ -272,6 +272,7 @@
   <!-- zentrale Einstellungen -->
   <script>
     window.LV = {
+      // Default (LunaVision Hauptseite)
       whatsappBase: "https://wa.me/491742555178?text=",
       texts: {
         hero: "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20eure%20Services.",
@@ -280,18 +281,22 @@
         p3:   "Hallo%20LunaVision,%20ich%20interessiere%20mich%20für%20Maintenance%20%26%20Optimization%20(Paket%203%20%E2%80%94%20149%E2%82%AC%2FMonat)."
       },
       logoPath: "assets/logo.png",
-      email: "info@lunavision.org"
+      email: "info@lunavision.org",
+
+      // Barbershop-Daten werden automatisch geladen, wenn URL-Pfad nicht leer ist:
+      // /barbershop-as03 => /shops/kunden/barbershop-as03/data.json
+      shopBasePath: "/shops/kunden"
     };
   </script>
 
   <header class="topbar">
     <div class="wrap">
       <div class="inner">
-        <a class="brand" href="#top" aria-label="LunaVision Home">
+        <a class="brand" href="/" aria-label="LunaVision Home">
           <img class="logo" id="lvLogo" src="assets/logo.png" alt="LunaVision Logo" />
           <div class="brandText">
-            <div class="brandName">LunaVision</div>
-            <div class="brandTag" data-i18n="tagline">AI Booking & Automation</div>
+            <div class="brandName" id="brandName">LunaVision</div>
+            <div class="brandTag" id="brandTag" data-i18n="tagline">AI Booking & Automation</div>
           </div>
         </a>
 
@@ -314,9 +319,9 @@
 
         <div class="heroGrid">
           <div>
-            <h1 class="h1" data-i18n="hero_title">Automate Conversations.<br/>Grow Effortlessly.</h1>
+            <h1 class="h1" id="heroTitle" data-i18n="hero_title">Automate Conversations.<br/>Grow Effortlessly.</h1>
 
-            <p class="lead" data-i18n="hero_lead">
+            <p class="lead" id="heroLead" data-i18n="hero_lead">
               LunaVision installiert ein intelligentes WhatsApp-Buchungssystem auf Ihrer Website –
               damit Sie nie wieder eine Terminanfrage verpassen.
             </p>
@@ -593,16 +598,14 @@
             </p>
           </div>
 
-          <!-- EN: GTC (ONLY visible in EN) -->
+          <!-- EN: GTC -->
           <div class="card legal langBlock" id="agb_en">
             <h3>General Terms and Conditions (GTC)</h3>
-
             <h4>1. Scope</h4>
             <p>
               These GTC apply to contracts between <strong>LunaVision</strong> (hereinafter referred to as the “Provider”) and the customer regarding the offered services
               (Setup, Landing Page, Maintenance). Unless otherwise agreed, the services are primarily intended for entrepreneurs within the meaning of Section 14 of the German Civil Code (BGB).
             </p>
-
             <h4>2. Description of Services</h4>
             <p>
               Depending on the booked package, the Provider shall deliver the agreed services:
@@ -610,60 +613,50 @@
               <br/>• <strong>Landing Page</strong>: Creation of a one-page website according to the agreed scope (without booking functionality unless additionally booked).
               <br/>• <strong>Maintenance</strong>: Ongoing adjustments and technical support in accordance with the package description.
             </p>
-
             <h4>3. Customer’s Obligations to Cooperate</h4>
             <p>
               The customer shall provide all required content in a timely manner (e.g., logo, texts, opening hours, services, staff list, WhatsApp number) and ensure necessary access (hosting/DNS/website).
               Delays caused by missing cooperation shall extend delivery deadlines accordingly.
             </p>
-
             <h4>4. Acceptance</h4>
             <p>
               After delivery, the customer must review the service within 7 days. If no notice of material defects is given within this period, the service shall be deemed accepted.
               Minor deviations do not entitle the customer to refuse acceptance.
             </p>
-
             <h4>5. Prices & Payment</h4>
             <p>
               The prices agreed in the offer shall apply. One-time services are due upon invoicing. Maintenance is billed monthly in advance or as otherwise agreed.
             </p>
-
             <h4>6. Rights of Use</h4>
             <p>
               The customer receives a non-exclusive right to use the delivered results for their own business operations. Resale or transfer to third parties is not permitted without written consent,
               unless explicitly agreed otherwise.
             </p>
-
             <h4>7. Third-Party Providers & Platforms</h4>
             <p>
               If services involve the use of third-party providers (e.g., WhatsApp/hosting/domain providers), their respective terms and conditions shall also apply.
               The Provider does not guarantee the permanent availability of these platforms.
             </p>
-
             <h4>8. Warranty</h4>
             <p>
               The Provider shall remedy justified defects within a reasonable period of time. No defect shall be deemed to exist if a limitation is caused by circumstances beyond the Provider’s control
               (e.g., changes by third-party providers, hosting outages, incorrect customer data).
             </p>
-
             <h4>9. Liability</h4>
             <p>
               The Provider shall be liable without limitation in cases of intent and gross negligence as well as for injury to life, body, or health.
               In cases of ordinary negligence, the Provider shall only be liable for breaches of essential contractual obligations (cardinal obligations) and limited to the typical, foreseeable damage.
             </p>
-
             <h4>10. Data Protection</h4>
             <p>
               Each party shall comply with applicable data protection laws. If required, a data processing agreement (DPA) may be concluded.
               The respective business is responsible for content and consent related to WhatsApp usage.
             </p>
-
             <h4>11. Term & Termination (Maintenance)</h4>
             <p>
               Maintenance can be terminated monthly with a notice period of 14 days to the end of the month, unless otherwise agreed.
               Services already rendered remain payable.
             </p>
-
             <h4>12. Final Provisions</h4>
             <p>
               German law shall apply, excluding the UN Convention on Contracts for the International Sale of Goods (CISG).
@@ -675,7 +668,6 @@
           <!-- DE: Impressum -->
           <div class="card legal langBlock" id="impressum_de">
             <h3 data-i18n="imp_title">Impressum</h3>
-
             <p>
               <strong>Verantwortlicher i.S.d. § 5 TMG / § 18 MStV:</strong><br/>
               M. Giglio<br/>
@@ -683,22 +675,19 @@
               67069 Ludwigshafen am Rhein<br/>
               E-Mail: <a id="lvEmail" href="mailto:info@lunavision.org">info@lunavision.org</a>
             </p>
-
             <p>
               <strong>EU-Streitschlichtung:</strong><br/>
               Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
               <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>
             </p>
-
             <p class="tiny">
               Als Kleingewerbe wird keine USt-IdNr. angegeben (sofern nicht vorhanden/erforderlich).
             </p>
           </div>
 
-          <!-- EN: Imprint (ONLY visible in EN) -->
+          <!-- EN: Imprint -->
           <div class="card legal langBlock" id="impressum_en">
             <h3>Imprint</h3>
-
             <p>
               <strong>Responsible according to Section 5 TMG / Section 18 MStV:</strong><br/>
               M. Giglio<br/>
@@ -707,13 +696,11 @@
               Germany<br/>
               Email: <a id="lvEmailEn" href="mailto:info@lunavision.org">info@lunavision.org</a>
             </p>
-
             <p>
               <strong>EU Dispute Resolution</strong><br/>
               The European Commission provides a platform for online dispute resolution (ODR):<br/>
               <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>
             </p>
-
             <p class="tiny">
               As a small business (Kleingewerbe), no VAT ID is provided (if not available/required).
             </p>
@@ -735,64 +722,6 @@
   <div class="toast" id="lvToast"><strong>Hinweis:</strong> Weiterleitung zu WhatsApp…</div>
 
   <script>
-    // ===== Init: Logo, Email, Year, WhatsApp =====
-    (function(){
-      const logoPath = (window.LV && window.LV.logoPath) ? window.LV.logoPath : "assets/logo.png";
-      const email = (window.LV && window.LV.email) ? window.LV.email : "";
-      const base = (window.LV && window.LV.whatsappBase) ? window.LV.whatsappBase : "https://wa.me/491742555178?text=";
-
-      // logo
-      const logo = document.getElementById("lvLogo");
-      if (logo) logo.src = logoPath;
-
-      // email DE
-      const emailEl = document.getElementById("lvEmail");
-      if (emailEl && email) {
-        emailEl.textContent = email;
-        emailEl.href = "mailto:" + email;
-      }
-      // email EN
-      const emailEnEl = document.getElementById("lvEmailEn");
-      if (emailEnEl && email) {
-        emailEnEl.textContent = email;
-        emailEnEl.href = "mailto:" + email;
-      }
-
-      // year
-      const yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-      // toast
-      const toast = document.getElementById("lvToast");
-      function showToast(){
-        if(!toast) return;
-        toast.style.display = "block";
-        clearTimeout(window.__lv_toast_t);
-        window.__lv_toast_t = setTimeout(()=>{ toast.style.display = "none"; }, 1600);
-      }
-
-      function bindWa(id, text){
-        const a = document.getElementById(id);
-        if(!a) return;
-        const url = base + text;
-
-        a.href = url;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-
-        a.addEventListener("click", (e)=>{
-          e.preventDefault();
-          showToast();
-          setTimeout(()=> window.open(url, "_blank", "noopener,noreferrer"), 250);
-        }, { passive:false });
-      }
-
-      bindWa("waHero", window.LV.texts.hero);
-      bindWa("waP1", window.LV.texts.p1);
-      bindWa("waP2", window.LV.texts.p2);
-      bindWa("waP3", window.LV.texts.p3);
-    })();
-
     // ===== Language toggle (DE/EN) =====
     const I18N = {
       de: {
@@ -964,6 +893,142 @@
       history.replaceState(null, "", id);
     });
 
+    // ============================================================
+    //  BARBERSHOP ROUTER (URL -> data.json)
+    //  /barbershop-as03 => /shops/kunden/barbershop-as03/data.json
+    // ============================================================
+    async function applyShopFromPath(){
+      const path = window.location.pathname || "/";
+      const clean = path.replace(/^\/+|\/+$/g, ""); // trim slashes
+
+      // root => LunaVision normal
+      if (!clean) return;
+
+      // ignore direct asset paths (safety)
+      if (clean.startsWith("assets/") || clean.startsWith("shops/")) return;
+
+      const base = (window.LV && window.LV.shopBasePath) ? window.LV.shopBasePath : "/shops/kunden";
+      const dataUrl = `${base}/${clean}/data.json`;
+
+      try{
+        const res = await fetch(dataUrl, { cache: "no-store" });
+        if(!res.ok) throw new Error("not found");
+        const data = await res.json();
+
+        // expected minimal fields:
+        // { "name": "...", "tagline": "...", "waNumber": "49123..." , "logoPath": "..." (optional) }
+
+        const name = data.name || clean;
+        const tagline = data.tagline || "Termin per WhatsApp";
+        const waNumber = (data.waNumber || "").toString().replace(/\D/g,"");
+
+        // Branding in header + hero
+        const bn = document.getElementById("brandName");
+        const bt = document.getElementById("brandTag");
+        const ht = document.getElementById("heroTitle");
+        const hl = document.getElementById("heroLead");
+
+        if (bn) bn.textContent = name;
+        if (bt) bt.textContent = tagline;
+
+        if (ht) ht.innerHTML = `${name}<br/>Termin per WhatsApp`;
+        if (hl) hl.textContent = tagline;
+
+        // title + meta description
+        document.title = `${name} — Termin per WhatsApp`;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if(metaDesc) metaDesc.setAttribute("content", `${name}: ${tagline}`);
+
+        // optional logo override
+        if (data.logoPath) window.LV.logoPath = data.logoPath;
+
+        // WhatsApp override (if number provided)
+        if (waNumber){
+          window.LV.whatsappBase = `https://wa.me/${waNumber}?text=`;
+          const msg = encodeURIComponent(`Hi ${name}! Ich möchte einen Termin.`);
+          window.LV.texts.hero = msg;
+          window.LV.texts.p1 = msg;
+          window.LV.texts.p2 = msg;
+          window.LV.texts.p3 = msg;
+        }
+
+        // mark shop mode (optional, for future)
+        window.__LV_SHOP = { slug: clean, dataUrl, data };
+
+      } catch(err){
+        // If JSON not found, keep LunaVision normal page
+        return;
+      }
+    }
+
+    // ===== Init: Logo, Email, Year, WhatsApp =====
+    (async function(){
+      // 1) try shop mode first (may overwrite window.LV)
+      await applyShopFromPath();
+
+      const logoPath = (window.LV && window.LV.logoPath) ? window.LV.logoPath : "assets/logo.png";
+      const email = (window.LV && window.LV.email) ? window.LV.email : "";
+      const base = (window.LV && window.LV.whatsappBase) ? window.LV.whatsappBase : "https://wa.me/491742555178?text=";
+
+      // logo
+      const logo = document.getElementById("lvLogo");
+      if (logo) logo.src = logoPath;
+
+      // email DE
+      const emailEl = document.getElementById("lvEmail");
+      if (emailEl && email) {
+        emailEl.textContent = email;
+        emailEl.href = "mailto:" + email;
+      }
+      // email EN
+      const emailEnEl = document.getElementById("lvEmailEn");
+      if (emailEnEl && email) {
+        emailEnEl.textContent = email;
+        emailEnEl.href = "mailto:" + email;
+      }
+
+      // year
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // toast
+      const toast = document.getElementById("lvToast");
+      function showToast(){
+        if(!toast) return;
+        toast.style.display = "block";
+        clearTimeout(window.__lv_toast_t);
+        window.__lv_toast_t = setTimeout(()=>{ toast.style.display = "none"; }, 1600);
+      }
+
+      function bindWa(id, text){
+        const a = document.getElementById(id);
+        if(!a) return;
+        const url = base + text;
+
+        a.href = url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+
+        a.addEventListener("click", (e)=>{
+          e.preventDefault();
+          showToast();
+          setTimeout(()=> window.open(url, "_blank", "noopener,noreferrer"), 250);
+        }, { passive:false });
+      }
+
+      bindWa("waHero", window.LV.texts.hero);
+      bindWa("waP1", window.LV.texts.p1);
+      bindWa("waP2", window.LV.texts.p2);
+      bindWa("waP3", window.LV.texts.p3);
+
+      // i18n only AFTER shop mode, so shop text stays
+      // (but legal blocks + button still work)
+      toggleLegalBlocks();
+      if (langBtn) langBtn.textContent = (lang === "de") ? "EN" : "DE";
+      document.documentElement.lang = lang;
+    })();
+
+    // Default language render (mostly for non-shop)
     applyI18n();
   </script>
 </body>
