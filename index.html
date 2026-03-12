@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LunaVision — Online-Terminbuchung & Booking Automation</title>
-  <meta name="description" content="LunaVision erstellt moderne Buchungsseiten für Barbershops und lokale Dienstleister. Kunden buchen Termine online, während Verfügbarkeit und Zeitfenster automatisch mit dem Kalender abgestimmt werden." />
+  <title>LunaVision – Online Terminbuchung für Friseure & Barbershops</title>
+  <meta name="description" content="Online Terminbuchung für Friseure, Barbershops und lokale Dienstleister. Automatische Terminvergabe über Google Kalender – ohne Abo, DSGVO-minimiert und einfach einzurichten." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
   <style>
@@ -79,6 +79,13 @@
     .h2{font-size:30px; margin:0 0 12px}
     .h3{font-size:18px; margin:0 0 8px}
     .lead{font-size:18px; color:var(--muted); line-height:1.55; max-width:62ch}
+    .seoText{
+      margin-top:18px;
+      max-width:720px;
+      color:rgba(245,247,250,.72);
+      line-height:1.6;
+      font-size:15px;
+    }
 
     .topbar{
       position:sticky; top:0; z-index:50;
@@ -246,7 +253,7 @@
           <img class="logo" src="assets/logo.png" alt="LunaVision Logo" />
           <div class="brandText">
             <div class="brandName">LunaVision</div>
-            <div class="brandTag" data-i18n="tagline">Online-Terminbuchung & Booking Automation</div>
+            <div class="brandTag" data-i18n="tagline">Online Terminbuchung & Booking Automation</div>
           </div>
         </a>
 
@@ -264,14 +271,18 @@
   <main id="top">
     <section class="hero">
       <div class="wrap">
-        <span class="pill" data-i18n="pill">🌙 Für Barbershops & lokale Dienstleister • Ohne Abo-Zwang • Modern & direkt</span>
+        <span class="pill" data-i18n="pill">🌙 Für Friseure, Barbershops & lokale Dienstleister • Ohne Abo • Direkt startklar</span>
 
         <div class="heroGrid">
           <div>
-            <h1 class="h1" data-i18n="hero_title">Online-Terminbuchung<br/>für lokale Dienstleister.</h1>
+            <h1 class="h1" data-i18n="hero_title">Online Terminbuchung<br/>für Friseure & Barbershops.</h1>
 
             <p class="lead" data-i18n="hero_lead">
-              LunaVision erstellt moderne Buchungsseiten für Barbershops und lokale Dienstleister. Kunden buchen Termine online, während Verfügbarkeit und Zeitfenster automatisch mit dem Kalender abgestimmt werden.
+              Automatische Terminvergabe über Google Kalender – ohne Abo oder komplizierte Software. LunaVision erstellt moderne Buchungsseiten für Friseure, Barbershops und lokale Dienstleister.
+            </p>
+
+            <p class="seoText" data-i18n="hero_seo">
+              Kunden können freie Zeiten online sehen, Services auswählen und Termine direkt buchen. So werden Terminbuchungen einfacher, professioneller und übersichtlicher – für dich und deine Kunden.
             </p>
 
             <div class="ctaRow">
@@ -323,7 +334,7 @@
           <div class="card">
             <div class="h3" data-i18n="f1t">Mehr Buchungen</div>
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="f1a">Online-Terminbuchung rund um die Uhr</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1a">Online Terminbuchung rund um die Uhr</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="f1b">Schneller Weg von Google oder Website zur Buchung</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="f1c">Weniger Rückfragen, mehr echte Termine</span></li>
             </ul>
@@ -445,7 +456,7 @@
           <details>
             <summary data-i18n="q3">Für wen ist das gedacht?</summary>
             <p data-i18n="a3">
-              Besonders geeignet für Barbershops und lokale Dienstleister, die Terminbuchungen online strukturierter, moderner und einfacher machen möchten.
+              Besonders geeignet für Friseure, Barbershops und lokale Dienstleister, die Terminbuchungen online strukturierter, moderner und einfacher machen möchten.
             </p>
           </details>
         </div>
@@ -659,7 +670,7 @@
   <footer>
     <div class="wrap">
       <div class="tiny">
-        © <span id="year"></span> LunaVision — <span class="muted" data-i18n="tagline">Online-Terminbuchung & Booking Automation</span>
+        © <span id="year"></span> LunaVision — <span class="muted" data-i18n="tagline">Online Terminbuchung & Booking Automation</span>
       </div>
     </div>
   </footer>
@@ -667,18 +678,19 @@
   <script>
     const I18N = {
       de: {
-        page_title: "LunaVision — Online-Terminbuchung & Booking Automation",
-        page_desc: "LunaVision erstellt moderne Buchungsseiten für Barbershops und lokale Dienstleister. Kunden buchen Termine online, während Verfügbarkeit und Zeitfenster automatisch mit dem Kalender abgestimmt werden.",
-        tagline: "Online-Terminbuchung & Booking Automation",
+        page_title: "LunaVision – Online Terminbuchung für Friseure & Barbershops",
+        page_desc: "Online Terminbuchung für Friseure, Barbershops und lokale Dienstleister. Automatische Terminvergabe über Google Kalender – ohne Abo, DSGVO-minimiert und einfach einzurichten.",
+        tagline: "Online Terminbuchung & Booking Automation",
         nav_features: "Features",
         nav_pricing: "Pakete",
         nav_faq: "FAQ",
         nav_legal: "AGB & Impressum",
         cta_demo: "Projekt anfragen",
         cta_pricing: "Pakete ansehen",
-        pill: "🌙 Für Barbershops & lokale Dienstleister • Ohne Abo-Zwang • Modern & direkt",
-        hero_title: "Online-Terminbuchung<br/>für lokale Dienstleister.",
-        hero_lead: "LunaVision erstellt moderne Buchungsseiten für Barbershops und lokale Dienstleister. Kunden buchen Termine online, während Verfügbarkeit und Zeitfenster automatisch mit dem Kalender abgestimmt werden.",
+        pill: "🌙 Für Friseure, Barbershops & lokale Dienstleister • Ohne Abo • Direkt startklar",
+        hero_title: "Online Terminbuchung<br/>für Friseure & Barbershops.",
+        hero_lead: "Automatische Terminvergabe über Google Kalender – ohne Abo oder komplizierte Software. LunaVision erstellt moderne Buchungsseiten für Friseure, Barbershops und lokale Dienstleister.",
+        hero_seo: "Kunden können freie Zeiten online sehen, Services auswählen und Termine direkt buchen. So werden Terminbuchungen einfacher, professioneller und übersichtlicher – für dich und deine Kunden.",
         s1k: "Mehr Online-Buchungen",
         s1v: "Termine auch außerhalb der Öffnungszeiten annehmbar",
         s2k: "Weniger Terminchaos",
@@ -690,7 +702,7 @@
         features_title: "Warum LunaVision?",
         features_lead: "Klare Buchungsprozesse, moderne Darstellung und weniger Aufwand im Alltag.",
         f1t:"Mehr Buchungen",
-        f1a:"Online-Terminbuchung rund um die Uhr",
+        f1a:"Online Terminbuchung rund um die Uhr",
         f1b:"Schneller Weg von Google oder Website zur Buchung",
         f1c:"Weniger Rückfragen, mehr echte Termine",
         f2t:"Weniger Verwaltungsaufwand",
@@ -735,13 +747,13 @@
         q2:"Brauche ich spezielle Software?",
         a2:"Nicht zwingend. Je nach Lösung kann mit vorhandenen Tools wie Website, Google Kalender und einer klaren Booking-Logik gearbeitet werden.",
         q3:"Für wen ist das gedacht?",
-        a3:"Besonders geeignet für Barbershops und lokale Dienstleister, die Terminbuchungen online strukturierter, moderner und einfacher machen möchten.",
+        a3:"Besonders geeignet für Friseure, Barbershops und lokale Dienstleister, die Terminbuchungen online strukturierter, moderner und einfacher machen möchten.",
         legal_title:"AGB & Impressum",
         imp_title:"Impressum"
       },
       en: {
-        page_title: "LunaVision — Online Booking & Booking Automation",
-        page_desc: "LunaVision builds modern booking pages for barbershops and local service businesses. Customers book appointments online while availability and time slots stay aligned with your calendar.",
+        page_title: "LunaVision – Online Booking for Hair Salons & Barbershops",
+        page_desc: "Online booking for hair salons, barbershops and local service businesses. Automatic appointment scheduling via Google Calendar – no subscription, privacy-minded and easy to set up.",
         tagline: "Online Booking & Booking Automation",
         nav_features: "Features",
         nav_pricing: "Packages",
@@ -749,9 +761,10 @@
         nav_legal: "Terms & Imprint",
         cta_demo: "Request project",
         cta_pricing: "View packages",
-        pill: "🌙 For barbershops & local service businesses • No subscription pressure • Modern & direct",
-        hero_title: "Online booking<br/>for local service businesses.",
-        hero_lead: "LunaVision builds modern booking pages for barbershops and local service businesses. Customers book appointments online while availability and time slots stay aligned with your calendar.",
+        pill: "🌙 For hair salons, barbershops & local service businesses • No subscription • Ready to launch",
+        hero_title: "Online booking<br/>for hair salons & barbershops.",
+        hero_lead: "Automatic appointment scheduling via Google Calendar – without subscriptions or complicated software. LunaVision builds modern booking pages for hair salons, barbershops and local service businesses.",
+        hero_seo: "Customers can see available times online, choose services and book appointments directly. This makes appointment booking simpler, more professional and easier to manage for you and your customers.",
         s1k: "More online bookings",
         s1v: "Appointments can be captured even outside opening hours",
         s2k: "Less scheduling chaos",
@@ -787,7 +800,7 @@
         p1f:"Service logic, notes and flows included",
         p1g:"Integration for website and Google Business Profile",
         p1h:"Technical setup of the core structure",
-        p1note:"One-time implementation. No subscription pressure. Clear structure.",
+        p1note:"One-time implementation. No subscription. Clear structure.",
         p2name:"Package 2 — Premium Landing Page",
         p2a:"Modern one-page website",
         p2b:"Mobile optimized",
@@ -797,7 +810,7 @@
         p2note:"Ideal as a professional base. Booking setup can be added later.",
         p3name:"Package 3 — Care & Optimization",
         p3a:"Updates to services and texts",
-        p3b:"Updates for staff, times and content",
+        p3b:"Updates for team, opening times and content",
         p3c:"Design optimization",
         p3d:"Performance improvements",
         p3e:"Technical support",
@@ -808,7 +821,7 @@
         q2:"Do I need special software?",
         a2:"Not necessarily. Depending on the solution, existing tools such as your website, Google Calendar and clear booking logic can be used.",
         q3:"Who is this for?",
-        a3:"Especially suitable for barbershops and local service businesses that want to make appointment booking more structured, modern and simple.",
+        a3:"Especially suitable for hair salons, barbershops and local service businesses that want to make appointment booking more structured, modern and simple.",
         legal_title:"Terms & Imprint",
         imp_title:"Imprint"
       }
