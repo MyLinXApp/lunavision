@@ -249,22 +249,36 @@
 }
 
 @media (max-width:1100px){
+  .hero{
+    padding:12px 0 20px;
+  }
+
   .heroGrid{
     min-height:auto;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .hero-visual{
+    position:relative;
+    order:-1;
+    right:auto;
+    top:auto;
+    transform:none;
+    width:100%;
+    margin-top:8px;
+    pointer-events:auto;
   }
 
   .hero-copy{
     max-width:100%;
   }
 
-  .hero-visual{
-    position:relative;
-    right:auto;
-    top:auto;
-    transform:none;
+  .hero-mockup{
     width:100%;
-    margin-top:20px;
-    pointer-events:auto;
+    max-width:100%;
+    border-radius:22px;
   }
 }
 
