@@ -6,6 +6,7 @@
   <title>LunaVision – Online Terminbuchung für lokale Dienstleister</title>
   <meta name="description" content="LunaVision erstellt professionelle Buchungs-Landingpages mit Google-Terminbuchung für Barbershops, Friseure, Studios und lokale Dienstleister – mobil optimiert, klar strukturiert und datensparsam umgesetzt." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
+  
   <style>
     :root{
       --bg:#0B0F1C;
@@ -45,16 +46,22 @@
     }
     .muted{color:var(--muted)}
     .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border:1px solid var(--border);
-      background:rgba(255,255,255,.03);
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:13px;
-      color:var(--muted);
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:fit-content;
+  margin:0 auto 12px auto;
+
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  padding:8px 14px;
+  border-radius:999px;
+
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+}
     .btn{
       display:inline-flex;
       align-items:center;
@@ -177,22 +184,89 @@
       nav a.link{display:none}
     }
 
-    .hero{padding:74px 0 30px}
-    .heroGrid{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:24px;
-      align-items:start;
-    }
-    @media (max-width:900px){
-      .heroGrid{grid-template-columns:1fr}
-    }
-    .ctaRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
+.hero{
+  padding:12px 0 20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.heroGrid{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0, 1fr);
+  gap:24px;
+  align-items:center;
+  min-height:640px;
+}
+
+.hero-copy{
+  position:relative;
+  z-index:3;
+  max-width:620px;
+  min-width:0;
+}
+
+.ctaRow{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.hero-visual{
+  position:absolute;
+  right:-70px;
+  top:56%;
+  transform:translateY(-50%);
+  z-index:1;
+  width:min(1200px, 85vw);
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(11,15,28,0.95) 0%,
+    rgba(11,15,28,0.85) 35%,
+    rgba(11,15,28,0.4) 60%,
+    rgba(11,15,28,0) 80%
+  );
+  z-index:2;
+  pointer-events:none;
+}
+
+.hero-mockup{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:28px;
+  filter:drop-shadow(0 40px 120px rgba(0,0,0,.55));
+  opacity:1;
+}
+
+@media (max-width:1100px){
+  .heroGrid{
+    min-height:auto;
+  }
+
+  .hero-copy{
+    max-width:100%;
+  }
+
+  .hero-visual{
+    position:relative;
+    right:auto;
+    top:auto;
+    transform:none;
+    width:100%;
+    margin-top:20px;
+    pointer-events:auto;
+  }
+}
 
     .stats{display:grid; gap:14px}
     .stat{
@@ -393,46 +467,31 @@
     <section class="hero">
       <div class="wrap">
         <span class="pill" data-i18n="pill">🌙 Für Barbershops, Friseure, Studios & lokale Dienstleister • Komplett umgesetzt • Kein unnötiger Softwareballast</span>
+
         <div class="heroGrid">
-          <div>
+          <div class="hero-copy">
             <h1 class="h1" data-i18n="hero_title">Komplette Online-Terminbuchung<br>für lokale Dienstleister.</h1>
-            <p class="lead" data-i18n="hero_lead">LunaVision erstellt eine professionelle Buchungs-Landingpage mit Google-Terminbuchung, klarer Buchungsführung und sauberer mobiler Darstellung – damit Kundinnen und Kunden schneller buchen können und dein Alltag übersichtlicher wird.</p>
-            <p class="seoText" data-i18n="hero_seo">Statt einzelner technischer Bausteine bekommst du eine fertige Lösung: Landingpage, Terminseite, Verknüpfung mit Google-Unternehmensprofil, Services, Öffnungszeiten, Kontakt, Standort und Branding. Das Ergebnis ist ein professioneller Auftritt mit einfacher Terminbuchung auf Smartphone, Website und Google.</p>
+
+            <p class="lead" data-i18n="hero_lead">
+              LunaVision erstellt eine professionelle Buchungs-Landingpage mit Google-Terminbuchung, klarer Buchungsführung und sauberer mobiler Darstellung – damit Kundinnen und Kunden schneller buchen können und dein Alltag übersichtlicher wird.
+            </p>
+
+            <p class="seoText" data-i18n="hero_seo">
+              Statt einzelner technischer Bausteine bekommst du eine fertige Lösung: Landingpage, Terminseite, Verknüpfung mit Google-Unternehmensprofil, Services, Öffnungszeiten, Kontakt, Standort und Branding. Das Ergebnis ist ein professioneller Auftritt mit einfacher Terminbuchung auf Smartphone, Website und Google.
+            </p>
+
             <div class="ctaRow">
               <a class="btn primary" href="mailto:info@lunavision.org?subject=Anfrage%20an%20LunaVision" data-i18n="cta_demo">Projekt anfragen</a>
               <a class="btn" href="#offers" data-i18n="cta_pricing">Angebote ansehen</a>
             </div>
           </div>
 
-          <div class="stats">
-            <div class="stat">
-              <div class="icon">24/7</div>
-              <div>
-                <div class="k" data-i18n="s1k">Besser erreichbar</div>
-                <div class="v" data-i18n="s1v">Termine können auch außerhalb deiner Öffnungszeiten angefragt und gebucht werden</div>
-              </div>
-            </div>
-            <div class="stat">
-              <div class="icon">✔</div>
-              <div>
-                <div class="k" data-i18n="s2k">Weniger Terminchaos</div>
-                <div class="v" data-i18n="s2v">Klare Buchungswege statt Nachrichten, Rückfragen und unübersichtlicher Abstimmung</div>
-              </div>
-            </div>
-            <div class="stat">
-              <div class="icon">📱</div>
-              <div>
-                <div class="k" data-i18n="s3k">Mobil stark</div>
-                <div class="v" data-i18n="s3v">Saubere Darstellung für Smartphone, Website und Google-Unternehmensprofil</div>
-              </div>
-            </div>
-            <div class="stat">
-              <div class="icon">🛡</div>
-              <div>
-                <div class="k" data-i18n="s4k">Professioneller Auftritt</div>
-                <div class="v" data-i18n="s4v">Individuelles Branding, klare Struktur und datensparsame technische Umsetzung</div>
-              </div>
-            </div>
+          <div class="hero-visual">
+            <img
+              src="assets/hero-mockup-final.png"
+              alt="LunaVision Terminbuchung Vorschau"
+              class="hero-mockup"
+            />
           </div>
         </div>
       </div>
