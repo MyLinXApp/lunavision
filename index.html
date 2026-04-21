@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LunaVision – Online Terminbuchung für lokale Dienstleister</title>
-  <meta name="description" content="LunaVision erstellt professionelle Buchungs-Landingpages mit Google-Terminbuchung für Barbershops, Friseure, Studios und lokale Dienstleister – mobil optimiert, klar strukturiert und datensparsam umgesetzt." />
+  <title>LunaVision – Moderne Landingpages für lokale Businesses</title>
+  <meta name="description" content="LunaVision erstellt moderne Landingpages für lokale Businesses – mobil optimiert, professionell gestaltet und schnell live. Für Handwerker, Friseure, Studios und lokale Dienstleister." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   
   <style>
@@ -46,22 +46,19 @@
     }
     .muted{color:var(--muted)}
     .pill{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  width:fit-content;
-  margin:0 auto 12px auto;
-
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.03);
-  padding:8px 14px;
-  border-radius:999px;
-
-  font-size:13px;
-  color:var(--muted);
-  text-align:center;
-}
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:fit-content;
+      margin:0 auto 12px auto;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      padding:8px 14px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      text-align:center;
+    }
     .btn{
       display:inline-flex;
       align-items:center;
@@ -184,129 +181,103 @@
       nav a.link{display:none}
     }
 
-.hero{
-  padding:12px 0 20px;
-  position:relative;
-  overflow:hidden;
-}
+    .hero{
+      padding:12px 0 20px;
+      position:relative;
+      overflow:hidden;
+    }
 
-.heroGrid{
-  position:relative;
-  display:grid;
-  grid-template-columns:minmax(0, 1fr);
-  gap:24px;
-  align-items:center;
-  min-height:640px;
-}
-
-.hero-copy{
-  position:relative;
-  z-index:3;
-  max-width:620px;
-  min-width:0;
-}
-
-.ctaRow{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:18px;
-}
-
-.hero-visual{
-  position:absolute;
-  right:-70px;
-  top:56%;
-  transform:translateY(-50%);
-  z-index:1;
-  width:min(1200px, 85vw);
-  pointer-events:none;
-  overflow:hidden;
-}
-
-.hero-visual::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to right,
-    rgba(11,15,28,0.95) 0%,
-    rgba(11,15,28,0.85) 35%,
-    rgba(11,15,28,0.4) 60%,
-    rgba(11,15,28,0) 80%
-  );
-  z-index:2;
-  pointer-events:none;
-}
-
-.hero-mockup{
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:28px;
-  filter:drop-shadow(0 40px 120px rgba(0,0,0,.55));
-  opacity:1;
-}
-
-@media (max-width:1100px){
-  .hero{
-    padding:12px 0 20px;
-  }
-
-  .heroGrid{
-    min-height:auto;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-  }
-
-  .hero-visual{
-    position:relative;
-    order:-1;
-    right:auto;
-    top:auto;
-    transform:none;
-    width:100%;
-    margin-top:8px;
-    pointer-events:auto;
-  }
-
-  .hero-copy{
-    max-width:100%;
-  }
-
-  .hero-mockup{
-    width:100%;
-    max-width:100%;
-    border-radius:22px;
-  }
-}
-
-    .stats{display:grid; gap:14px}
-    .stat{
+    .heroGrid{
+      position:relative;
       display:grid;
-      grid-template-columns:auto 1fr;
-      gap:12px;
+      grid-template-columns:minmax(0, 1fr);
+      gap:24px;
       align-items:center;
-      padding:14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.03);
+      min-height:640px;
     }
-    .icon{
-      width:38px;
-      height:38px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(199,167,90,.12);
-      display:grid;
-      place-items:center;
-      color:var(--accent2);
-      font-weight:1000;
-      font-size:13px;
+
+    .hero-copy{
+      position:relative;
+      z-index:3;
+      max-width:620px;
+      min-width:0;
     }
-    .k{font-size:13px; color:var(--muted)}
-    .v{font-size:14px; font-weight:900}
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .hero-visual{
+      position:absolute;
+      right:-70px;
+      top:56%;
+      transform:translateY(-50%);
+      z-index:1;
+      width:min(1200px, 85vw);
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .hero-visual::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to right,
+        rgba(11,15,28,0.95) 0%,
+        rgba(11,15,28,0.85) 35%,
+        rgba(11,15,28,0.4) 60%,
+        rgba(11,15,28,0) 80%
+      );
+      z-index:2;
+      pointer-events:none;
+    }
+
+    .hero-mockup{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:28px;
+      filter:drop-shadow(0 40px 120px rgba(0,0,0,.55));
+      opacity:1;
+    }
+
+    @media (max-width:1100px){
+      .hero{
+        padding:12px 0 20px;
+      }
+
+      .heroGrid{
+        min-height:auto;
+        display:flex;
+        flex-direction:column;
+        gap:18px;
+      }
+
+      .hero-visual{
+        position:relative;
+        order:-1;
+        right:auto;
+        top:auto;
+        transform:none;
+        width:100%;
+        margin-top:8px;
+        pointer-events:auto;
+      }
+
+      .hero-copy{
+        max-width:100%;
+      }
+
+      .hero-mockup{
+        width:100%;
+        max-width:100%;
+        border-radius:22px;
+      }
+    }
 
     .grid{display:grid; gap:18px}
     .features{grid-template-columns:repeat(3,1fr)}
@@ -388,13 +359,6 @@
       flex-wrap:wrap;
       margin:10px 0 4px;
     }
-    .oldPrice{
-      font-size:18px;
-      color:rgba(245,247,250,.52);
-      text-decoration:line-through;
-      font-weight:800;
-      letter-spacing:.1px;
-    }
     .launchTag{
       display:inline-flex;
       align-items:center;
@@ -453,7 +417,6 @@
     }
     .langBlock{display:none}
     .langBlock.active{display:block}
-  
   </style>
 </head>
 <body>
@@ -464,12 +427,12 @@
           <img class="logo" src="assets/logo.png" alt="LunaVision Logo" />
           <div class="brandText">
             <div class="brandName">LunaVision</div>
-            <div class="brandTag" data-i18n="tagline">Online Terminbuchung & Booking Automation</div>
+            <div class="brandTag" data-i18n="tagline">Moderne Landingpages für lokale Businesses</div>
           </div>
         </a>
         <nav aria-label="Navigation">
           <a class="link" href="#features" data-i18n="nav_features">Vorteile</a>
-          <a class="link" href="#offers" data-i18n="nav_pricing">Angebote</a>
+          <a class="link" href="#offers" data-i18n="nav_pricing">Angebot</a>
           <a class="link" href="#faq" data-i18n="nav_faq">FAQ</a>
           <a class="link" href="#legal" data-i18n="nav_legal">AGB & Impressum</a>
           <button class="lang" id="langBtn" aria-label="Sprache wechseln">EN</button>
@@ -481,30 +444,30 @@
   <main id="top">
     <section class="hero">
       <div class="wrap">
-        <span class="pill" data-i18n="pill">🌙 Für Barbershops, Friseure, Studios & lokale Dienstleister • Komplett umgesetzt • Kein unnötiger Softwareballast</span>
+        <span class="pill" data-i18n="pill">🌙 Für Handwerker, Friseure, Studios und lokale Dienstleister • Modern • Mobil optimiert • Schnell live</span>
 
         <div class="heroGrid">
           <div class="hero-copy">
-            <h1 class="h1" data-i18n="hero_title">Komplette Online-Terminbuchung<br>für lokale Dienstleister.</h1>
+            <h1 class="h1" data-i18n="hero_title">Moderne Landingpages<br>für lokale Businesses.</h1>
 
             <p class="lead" data-i18n="hero_lead">
-              LunaVision erstellt eine professionelle Buchungs-Landingpage mit Google-Terminbuchung, klarer Buchungsführung und sauberer mobiler Darstellung – damit Kundinnen und Kunden schneller buchen können und dein Alltag übersichtlicher wird.
+              LunaVision erstellt moderne, mobil optimierte Landingpages für lokale Unternehmen, die online professioneller auftreten und einfacher erreichbar sein wollen.
             </p>
 
             <p class="seoText" data-i18n="hero_seo">
-              Statt einzelner technischer Bausteine bekommst du eine fertige Lösung: Landingpage, Terminseite, Verknüpfung mit Google-Unternehmensprofil, Services, Öffnungszeiten, Kontakt, Standort und Branding. Das Ergebnis ist ein professioneller Auftritt mit einfacher Terminbuchung auf Smartphone, Website und Google.
+              Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftritt: Friseure, Barbershops, Handwerker, Studios, Reinigungsfirmen und andere lokale Dienstleister. Du bekommst eine saubere Onepage-Lösung mit Kontaktmöglichkeit, professioneller Darstellung und SEO-Basics – schnell und unkompliziert umgesetzt.
             </p>
 
             <div class="ctaRow">
-              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Online-Terminbuchung%20f%C3%BCr%20mein%20Business." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
-              <a class="btn" href="#offers" data-i18n="cta_pricing">Angebote ansehen</a>
+              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20f%C3%BCr%20mein%20Business." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
+              <a class="btn" href="#offers" data-i18n="cta_pricing">Angebot ansehen</a>
             </div>
           </div>
 
           <div class="hero-visual">
             <img
               src="assets/hero-mockup-final.png"
-              alt="LunaVision Terminbuchung Vorschau"
+              alt="LunaVision Landingpage Vorschau"
               class="hero-mockup"
             />
           </div>
@@ -515,33 +478,33 @@
     <section class="section" id="features">
       <div class="wrap">
         <h2 class="h2" data-i18n="features_title">Was LunaVision für dein Business besser macht</h2>
-        <p class="lead" data-i18n="features_lead">Weniger Improvisation, mehr Struktur – für einen professionellen Auftritt und eine einfachere Terminbuchung im Alltag.</p>
+        <p class="lead" data-i18n="features_lead">Ein moderner Online-Auftritt schafft mehr Vertrauen, bessere Erreichbarkeit und einen professionelleren ersten Eindruck.</p>
 
         <div class="grid features" style="margin-top:18px">
           <div class="card">
-            <div class="h3" data-i18n="f1t">Mehr Klarheit für Kundinnen und Kunden</div>
+            <div class="h3" data-i18n="f1t">Professioneller erster Eindruck</div>
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="f1a">Services, Zeiten und wichtige Hinweise werden verständlich und sauber dargestellt</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f1b">Der Weg von Google oder deiner Website bis zur Buchung wird deutlich einfacher</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f1c">Kundinnen und Kunden sehen schneller, was sie buchen können und wie der Ablauf ist</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1a">Moderne Darstellung statt veralteter Website oder unklarem Auftritt</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1b">Kundinnen und Kunden sehen sofort, wer ihr seid und was ihr anbietet</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f1c">Mehr Vertrauen durch klares Design, mobile Optimierung und saubere Struktur</span></li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="h3" data-i18n="f2t">Weniger Aufwand im Tagesgeschäft</div>
+            <div class="h3" data-i18n="f2t">Einfacher erreichbar</div>
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="f2a">Öffnungszeiten, Services und Buchungslogik werden passend eingerichtet</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f2b">Weniger Rückfragen zu Preisen, Dauer, Verfügbarkeit oder Ansprechpartnern</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f2c">Terminbuchung läuft strukturierter und nachvollziehbarer statt zwischen Nachrichten und Telefon</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f2a">Kontaktbutton für WhatsApp, Telefon oder Anfrage direkt eingebunden</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f2b">Wichtige Infos wie Leistungen, Öffnungszeiten, Adresse und Kontakt auf einen Blick</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f2c">Sauber nutzbar auf Smartphone, wo die meisten Kunden zuerst schauen</span></li>
             </ul>
           </div>
 
           <div class="card">
-            <div class="h3" data-i18n="f3t">Eine fertige Lösung statt Einzelbausteine</div>
+            <div class="h3" data-i18n="f3t">Schnell und unkompliziert live</div>
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="f3a">Landingpage, Google-Terminseite, Branding und Liveschaltung greifen sauber ineinander</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f3b">Ideal für lokale Dienstleister ohne starke Website oder ohne klaren Online-Buchungsprozess</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="f3c">Professionelle Darstellung für Barbershops, Friseure, Studios und ähnliche lokale Businesses</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f3a">Klare Onepage-Lösung statt unnötig komplizierter Website-Projekte</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f3b">SEO-Basics für bessere Sichtbarkeit und einen soliden Start</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="f3c">Optional später erweiterbar – z. B. mit Booking, Extras oder Pflege</span></li>
             </ul>
           </div>
         </div>
@@ -550,58 +513,53 @@
 
     <section class="section" id="offers">
       <div class="wrap">
-        <h2 class="h2" data-i18n="pricing_title">Angebote</h2>
-        <p class="lead" data-i18n="pricing_lead">Zwei klare Leistungen: eine fertige Komplettlösung für den Start und auf Wunsch laufende kleine Pflege im Alltag.</p>
+        <h2 class="h2" data-i18n="pricing_title">Angebot</h2>
+        <p class="lead" data-i18n="pricing_lead">Ein klares Einstiegspaket für lokale Businesses, die schnell modern und professionell online sichtbar sein wollen.</p>
 
         <div class="grid pricing" style="margin-top:18px">
           <div class="card price featured">
-            <div class="badge" data-i18n="p1name">Komplett-Setup</div>
+            <div class="badge" data-i18n="p1name">Basic Landingpage</div>
 
             <div class="priceRow">
-              <div class="oldPrice" data-i18n="p1old">1190 € regulär</div>
-              <div class="amount">990 €</div>
+              <div class="amount">349 €</div>
             </div>
 
             <p class="sub" data-i18n="p1sub">einmalig</p>
-            <div class="launchTag" data-i18n="p1launch">Einführungsangebot zum Launch</div>
+            <div class="launchTag" data-i18n="p1launch">Klarer Einstieg ohne Abo</div>
 
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="p1a">Professionelle Buchungs-Landingpage für dein Business</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1b">Einrichtung der Google-Terminseite</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1c">Verknüpfung mit deinem Google-Unternehmensprofil</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1d">Mobile Optimierung und datensparsame, EU-konforme Umsetzung</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1e">Darstellung von Services, Öffnungszeiten, Kontakt, Standort und wichtigen Regeln</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1f">Individuelles Branding mit Logo, Farben und Shop-Infos</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1g">Klare Buchungsführung für Kundinnen und Kunden</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p1h">Technische Einrichtung und Liveschaltung der fertigen Lösung</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1a">1 moderne Landingpage für dein Business</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1b">Mobile Optimierung für Smartphone und Tablet</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1c">Kontaktbutton für WhatsApp, Telefon oder Anfrage</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1d">SEO-Basics für einen sauberen Start</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1e">Liveschaltung auf deine Domain</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p1f">1 Korrekturrunde inklusive</span></li>
             </ul>
 
-            <p class="smallNote" data-i18n="p1note">Für lokale Dienstleister, die keine halbe Zwischenlösung wollen, sondern eine saubere, direkt einsetzbare Online-Terminbuchung.</p>
+            <p class="smallNote" data-i18n="p1note">Ideal für lokale Betriebe mit veralteter Website oder ohne professionellen Online-Auftritt. Schnell, klar und bezahlbar umgesetzt.</p>
 
             <div style="margin-top:12px">
-              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Komplett-Setup%20von%20LunaVision." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
+              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Basic%20Landingpage%20Paket%20von%20LunaVision." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
             </div>
           </div>
 
           <div class="card price">
-            <div class="badge" data-i18n="p2name">Pflege & Optimierung</div>
-            <div class="amount">69 €</div>
-            <p class="sub" data-i18n="permonth">pro Monat (optional)</p>
+            <div class="badge" data-i18n="p2name">Optional: Extras & Booking</div>
+            <div class="amount" data-i18n="p2price">auf Anfrage</div>
+            <p class="sub" data-i18n="p2sub">nur wenn wirklich benötigt</p>
 
             <ul class="clean">
-              <li class="item"><span class="check">✓</span><span data-i18n="p2a">Bis zu 30 Minuten kleine Änderungen pro Monat</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2b">Textänderungen an bestehenden Inhalten</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2c">Öffnungszeiten anpassen</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2d">Service-Namen oder Service-Beschreibungen anpassen</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2e">Kontaktinfos ändern</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2f">Kleine visuelle Anpassungen innerhalb des bestehenden Layouts</span></li>
-              <li class="item"><span class="check">✓</span><span data-i18n="p2g">Pflege der bestehenden Buchungsseite</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2a">Online-Terminbuchung für Friseure, Barbershops und Studios</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2b">Zusätzliche Abschnitte oder Unterseiten</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2c">Erweiterte Texte oder Anpassungen</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2d">Spätere Pflege und kleine Änderungen</span></li>
+              <li class="item"><span class="check">✓</span><span data-i18n="p2e">Individuelle Lösungen für besondere Anforderungen</span></li>
             </ul>
 
-            <p class="smallNote" data-i18n="p2note">Optionaler Monatsservice für kleine laufende Änderungen innerhalb der bestehenden Struktur. Keine neue Unterseite, keine großen Umbauten, keine neuen Funktionen und keine umfangreiche Neuentwicklung.</p>
+            <p class="smallNote" data-i18n="p2note">Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden. Du startest aber erstmal mit einem klaren, einfachen Paket.</p>
 
             <div style="margin-top:12px">
-              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20den%20Service%20Pflege%20und%20Optimierung%20von%20LunaVision." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
+              <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20und%20m%C3%B6chte%20mehr%20zu%20m%C3%B6glichen%20Extras%20wissen." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
             </div>
           </div>
         </div>
@@ -614,33 +572,33 @@
 
         <div class="grid" style="margin-top:18px; gap:12px">
           <details>
-            <summary data-i18n="q1">Was ist im Komplett-Setup enthalten?</summary>
-            <p data-i18n="a1">Das Komplett-Setup umfasst die professionelle Buchungs-Landingpage, die Einrichtung der Google-Terminseite, die Verknüpfung mit dem Google-Unternehmensprofil, Branding mit Logo und Farben, die mobile Optimierung sowie die technische Einrichtung und Liveschaltung.</p>
+            <summary data-i18n="q1">Was ist im Basic Paket enthalten?</summary>
+            <p data-i18n="a1">Das Basic Paket umfasst eine moderne Landingpage, mobile Optimierung, einen Kontaktbutton, SEO-Basics, die Liveschaltung auf deine Domain sowie eine Korrekturrunde.</p>
           </details>
 
           <details>
-            <summary data-i18n="q2">Brauche ich dafür eine eigene Website?</summary>
-            <p data-i18n="a2">Nein. Die Lösung ist so gedacht, dass auch lokale Dienstleister ohne starke bestehende Website professionell online buchbar werden können. Wenn bereits eine Website vorhanden ist, kann die Buchungslösung sauber eingebunden werden.</p>
+            <summary data-i18n="q2">Für wen ist das Angebot gedacht?</summary>
+            <p data-i18n="a2">Das Angebot richtet sich an lokale Businesses wie Handwerker, Friseure, Barbershops, Studios, Reinigungsfirmen und andere Dienstleister, die einen professionelleren Online-Auftritt brauchen.</p>
           </details>
 
           <details>
-            <summary data-i18n="q3">Was ist im Monatsservice enthalten?</summary>
-            <p data-i18n="a3">Der optionale Service „Pflege & Optimierung“ umfasst bis zu 30 Minuten kleine Änderungen pro Monat innerhalb der bestehenden Struktur, zum Beispiel Texte, Öffnungszeiten, Service-Namen, Kontaktinfos oder kleinere visuelle Anpassungen.</p>
+            <summary data-i18n="q3">Brauche ich dafür schon eine Domain?</summary>
+            <p data-i18n="a3">Nein, aber wenn bereits eine Domain vorhanden ist, kann die Landingpage darauf live geschaltet werden. Falls noch keine Domain besteht, kann auch dazu eine einfache Lösung gefunden werden.</p>
           </details>
 
           <details>
-            <summary data-i18n="q4">Sind größere Änderungen später möglich?</summary>
-            <p data-i18n="a4">Ja. Größere Änderungen, neue Inhalte, neue Funktionen oder umfangreiche Umbauten sind grundsätzlich möglich, werden jedoch separat abgestimmt und angeboten, damit der monatliche Service klar und fair bleibt.</p>
+            <summary data-i18n="q4">Sind später Erweiterungen möglich?</summary>
+            <p data-i18n="a4">Ja. Zusätzliche Inhalte, weitere Abschnitte, Online-Terminbuchung oder spätere Pflege können jederzeit separat ergänzt werden.</p>
           </details>
 
           <details>
-            <summary data-i18n="q5">Wie läuft die Einrichtung ab und ist das EU-datenschutzkonform umsetzbar?</summary>
-            <p data-i18n="a5">Nach Abstimmung der Inhalte werden Services, Zeiten, Kontaktinfos, Branding und Buchungslogik eingerichtet. LunaVision achtet auf eine datensparsame, saubere und möglichst klare technische Umsetzung. Die konkrete rechtliche Ausgestaltung hängt immer vom eingesetzten Setup und den verwendeten Diensten ab.</p>
+            <summary data-i18n="q5">Wie läuft die Umsetzung ab?</summary>
+            <p data-i18n="a5">Nach Abstimmung der Inhalte werden Texte, Bilder, Kontaktinfos und Struktur umgesetzt. Danach gibt es eine Vorschau und nach Freigabe die Liveschaltung auf deine Domain.</p>
           </details>
 
           <details>
-            <summary data-i18n="q6">Ist die Lösung für Google und mobile Nutzung geeignet?</summary>
-            <p data-i18n="a6">Ja. Die Lösung ist auf mobile Nutzung ausgelegt und so aufgebaut, dass sie sauber mit Website und Google-Unternehmensprofil zusammenspielt. Dadurch können Kundinnen und Kunden auch direkt über Smartphone einfacher zur Buchung gelangen.</p>
+            <summary data-i18n="q6">Ist die Seite für Smartphone und Google geeignet?</summary>
+            <p data-i18n="a6">Ja. Die Landingpage wird mobil optimiert umgesetzt und mit SEO-Basics vorbereitet, damit sie professionell aussieht und sauber genutzt werden kann.</p>
           </details>
         </div>
       </div>
@@ -655,29 +613,29 @@
             <h3>Allgemeine Geschäftsbedingungen (AGB)</h3>
 
             <h4>1. Geltungsbereich</h4>
-            <p>Diese AGB gelten für Verträge zwischen <strong>LunaVision</strong> und dem Kunden über die angebotenen Leistungen (<strong>Komplett-Setup</strong> sowie optional <strong>Pflege &amp; Optimierung</strong>). Sofern nicht anders vereinbart, richten sich die Leistungen primär an Unternehmer (§ 14 BGB).</p>
+            <p>Diese AGB gelten für Verträge zwischen <strong>LunaVision</strong> und dem Kunden über die angebotenen Leistungen (<strong>Basic Landingpage</strong> sowie optionale Zusatzleistungen). Sofern nicht anders vereinbart, richten sich die Leistungen primär an Unternehmer (§ 14 BGB).</p>
 
             <h4>2. Leistungsbeschreibung</h4>
             <p>Der Anbieter erbringt je nach Vereinbarung insbesondere folgende Leistungen:
-              <br>• <strong>Komplett-Setup</strong>: Erstellung und Einrichtung einer professionellen Buchungs-Landingpage inklusive Service-Darstellung, Öffnungszeiten, Kontakt- und Standortinformationen, Branding, Einrichtung der Google-Terminseite, Verknüpfung mit dem Google-Unternehmensprofil sowie technische Liveschaltung.
-              <br>• <strong>Pflege &amp; Optimierung</strong>: kleine laufende Änderungen innerhalb der bestehenden Struktur, insbesondere Textänderungen, Anpassung von Öffnungszeiten, Service-Namen, Service-Beschreibungen, Kontaktinformationen sowie kleine visuelle Anpassungen innerhalb des bestehenden Layouts.
-              <br>Größere Änderungen, neue Unterseiten, neue Funktionen, umfangreiche Umbauten oder größere Inhaltserweiterungen sind nicht Bestandteil von Pflege &amp; Optimierung und werden separat vereinbart.
+              <br>• <strong>Basic Landingpage</strong>: Erstellung und Einrichtung einer modernen Onepage-Landingpage inklusive mobiler Optimierung, Kontaktbutton, SEO-Basics und Liveschaltung.
+              <br>• <strong>Optionale Zusatzleistungen</strong>: z. B. Online-Terminbuchung, zusätzliche Abschnitte, weitere Unterseiten, spätere Pflege oder individuelle Erweiterungen.
+              <br>Größere Änderungen, neue Funktionen oder umfangreiche Erweiterungen sind nicht Bestandteil des Basic Pakets und werden separat vereinbart.
             </p>
 
             <h4>3. Mitwirkungspflichten des Kunden</h4>
-            <p>Der Kunde stellt rechtzeitig alle erforderlichen Inhalte und Informationen bereit, insbesondere Logo, Texte, Öffnungszeiten, Services, Standortdaten, Kontaktangaben sowie erforderliche Zugänge. Verzögerungen durch fehlende Mitwirkung verlängern Lieferfristen entsprechend.</p>
+            <p>Der Kunde stellt rechtzeitig alle erforderlichen Inhalte und Informationen bereit, insbesondere Logo, Texte, Bilder, Standortdaten, Kontaktangaben sowie erforderliche Zugänge. Verzögerungen durch fehlende Mitwirkung verlängern Lieferfristen entsprechend.</p>
 
             <h4>4. Abnahme</h4>
             <p>Nach Bereitstellung der Leistung hat der Kunde diese innerhalb von 7 Tagen zu prüfen. Erfolgt keine Rüge wesentlicher Mängel, gilt die Leistung als abgenommen. Unwesentliche Abweichungen berechtigen nicht zur Verweigerung der Abnahme.</p>
 
             <h4>5. Preise & Zahlung</h4>
-            <p>Es gelten die im Angebot vereinbarten Preise. Einmalige Leistungen des Komplett-Setups sind nach Rechnungsstellung fällig. Pflege &amp; Optimierung wird monatlich im Voraus oder gemäß individueller Vereinbarung abgerechnet.</p>
+            <p>Es gelten die im Angebot vereinbarten Preise. Einmalige Leistungen sind nach Rechnungsstellung oder gemäß individueller Vereinbarung fällig. Zusatzleistungen werden separat berechnet.</p>
 
             <h4>6. Nutzungsrechte</h4>
             <p>Der Kunde erhält ein einfaches Nutzungsrecht an den gelieferten Ergebnissen für den eigenen Geschäftsbetrieb. Weiterverkauf oder Weitergabe an Dritte ist ohne schriftliche Zustimmung nicht gestattet, sofern nicht ausdrücklich anders vereinbart.</p>
 
             <h4>7. Drittanbieter & Plattformen</h4>
-            <p>Soweit Leistungen die Nutzung von Drittanbietern wie Hosting, Domainanbieter, Google-Dienste oder Kalenderdienste beinhalten, gelten zusätzlich deren Bedingungen. Der Anbieter schuldet nicht die dauerhafte Verfügbarkeit dieser Plattformen.</p>
+            <p>Soweit Leistungen die Nutzung von Drittanbietern wie Hosting, Domainanbieter, Google-Dienste oder andere Plattformen beinhalten, gelten zusätzlich deren Bedingungen. Der Anbieter schuldet nicht die dauerhafte Verfügbarkeit dieser Plattformen.</p>
 
             <h4>8. Gewährleistung</h4>
             <p>Der Anbieter behebt berechtigte Mängel innerhalb angemessener Frist. Kein Mangel liegt vor, wenn eine Einschränkung auf Umständen außerhalb des Einflussbereichs des Anbieters beruht, insbesondere bei Störungen externer Dienste oder Plattformen.</p>
@@ -688,10 +646,7 @@
             <h4>10. Datenschutz</h4>
             <p>Jede Partei beachtet die anwendbaren Datenschutzvorschriften. Die konkrete datenschutzrechtliche Ausgestaltung hängt vom eingesetzten Setup und den verwendeten Diensten ab. Bei Bedarf kann eine Vereinbarung zur Auftragsverarbeitung (AVV) vereinbart werden.</p>
 
-            <h4>11. Laufzeit & Kündigung (Pflege &amp; Optimierung)</h4>
-            <p>Pflege &amp; Optimierung ist optional und monatlich kündbar mit einer Frist von 14 Tagen zum Monatsende, sofern nicht anders vereinbart. Bereits erbrachte Leistungen bleiben zu vergüten.</p>
-
-            <h4>12. Schlussbestimmungen</h4>
+            <h4>11. Schlussbestimmungen</h4>
             <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist – soweit gesetzlich zulässig – Ludwigshafen am Rhein. Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam.</p>
           </div>
 
@@ -699,29 +654,29 @@
             <h3>General Terms and Conditions (GTC)</h3>
 
             <h4>1. Scope</h4>
-            <p>These GTC apply to contracts between <strong>LunaVision</strong> and the customer regarding the offered services (<strong>Complete Setup</strong> and the optional <strong>Care &amp; Optimization</strong> service). Unless otherwise agreed, the services are primarily intended for entrepreneurs.</p>
+            <p>These GTC apply to contracts between <strong>LunaVision</strong> and the customer regarding the offered services (<strong>Basic Landingpage</strong> and optional additional services). Unless otherwise agreed, the services are primarily intended for entrepreneurs.</p>
 
             <h4>2. Description of Services</h4>
             <p>Depending on the agreement, the Provider shall in particular deliver the following services:
-              <br>• <strong>Complete Setup</strong>: creation and setup of a professional booking landing page including service presentation, opening hours, contact and location information, branding, setup of the Google booking page, connection to the Google Business Profile and technical launch.
-              <br>• <strong>Care &amp; Optimization</strong>: small ongoing changes within the existing structure, in particular text edits, adjustments to opening hours, service names, service descriptions, contact information and small visual adjustments within the existing layout.
-              <br>Larger changes, new subpages, new functions, major rebuilds or extensive content expansions are not part of Care &amp; Optimization and shall be agreed separately.
+              <br>• <strong>Basic Landingpage</strong>: creation and setup of a modern one-page landing page including mobile optimization, contact button, SEO basics and live launch.
+              <br>• <strong>Optional additional services</strong>: for example online booking, additional sections, extra subpages, later maintenance or custom expansions.
+              <br>Larger changes, new functions or extensive expansions are not part of the Basic package and shall be agreed separately.
             </p>
 
             <h4>3. Customer’s Obligations to Cooperate</h4>
-            <p>The customer shall provide all required content and information in a timely manner, including logo, texts, opening hours, services, location details, contact information and any necessary access credentials. Delays caused by missing cooperation shall extend delivery deadlines accordingly.</p>
+            <p>The customer shall provide all required content and information in a timely manner, including logo, texts, images, location details, contact information and any necessary access credentials. Delays caused by missing cooperation shall extend delivery deadlines accordingly.</p>
 
             <h4>4. Acceptance</h4>
             <p>After delivery, the customer must review the service within 7 days. If no notice of material defects is given within this period, the service shall be deemed accepted. Minor deviations do not entitle the customer to refuse acceptance.</p>
 
             <h4>5. Prices & Payment</h4>
-            <p>The prices agreed in the offer shall apply. One-time services relating to the Complete Setup are due upon invoicing. Care &amp; Optimization is billed monthly in advance or as otherwise agreed.</p>
+            <p>The agreed prices apply. One-time services are due upon invoicing or as otherwise agreed. Additional services are charged separately.</p>
 
             <h4>6. Rights of Use</h4>
             <p>The customer receives a non-exclusive right to use the delivered results for their own business operations. Resale or transfer to third parties is not permitted without written consent unless explicitly agreed otherwise.</p>
 
             <h4>7. Third-Party Providers & Platforms</h4>
-            <p>If services involve the use of third-party providers such as hosting, domain providers, Google services or calendar services, their respective terms and conditions shall also apply. The Provider does not guarantee the permanent availability of these platforms.</p>
+            <p>If services involve the use of third-party providers such as hosting, domain providers, Google services or other platforms, their respective terms and conditions shall also apply. The Provider does not guarantee the permanent availability of these platforms.</p>
 
             <h4>8. Warranty</h4>
             <p>The Provider shall remedy justified defects within a reasonable period of time. No defect shall be deemed to exist if a limitation is caused by circumstances beyond the Provider’s control, especially disruptions involving external services or platforms.</p>
@@ -732,10 +687,7 @@
             <h4>10. Data Protection</h4>
             <p>Each party shall comply with applicable data protection laws. The exact data protection setup depends on the chosen implementation and the services used. If required, a data processing agreement may be concluded.</p>
 
-            <h4>11. Term & Termination (Care &amp; Optimization)</h4>
-            <p>Care &amp; Optimization is optional and can be terminated monthly with a notice period of 14 days to the end of the month, unless otherwise agreed. Services already rendered remain payable.</p>
-
-            <h4>12. Final Provisions</h4>
+            <h4>11. Final Provisions</h4>
             <p>German law shall apply, excluding the UN Convention on Contracts for the International Sale of Goods. The place of jurisdiction – where legally permissible – is Ludwigshafen am Rhein. Should individual provisions be invalid, the remainder of the contract shall remain unaffected.</p>
           </div>
 
@@ -781,7 +733,7 @@
   <footer>
     <div class="wrap">
       <div class="tiny">
-        © <span id="year"></span> LunaVision — <span class="muted" data-i18n="tagline">Online Terminbuchung & Booking Automation</span>
+        © <span id="year"></span> LunaVision — <span class="muted" data-i18n="tagline">Moderne Landingpages für lokale Businesses</span>
       </div>
     </div>
   </footer>
@@ -789,167 +741,143 @@
   <script>
     const I18N = {
       de: {
-        page_title: "LunaVision – Online Terminbuchung für lokale Dienstleister",
-        page_desc: "LunaVision erstellt professionelle Buchungs-Landingpages mit Google-Terminbuchung für Barbershops, Friseure, Studios und lokale Dienstleister – mobil optimiert, klar strukturiert und datensparsam umgesetzt.",
-        tagline: "Online Terminbuchung & Booking Automation",
+        page_title: "LunaVision – Moderne Landingpages für lokale Businesses",
+        page_desc: "LunaVision erstellt moderne Landingpages für lokale Businesses – mobil optimiert, professionell gestaltet und schnell live. Für Handwerker, Friseure, Studios und lokale Dienstleister.",
+        tagline: "Moderne Landingpages für lokale Businesses",
         nav_features: "Vorteile",
-        nav_pricing: "Angebote",
+        nav_pricing: "Angebot",
         nav_faq: "FAQ",
         nav_legal: "AGB & Impressum",
         cta_demo: "Projekt anfragen",
-        cta_pricing: "Angebote ansehen",
-        pill: "🌙 Für Barbershops, Friseure, Studios & lokale Dienstleister • Komplett umgesetzt • Kein unnötiger Softwareballast",
-        hero_title: "Komplette Online-Terminbuchung<br>für lokale Dienstleister.",
-        hero_lead: "LunaVision erstellt eine professionelle Buchungs-Landingpage mit Google-Terminbuchung, klarer Buchungsführung und sauberer mobiler Darstellung – damit Kundinnen und Kunden schneller buchen können und dein Alltag übersichtlicher wird.",
-        hero_seo: "Statt einzelner technischer Bausteine bekommst du eine fertige Lösung: Landingpage, Terminseite, Verknüpfung mit Google-Unternehmensprofil, Services, Öffnungszeiten, Kontakt, Standort und Branding. Das Ergebnis ist ein professioneller Auftritt mit einfacher Terminbuchung auf Smartphone, Website und Google.",
-        s1k: "Besser erreichbar",
-        s1v: "Termine können auch außerhalb deiner Öffnungszeiten angefragt und gebucht werden",
-        s2k: "Weniger Terminchaos",
-        s2v: "Klare Buchungswege statt Nachrichten, Rückfragen und unübersichtlicher Abstimmung",
-        s3k: "Mobil stark",
-        s3v: "Saubere Darstellung für Smartphone, Website und Google-Unternehmensprofil",
-        s4k: "Professioneller Auftritt",
-        s4v: "Individuelles Branding, klare Struktur und datensparsame technische Umsetzung",
+        cta_pricing: "Angebot ansehen",
+        pill: "🌙 Für Handwerker, Friseure, Studios und lokale Dienstleister • Modern • Mobil optimiert • Schnell live",
+        hero_title: "Moderne Landingpages<br>für lokale Businesses.",
+        hero_lead: "LunaVision erstellt moderne, mobil optimierte Landingpages für lokale Unternehmen, die online professioneller auftreten und einfacher erreichbar sein wollen.",
+        hero_seo: "Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftritt: Friseure, Barbershops, Handwerker, Studios, Reinigungsfirmen und andere lokale Dienstleister. Du bekommst eine saubere Onepage-Lösung mit Kontaktmöglichkeit, professioneller Darstellung und SEO-Basics – schnell und unkompliziert umgesetzt.",
 
         features_title: "Was LunaVision für dein Business besser macht",
-        features_lead: "Weniger Improvisation, mehr Struktur – für einen professionellen Auftritt und eine einfachere Terminbuchung im Alltag.",
-        f1t: "Mehr Klarheit für Kundinnen und Kunden",
-        f1a: "Services, Zeiten und wichtige Hinweise werden verständlich und sauber dargestellt",
-        f1b: "Der Weg von Google oder deiner Website bis zur Buchung wird deutlich einfacher",
-        f1c: "Kundinnen und Kunden sehen schneller, was sie buchen können und wie der Ablauf ist",
-        f2t: "Weniger Aufwand im Tagesgeschäft",
-        f2a: "Öffnungszeiten, Services und Buchungslogik werden passend eingerichtet",
-        f2b: "Weniger Rückfragen zu Preisen, Dauer, Verfügbarkeit oder Ansprechpartnern",
-        f2c: "Terminbuchung läuft strukturierter und nachvollziehbarer statt zwischen Nachrichten und Telefon",
-        f3t: "Eine fertige Lösung statt Einzelbausteine",
-        f3a: "Landingpage, Google-Terminseite, Branding und Liveschaltung greifen sauber ineinander",
-        f3b: "Ideal für lokale Dienstleister ohne starke Website oder ohne klaren Online-Buchungsprozess",
-        f3c: "Professionelle Darstellung für Barbershops, Friseure, Studios und ähnliche lokale Businesses",
+        features_lead: "Ein moderner Online-Auftritt schafft mehr Vertrauen, bessere Erreichbarkeit und einen professionelleren ersten Eindruck.",
+        f1t: "Professioneller erster Eindruck",
+        f1a: "Moderne Darstellung statt veralteter Website oder unklarem Auftritt",
+        f1b: "Kundinnen und Kunden sehen sofort, wer ihr seid und was ihr anbietet",
+        f1c: "Mehr Vertrauen durch klares Design, mobile Optimierung und saubere Struktur",
+        f2t: "Einfacher erreichbar",
+        f2a: "Kontaktbutton für WhatsApp, Telefon oder Anfrage direkt eingebunden",
+        f2b: "Wichtige Infos wie Leistungen, Öffnungszeiten, Adresse und Kontakt auf einen Blick",
+        f2c: "Sauber nutzbar auf Smartphone, wo die meisten Kunden zuerst schauen",
+        f3t: "Schnell und unkompliziert live",
+        f3a: "Klare Onepage-Lösung statt unnötig komplizierter Website-Projekte",
+        f3b: "SEO-Basics für bessere Sichtbarkeit und einen soliden Start",
+        f3c: "Optional später erweiterbar – z. B. mit Booking, Extras oder Pflege",
 
-        pricing_title: "Angebote",
-        pricing_lead: "Zwei klare Leistungen: eine fertige Komplettlösung für den Start und auf Wunsch laufende kleine Pflege im Alltag.",
-        permonth: "pro Monat (optional)",
+        pricing_title: "Angebot",
+        pricing_lead: "Ein klares Einstiegspaket für lokale Businesses, die schnell modern und professionell online sichtbar sein wollen.",
 
-        p1name: "Komplett-Setup",
-        p1old: "1190 € regulär",
+        p1name: "Basic Landingpage",
         p1sub: "einmalig",
-        p1launch: "Einführungsangebot zum Launch",
-        p1a: "Professionelle Buchungs-Landingpage für dein Business",
-        p1b: "Einrichtung der Google-Terminseite",
-        p1c: "Verknüpfung mit deinem Google-Unternehmensprofil",
-        p1d: "Mobile Optimierung und datensparsame, EU-konforme Umsetzung",
-        p1e: "Darstellung von Services, Öffnungszeiten, Kontakt, Standort und wichtigen Regeln",
-        p1f: "Individuelles Branding mit Logo, Farben und Shop-Infos",
-        p1g: "Klare Buchungsführung für Kundinnen und Kunden",
-        p1h: "Technische Einrichtung und Liveschaltung der fertigen Lösung",
-        p1note: "Für lokale Dienstleister, die keine halbe Zwischenlösung wollen, sondern eine saubere, direkt einsetzbare Online-Terminbuchung.",
+        p1launch: "Klarer Einstieg ohne Abo",
+        p1a: "1 moderne Landingpage für dein Business",
+        p1b: "Mobile Optimierung für Smartphone und Tablet",
+        p1c: "Kontaktbutton für WhatsApp, Telefon oder Anfrage",
+        p1d: "SEO-Basics für einen sauberen Start",
+        p1e: "Liveschaltung auf deine Domain",
+        p1f: "1 Korrekturrunde inklusive",
+        p1note: "Ideal für lokale Betriebe mit veralteter Website oder ohne professionellen Online-Auftritt. Schnell, klar und bezahlbar umgesetzt.",
 
-        p2name: "Pflege & Optimierung",
-        p2a: "Bis zu 30 Minuten kleine Änderungen pro Monat",
-        p2b: "Textänderungen an bestehenden Inhalten",
-        p2c: "Öffnungszeiten anpassen",
-        p2d: "Service-Namen oder Service-Beschreibungen anpassen",
-        p2e: "Kontaktinfos ändern",
-        p2f: "Kleine visuelle Anpassungen innerhalb des bestehenden Layouts",
-        p2g: "Pflege der bestehenden Buchungsseite",
-        p2note: "Optionaler Monatsservice für kleine laufende Änderungen innerhalb der bestehenden Struktur. Keine neue Unterseite, keine großen Umbauten, keine neuen Funktionen und keine umfangreiche Neuentwicklung.",
+        p2name: "Optional: Extras & Booking",
+        p2price: "auf Anfrage",
+        p2sub: "nur wenn wirklich benötigt",
+        p2a: "Online-Terminbuchung für Friseure, Barbershops und Studios",
+        p2b: "Zusätzliche Abschnitte oder Unterseiten",
+        p2c: "Erweiterte Texte oder Anpassungen",
+        p2d: "Spätere Pflege und kleine Änderungen",
+        p2e: "Individuelle Lösungen für besondere Anforderungen",
+        p2note: "Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden. Du startest aber erstmal mit einem klaren, einfachen Paket.",
 
         faq_title: "FAQ",
-        q1: "Was ist im Komplett-Setup enthalten?",
-        a1: "Das Komplett-Setup umfasst die professionelle Buchungs-Landingpage, die Einrichtung der Google-Terminseite, die Verknüpfung mit dem Google-Unternehmensprofil, Branding mit Logo und Farben, die mobile Optimierung sowie die technische Einrichtung und Liveschaltung.",
-        q2: "Brauche ich dafür eine eigene Website?",
-        a2: "Nein. Die Lösung ist so gedacht, dass auch lokale Dienstleister ohne starke bestehende Website professionell online buchbar werden können. Wenn bereits eine Website vorhanden ist, kann die Buchungslösung sauber eingebunden werden.",
-        q3: "Was ist im Monatsservice enthalten?",
-        a3: "Der optionale Service „Pflege & Optimierung“ umfasst bis zu 30 Minuten kleine Änderungen pro Monat innerhalb der bestehenden Struktur, zum Beispiel Texte, Öffnungszeiten, Service-Namen, Kontaktinfos oder kleinere visuelle Anpassungen.",
-        q4: "Sind größere Änderungen später möglich?",
-        a4: "Ja. Größere Änderungen, neue Inhalte, neue Funktionen oder umfangreiche Umbauten sind grundsätzlich möglich, werden jedoch separat abgestimmt und angeboten, damit der monatliche Service klar und fair bleibt.",
-        q5: "Wie läuft die Einrichtung ab und ist das EU-datenschutzkonform umsetzbar?",
-        a5: "Nach Abstimmung der Inhalte werden Services, Zeiten, Kontaktinfos, Branding und Buchungslogik eingerichtet. LunaVision achtet auf eine datensparsame, saubere und möglichst klare technische Umsetzung. Die konkrete rechtliche Ausgestaltung hängt immer vom eingesetzten Setup und den verwendeten Diensten ab.",
-        q6: "Ist die Lösung für Google und mobile Nutzung geeignet?",
-        a6: "Ja. Die Lösung ist auf mobile Nutzung ausgelegt und so aufgebaut, dass sie sauber mit Website und Google-Unternehmensprofil zusammenspielt. Dadurch können Kundinnen und Kunden auch direkt über Smartphone einfacher zur Buchung gelangen.",
+        q1: "Was ist im Basic Paket enthalten?",
+        a1: "Das Basic Paket umfasst eine moderne Landingpage, mobile Optimierung, einen Kontaktbutton, SEO-Basics, die Liveschaltung auf deine Domain sowie eine Korrekturrunde.",
+        q2: "Für wen ist das Angebot gedacht?",
+        a2: "Das Angebot richtet sich an lokale Businesses wie Handwerker, Friseure, Barbershops, Studios, Reinigungsfirmen und andere Dienstleister, die einen professionelleren Online-Auftritt brauchen.",
+        q3: "Brauche ich dafür schon eine Domain?",
+        a3: "Nein, aber wenn bereits eine Domain vorhanden ist, kann die Landingpage darauf live geschaltet werden. Falls noch keine Domain besteht, kann auch dazu eine einfache Lösung gefunden werden.",
+        q4: "Sind später Erweiterungen möglich?",
+        a4: "Ja. Zusätzliche Inhalte, weitere Abschnitte, Online-Terminbuchung oder spätere Pflege können jederzeit separat ergänzt werden.",
+        q5: "Wie läuft die Umsetzung ab?",
+        a5: "Nach Abstimmung der Inhalte werden Texte, Bilder, Kontaktinfos und Struktur umgesetzt. Danach gibt es eine Vorschau und nach Freigabe die Liveschaltung auf deine Domain.",
+        q6: "Ist die Seite für Smartphone und Google geeignet?",
+        a6: "Ja. Die Landingpage wird mobil optimiert umgesetzt und mit SEO-Basics vorbereitet, damit sie professionell aussieht und sauber genutzt werden kann.",
 
         legal_title: "AGB & Impressum",
         imp_title: "Impressum"
       },
       en: {
-        page_title: "LunaVision – Online Booking for Local Service Businesses",
-        page_desc: "LunaVision creates professional booking landing pages with Google appointment booking for barbershops, hair salons, studios and local service businesses – mobile-friendly, clearly structured and privacy-minded.",
-        tagline: "Online Booking & Booking Automation",
+        page_title: "LunaVision – Modern Landing Pages for Local Businesses",
+        page_desc: "LunaVision creates modern landing pages for local businesses – mobile-optimized, professionally designed and quickly launched. For trades, salons, studios and local service businesses.",
+        tagline: "Modern landing pages for local businesses",
         nav_features: "Benefits",
-        nav_pricing: "Offers",
+        nav_pricing: "Offer",
         nav_faq: "FAQ",
         nav_legal: "Terms & Imprint",
         cta_demo: "Request project",
-        cta_pricing: "View offers",
-        pill: "🌙 For barbershops, hair salons, studios & local service businesses • Fully set up • No unnecessary software overhead",
-        hero_title: "Complete online booking<br>for local service businesses.",
-        hero_lead: "LunaVision builds a professional booking landing page with Google appointment booking, clear customer flow and a polished mobile experience – so your customers can book faster and your day-to-day operations become more structured.",
-        hero_seo: "Instead of separate technical pieces, you get one complete solution: landing page, booking page, Google Business Profile connection, services, opening hours, contact details, location and branding. The result is a professional online presence with easier booking on mobile, on your website and through Google.",
-        s1k: "More reachable",
-        s1v: "Appointments can be requested and booked even outside your opening hours",
-        s2k: "Less scheduling chaos",
-        s2v: "Clear booking paths instead of messages, back-and-forth and scattered communication",
-        s3k: "Strong on mobile",
-        s3v: "Clean presentation for smartphone, website and Google Business Profile",
-        s4k: "Professional presence",
-        s4v: "Custom branding, clear structure and a privacy-minded technical setup",
+        cta_pricing: "View offer",
+        pill: "🌙 For trades, salons, studios and local service businesses • Modern • Mobile optimized • Fast launch",
+        hero_title: "Modern landing pages<br>for local businesses.",
+        hero_lead: "LunaVision creates modern, mobile-optimized landing pages for local businesses that want to appear more professional online and be easier to reach.",
+        hero_seo: "Ideal for businesses with an outdated website or no clear online presence at all: salons, barbershops, trades, studios, cleaning companies and other local service providers. You get a clean one-page solution with contact options, professional presentation and SEO basics – fast and uncomplicated.",
 
         features_title: "What LunaVision improves for your business",
-        features_lead: "Less improvisation, more structure – for a more professional presence and a smoother booking experience in everyday business.",
-        f1t: "More clarity for your customers",
-        f1a: "Services, times and important notes are presented in a clear and structured way",
-        f1b: "The path from Google or your website to a booking becomes much easier",
-        f1c: "Customers understand faster what they can book and how the process works",
-        f2t: "Less admin in daily operations",
-        f2a: "Opening hours, services and booking logic are set up to fit your business",
-        f2b: "Fewer questions about pricing, duration, availability or contact details",
-        f2c: "Appointment booking becomes more structured and traceable instead of being spread across calls and messages",
-        f3t: "A complete solution instead of separate pieces",
-        f3a: "Landing page, Google booking setup, branding and launch work together as one consistent system",
-        f3b: "Ideal for local service businesses without a strong website or a clear online booking process",
-        f3c: "Professional presentation for barbershops, salons, studios and similar local businesses",
+        features_lead: "A modern online presence creates more trust, better accessibility and a stronger first impression.",
+        f1t: "Professional first impression",
+        f1a: "Modern presentation instead of an outdated website or unclear appearance",
+        f1b: "Customers immediately see who you are and what you offer",
+        f1c: "More trust through clear design, mobile optimization and clean structure",
+        f2t: "Easier to reach",
+        f2a: "Contact button for WhatsApp, phone or inquiries directly integrated",
+        f2b: "Important info like services, opening hours, address and contact at a glance",
+        f2c: "Cleanly usable on smartphone, where most customers look first",
+        f3t: "Fast and uncomplicated launch",
+        f3a: "Clear one-page solution instead of unnecessarily complicated website projects",
+        f3b: "SEO basics for better visibility and a solid start",
+        f3c: "Can later be expanded, for example with booking, extras or maintenance",
 
-        pricing_title: "Offers",
-        pricing_lead: "Two clear services: one complete setup to launch professionally and optional ongoing support for small updates.",
-        permonth: "per month (optional)",
+        pricing_title: "Offer",
+        pricing_lead: "A clear starter package for local businesses that want to become modern and professionally visible online quickly.",
 
-        p1name: "Complete Setup",
-        p1old: "€1,190 regular price",
+        p1name: "Basic Landing Page",
         p1sub: "one-time",
-        p1launch: "Launch offer",
-        p1a: "Professional booking landing page for your business",
-        p1b: "Setup of the Google booking page",
-        p1c: "Connection to your Google Business Profile",
-        p1d: "Mobile optimization and privacy-minded, EU-compliant implementation",
-        p1e: "Presentation of services, opening hours, contact details, location and key booking rules",
-        p1f: "Custom branding with logo, colors and business information",
-        p1g: "Clear booking flow for customers",
-        p1h: "Technical setup and live launch of the complete solution",
-        p1note: "For local businesses that do not want a half-finished workaround, but a clean and ready-to-use online booking solution.",
-
-        p2name: "Care & Optimization",
-        p2a: "Up to 30 minutes of small changes per month",
-        p2b: "Text edits to existing content",
-        p2c: "Adjustments to opening hours",
-        p2d: "Updates to service names or service descriptions",
-        p2e: "Changes to contact information",
-        p2f: "Small visual adjustments within the existing layout",
-        p2g: "Ongoing care of the existing booking page",
-        p2note: "Optional monthly support for small changes within the existing structure. It does not include new subpages, major redesign work, new functions or extensive rebuilds.",
+        p1launch: "Clear start without subscription",
+        p1a: "1 modern landing page for your business",
+        p1b: "Mobile optimization for smartphone and tablet",
+        p1c: "Contact button for WhatsApp, phone or inquiry",
+        p1d: "SEO basics for a clean start",
+        p1e: "Go-live on your domain",
+        p1f: "1 revision included",
+        p1note: "Ideal for local businesses with an outdated website or no professional online presence. Fast, clear and affordable.",
+        
+        p2name: "Optional: Extras & Booking",
+        p2price: "on request",
+        p2sub: "only if really needed",
+        p2a: "Online appointment booking for salons, barbershops and studios",
+        p2b: "Additional sections or subpages",
+        p2c: "Extended texts or adjustments",
+        p2d: "Later maintenance and small changes",
+        p2e: "Individual solutions for special requirements",
+        p2note: "If more than a simple landing page is needed, the project can be expanded individually at any time. But you start with one clear and simple package.",
 
         faq_title: "FAQ",
-        q1: "What is included in the Complete Setup?",
-        a1: "The Complete Setup includes a professional booking landing page, setup of the Google booking page, connection to the Google Business Profile, branding with logo and colors, mobile optimization, and the full technical setup and launch.",
-        q2: "Do I need my own website for this?",
-        a2: "No. The solution is designed so that local service businesses can become professionally bookable online even without a strong existing website. If you already have a website, the booking solution can be integrated cleanly.",
-        q3: "What is included in the monthly service?",
-        a3: "The optional “Care & Optimization” service includes up to 30 minutes of small changes per month within the existing structure, such as text updates, opening hours, service names, contact details or small visual adjustments.",
-        q4: "Are larger changes possible later on?",
-        a4: "Yes. Larger changes, new content, new functions or more extensive rebuilds are generally possible, but they are quoted separately so the monthly service stays clear and fair.",
-        q5: "How does the setup work and can it be implemented in a privacy-friendly EU-compliant way?",
-        a5: "After the content is agreed, services, opening hours, contact details, branding and booking flow are set up. LunaVision focuses on a clean, privacy-minded and practical implementation. The exact legal setup always depends on the services and tools used in the final configuration.",
-        q6: "Is the solution suitable for Google and mobile use?",
-        a6: "Yes. The solution is built for mobile use and designed to work cleanly with both your website and your Google Business Profile, making it easier for customers to book directly on their phone.",
+        q1: "What is included in the Basic package?",
+        a1: "The Basic package includes a modern landing page, mobile optimization, a contact button, SEO basics, launch on your domain and one revision.",
+        q2: "Who is this offer for?",
+        a2: "This offer is for local businesses such as trades, salons, barbershops, studios, cleaning companies and other service providers that need a more professional online presence.",
+        q3: "Do I already need a domain?",
+        a3: "No, but if you already have a domain, the landing page can be launched on it. If no domain exists yet, a simple solution can also be arranged.",
+        q4: "Can it be expanded later?",
+        a4: "Yes. Additional content, more sections, online booking or later maintenance can be added separately at any time.",
+        q5: "How does the process work?",
+        a5: "After the content is agreed, texts, images, contact details and structure are implemented. Then you get a preview and after approval the page goes live on your domain.",
+        q6: "Is the page suitable for smartphone and Google?",
+        a6: "Yes. The landing page is built mobile-optimized and prepared with SEO basics so it looks professional and can be used cleanly.",
 
         legal_title: "Terms & Imprint",
         imp_title: "Imprint"
