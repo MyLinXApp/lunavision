@@ -50,10 +50,16 @@
   }
   </script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <!-- Inter Font lokal gehostet – kein Google Fonts -->
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('assets/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
 
@@ -145,7 +151,6 @@
       line-height:1.6;
       font-size:15px;
     }
-
     .topbar{
       position:sticky;
       top:0;
@@ -225,18 +230,15 @@
       cursor:pointer;
     }
     .lang:hover{border-color:rgba(199,167,90,.55)}
-
     @media (max-width:820px){
       .h1{font-size:38px}
       nav a.link{display:none}
     }
-
     .hero{
       padding:12px 0 20px;
       position:relative;
       overflow:hidden;
     }
-
     .heroGrid{
       position:relative;
       display:grid;
@@ -245,21 +247,18 @@
       align-items:center;
       min-height:640px;
     }
-
     .hero-copy{
       position:relative;
       z-index:3;
       max-width:620px;
       min-width:0;
     }
-
     .ctaRow{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
       margin-top:18px;
     }
-
     .hero-visual{
       position:absolute;
       right:-70px;
@@ -270,7 +269,6 @@
       pointer-events:none;
       overflow:hidden;
     }
-
     .hero-visual::before{
       content:"";
       position:absolute;
@@ -285,7 +283,6 @@
       z-index:2;
       pointer-events:none;
     }
-
     .hero-mockup{
       width:100%;
       height:auto;
@@ -294,19 +291,13 @@
       filter:drop-shadow(0 40px 120px rgba(0,0,0,.55));
       opacity:1;
     }
-
     @media (max-width:1100px){
-      .hero{
-        padding:12px 0 20px;
-      }
-
       .heroGrid{
         min-height:auto;
         display:flex;
         flex-direction:column;
         gap:18px;
       }
-
       .hero-visual{
         position:relative;
         order:-1;
@@ -317,32 +308,17 @@
         margin-top:8px;
         pointer-events:auto;
       }
-
-      .hero-copy{
-        max-width:100%;
-      }
-
-      .hero-mockup{
-        width:100%;
-        max-width:100%;
-        border-radius:22px;
-      }
+      .hero-copy{max-width:100%}
+      .hero-mockup{width:100%; max-width:100%; border-radius:22px}
     }
-
     .grid{display:grid; gap:18px}
     .features{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:900px){
-      .features{grid-template-columns:1fr}
-    }
-
+    @media (max-width:900px){.features{grid-template-columns:1fr}}
     .pricing{
       grid-template-columns:repeat(2, minmax(0, 1fr));
       align-items:stretch;
     }
-    @media (max-width:760px){
-      .pricing{grid-template-columns:1fr}
-    }
-
+    @media (max-width:760px){.pricing{grid-template-columns:1fr}}
     ul.clean{
       margin:10px 0 0;
       padding:0;
@@ -369,11 +345,7 @@
       font-size:12px;
       margin-top:2px;
     }
-
-    .price{
-      padding:20px;
-      position:relative;
-    }
+    .price{padding:20px; position:relative}
     .price.featured{
       border-color:rgba(199,167,90,.34);
       background:
@@ -386,10 +358,7 @@
       letter-spacing:-.4px;
       margin:10px 0 6px;
     }
-    .sub{
-      color:var(--muted);
-      margin:0 0 10px;
-    }
+    .sub{color:var(--muted); margin:0 0 10px}
     .badge{
       display:inline-flex;
       align-items:center;
@@ -429,7 +398,6 @@
       font-size:13px;
       line-height:1.55;
     }
-
     details{
       border:1px solid rgba(255,255,255,.08);
       border-radius:16px;
@@ -442,12 +410,7 @@
       list-style:none;
     }
     details summary::-webkit-details-marker{display:none}
-    details p{
-      margin:10px 0 0;
-      color:var(--muted);
-      line-height:1.55;
-    }
-
+    details p{margin:10px 0 0; color:var(--muted); line-height:1.55}
     .legal{
       font-size:13px;
       color:rgba(245,247,250,.78);
@@ -455,16 +418,11 @@
     }
     .legal h3{margin:0 0 10px; font-size:16px}
     .legal h4{margin:18px 0 8px; font-size:14px}
-
     footer{
       padding:46px 0 64px;
       border-top:1px solid rgba(255,255,255,.06);
     }
-    .tiny{
-      font-size:12px;
-      color:rgba(245,247,250,.62);
-      line-height:1.45;
-    }
+    .tiny{font-size:12px; color:rgba(245,247,250,.62); line-height:1.45}
     .langBlock{display:none}
     .langBlock.active{display:block}
   </style>
@@ -485,6 +443,7 @@
           <a class="link" href="#offers" data-i18n="nav_pricing">Angebot</a>
           <a class="link" href="#faq" data-i18n="nav_faq">FAQ</a>
           <a class="link" href="#legal" data-i18n="nav_legal">AGB & Impressum</a>
+          <a class="link" href="datenschutz.html" data-i18n="nav_privacy">Datenschutz</a>
           <button class="lang" id="langBtn" aria-label="Sprache wechseln">EN</button>
         </nav>
       </div>
@@ -495,33 +454,22 @@
     <section class="hero">
       <div class="wrap">
         <span class="pill" data-i18n="pill">🌙 Für Handwerker, Friseure, Studios und lokale Dienstleister • Modern • Mobil optimiert • Schnell live</span>
-
         <div class="heroGrid">
           <div class="hero-copy">
             <h1 class="h1" data-i18n="hero_title">Moderne Landingpages<br>für lokale Businesses.</h1>
-
             <p class="lead" data-i18n="hero_lead">
               LunaVision erstellt moderne, mobil optimierte Landingpages für lokale Unternehmen, die online professioneller auftreten und einfacher erreichbar sein wollen.
             </p>
-
             <p class="seoText" data-i18n="hero_seo">
               Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftritt: Friseure, Barbershops, Handwerker, Studios, Reinigungsfirmen und andere lokale Dienstleister. Du bekommst eine saubere Onepage-Lösung mit Kontaktmöglichkeit, professioneller Darstellung und SEO-Basics – schnell und unkompliziert umgesetzt.
             </p>
-
             <div class="ctaRow">
               <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20f%C3%BCr%20mein%20Business." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
               <a class="btn" href="#offers" data-i18n="cta_pricing">Angebot ansehen</a>
             </div>
           </div>
-
           <div class="hero-visual">
-            <img
-              src="assets/hero-mockup-final.png"
-              alt="LunaVision Landingpage Vorschau"
-              class="hero-mockup"
-              width="1200"
-              height="750"
-            />
+            <img src="assets/hero-mockup-final.png" alt="LunaVision Landingpage Vorschau" class="hero-mockup" width="1200" height="750" />
           </div>
         </div>
       </div>
@@ -531,7 +479,6 @@
       <div class="wrap">
         <h2 class="h2" data-i18n="features_title">Was LunaVision für dein Business besser macht</h2>
         <p class="lead" data-i18n="features_lead">Ein moderner Online-Auftritt schafft mehr Vertrauen, bessere Erreichbarkeit und einen professionelleren ersten Eindruck.</p>
-
         <div class="grid features" style="margin-top:18px">
           <div class="card">
             <div class="h3" data-i18n="f1t">Professioneller erster Eindruck</div>
@@ -541,7 +488,6 @@
               <li class="item"><span class="check">✓</span><span data-i18n="f1c">Mehr Vertrauen durch klares Design, mobile Optimierung und saubere Struktur</span></li>
             </ul>
           </div>
-
           <div class="card">
             <div class="h3" data-i18n="f2t">Einfacher erreichbar</div>
             <ul class="clean">
@@ -550,7 +496,6 @@
               <li class="item"><span class="check">✓</span><span data-i18n="f2c">Sauber nutzbar auf Smartphone, wo die meisten Kunden zuerst schauen</span></li>
             </ul>
           </div>
-
           <div class="card">
             <div class="h3" data-i18n="f3t">Schnell und unkompliziert live</div>
             <ul class="clean">
@@ -567,18 +512,14 @@
       <div class="wrap">
         <h2 class="h2" data-i18n="pricing_title">Angebot</h2>
         <p class="lead" data-i18n="pricing_lead">Ein klares Einstiegspaket für lokale Businesses, die schnell modern und professionell online sichtbar sein wollen.</p>
-
         <div class="grid pricing" style="margin-top:18px">
           <div class="card price featured">
             <div class="badge" data-i18n="p1name">Basic Landingpage</div>
-
             <div class="priceRow">
               <div class="amount">599 €</div>
             </div>
-
             <p class="sub" data-i18n="p1sub">einmalig</p>
             <div class="launchTag" data-i18n="p1launch">Klarer Einstieg ohne Abo</div>
-
             <ul class="clean">
               <li class="item"><span class="check">✓</span><span data-i18n="p1a">1 moderne Landingpage für dein Business</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="p1b">Mobile Optimierung für Smartphone und Tablet</span></li>
@@ -587,19 +528,15 @@
               <li class="item"><span class="check">✓</span><span data-i18n="p1e">Liveschaltung auf deine Domain</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="p1f">1 Korrekturrunde inklusive</span></li>
             </ul>
-
             <p class="smallNote" data-i18n="p1note">Ideal für lokale Betriebe mit veralteter Website oder ohne professionellen Online-Auftritt. Schnell, klar und bezahlbar umgesetzt.</p>
-
             <div style="margin-top:12px">
               <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Basic%20Landingpage%20Paket%20von%20LunaVision." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
             </div>
           </div>
-
           <div class="card price">
             <div class="badge" data-i18n="p2name">Optional: Extras & Booking</div>
             <div class="amount" data-i18n="p2price">auf Anfrage</div>
             <p class="sub" data-i18n="p2sub">nur wenn wirklich benötigt</p>
-
             <ul class="clean">
               <li class="item"><span class="check">✓</span><span data-i18n="p2a">Online-Terminbuchung für Friseure, Barbershops und Studios</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="p2b">Zusätzliche Abschnitte oder Unterseiten</span></li>
@@ -607,9 +544,7 @@
               <li class="item"><span class="check">✓</span><span data-i18n="p2d">Spätere Pflege und kleine Änderungen</span></li>
               <li class="item"><span class="check">✓</span><span data-i18n="p2e">Individuelle Lösungen für besondere Anforderungen</span></li>
             </ul>
-
             <p class="smallNote" data-i18n="p2note">Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden. Du startest aber erstmal mit einem klaren, einfachen Paket.</p>
-
             <div style="margin-top:12px">
               <a class="btn primary" href="https://wa.me/491742555178?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20und%20m%C3%B6chte%20mehr%20zu%20m%C3%B6glichen%20Extras%20wissen." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
             </div>
@@ -621,33 +556,27 @@
     <section class="section" id="faq">
       <div class="wrap">
         <h2 class="h2" data-i18n="faq_title">FAQ</h2>
-
         <div class="grid" style="margin-top:18px; gap:12px">
           <details>
             <summary data-i18n="q1">Was ist im Basic Paket enthalten?</summary>
             <p data-i18n="a1">Das Basic Paket umfasst eine moderne Landingpage, mobile Optimierung, einen Kontaktbutton, SEO-Basics, die Liveschaltung auf deine Domain sowie eine Korrekturrunde.</p>
           </details>
-
           <details>
             <summary data-i18n="q2">Für wen ist das Angebot gedacht?</summary>
             <p data-i18n="a2">Das Angebot richtet sich an lokale Businesses wie Handwerker, Friseure, Barbershops, Studios, Reinigungsfirmen und andere Dienstleister, die einen professionelleren Online-Auftritt brauchen.</p>
           </details>
-
           <details>
             <summary data-i18n="q3">Brauche ich dafür schon eine Domain?</summary>
             <p data-i18n="a3">Nein, aber wenn bereits eine Domain vorhanden ist, kann die Landingpage darauf live geschaltet werden. Falls noch keine Domain besteht, kann auch dazu eine einfache Lösung gefunden werden.</p>
           </details>
-
           <details>
             <summary data-i18n="q4">Sind später Erweiterungen möglich?</summary>
             <p data-i18n="a4">Ja. Zusätzliche Inhalte, weitere Abschnitte, Online-Terminbuchung oder spätere Pflege können jederzeit separat ergänzt werden.</p>
           </details>
-
           <details>
             <summary data-i18n="q5">Wie läuft die Umsetzung ab?</summary>
             <p data-i18n="a5">Nach Abstimmung der Inhalte werden Texte, Bilder, Kontaktinfos und Struktur umgesetzt. Danach gibt es eine Vorschau und nach Freigabe die Liveschaltung auf deine Domain.</p>
           </details>
-
           <details>
             <summary data-i18n="q6">Ist die Seite für Smartphone und Google geeignet?</summary>
             <p data-i18n="a6">Ja. Die Landingpage wird mobil optimiert umgesetzt und mit SEO-Basics vorbereitet, damit sie professionell aussieht und sauber genutzt werden kann.</p>
@@ -659,90 +588,57 @@
     <section class="section" id="legal">
       <div class="wrap">
         <h2 class="h2" data-i18n="legal_title">AGB & Impressum</h2>
-
         <div class="grid" style="margin-top:18px; grid-template-columns:1fr; gap:12px">
           <div class="card legal langBlock" id="agb_de">
             <h3>Allgemeine Geschäftsbedingungen (AGB)</h3>
-
             <h4>1. Geltungsbereich</h4>
             <p>Diese AGB gelten für Verträge zwischen <strong>LunaVision</strong> und dem Kunden über die angebotenen Leistungen (<strong>Basic Landingpage</strong> sowie optionale Zusatzleistungen). Sofern nicht anders vereinbart, richten sich die Leistungen primär an Unternehmer (§ 14 BGB).</p>
-
             <h4>2. Leistungsbeschreibung</h4>
-            <p>Der Anbieter erbringt je nach Vereinbarung insbesondere folgende Leistungen:
-              <br>• <strong>Basic Landingpage</strong>: Erstellung und Einrichtung einer modernen Onepage-Landingpage inklusive mobiler Optimierung, Kontaktbutton, SEO-Basics und Liveschaltung.
-              <br>• <strong>Optionale Zusatzleistungen</strong>: z. B. Online-Terminbuchung, zusätzliche Abschnitte, weitere Unterseiten, spätere Pflege oder individuelle Erweiterungen.
-              <br>Größere Änderungen, neue Funktionen oder umfangreiche Erweiterungen sind nicht Bestandteil des Basic Pakets und werden separat vereinbart.
-            </p>
-
+            <p>Der Anbieter erbringt je nach Vereinbarung insbesondere folgende Leistungen:<br>• <strong>Basic Landingpage</strong>: Erstellung und Einrichtung einer modernen Onepage-Landingpage inklusive mobiler Optimierung, Kontaktbutton, SEO-Basics und Liveschaltung.<br>• <strong>Optionale Zusatzleistungen</strong>: z. B. Online-Terminbuchung, zusätzliche Abschnitte, weitere Unterseiten, spätere Pflege oder individuelle Erweiterungen.<br>Größere Änderungen, neue Funktionen oder umfangreiche Erweiterungen sind nicht Bestandteil des Basic Pakets und werden separat vereinbart.</p>
             <h4>3. Mitwirkungspflichten des Kunden</h4>
             <p>Der Kunde stellt rechtzeitig alle erforderlichen Inhalte und Informationen bereit, insbesondere Logo, Texte, Bilder, Standortdaten, Kontaktangaben sowie erforderliche Zugänge. Verzögerungen durch fehlende Mitwirkung verlängern Lieferfristen entsprechend.</p>
-
             <h4>4. Abnahme</h4>
             <p>Nach Bereitstellung der Leistung hat der Kunde diese innerhalb von 7 Tagen zu prüfen. Erfolgt keine Rüge wesentlicher Mängel, gilt die Leistung als abgenommen. Unwesentliche Abweichungen berechtigen nicht zur Verweigerung der Abnahme.</p>
-
             <h4>5. Preise & Zahlung</h4>
             <p>Es gelten die im Angebot vereinbarten Preise. Einmalige Leistungen sind nach Rechnungsstellung oder gemäß individueller Vereinbarung fällig. Zusatzleistungen werden separat berechnet.</p>
-
             <h4>6. Nutzungsrechte</h4>
             <p>Der Kunde erhält ein einfaches Nutzungsrecht an den gelieferten Ergebnissen für den eigenen Geschäftsbetrieb. Weiterverkauf oder Weitergabe an Dritte ist ohne schriftliche Zustimmung nicht gestattet, sofern nicht ausdrücklich anders vereinbart.</p>
-
             <h4>7. Drittanbieter & Plattformen</h4>
             <p>Soweit Leistungen die Nutzung von Drittanbietern wie Hosting, Domainanbieter, Google-Dienste oder andere Plattformen beinhalten, gelten zusätzlich deren Bedingungen. Der Anbieter schuldet nicht die dauerhafte Verfügbarkeit dieser Plattformen.</p>
-
             <h4>8. Gewährleistung</h4>
             <p>Der Anbieter behebt berechtigte Mängel innerhalb angemessener Frist. Kein Mangel liegt vor, wenn eine Einschränkung auf Umständen außerhalb des Einflussbereichs des Anbieters beruht, insbesondere bei Störungen externer Dienste oder Plattformen.</p>
-
             <h4>9. Haftung</h4>
             <p>Der Anbieter haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung von Leben, Körper, Gesundheit. Bei einfacher Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten und begrenzt auf den vertragstypischen, vorhersehbaren Schaden.</p>
-
             <h4>10. Datenschutz</h4>
             <p>Jede Partei beachtet die anwendbaren Datenschutzvorschriften. Die konkrete datenschutzrechtliche Ausgestaltung hängt vom eingesetzten Setup und den verwendeten Diensten ab. Bei Bedarf kann eine Vereinbarung zur Auftragsverarbeitung (AVV) vereinbart werden.</p>
-
             <h4>11. Schlussbestimmungen</h4>
             <p>Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist – soweit gesetzlich zulässig – Ludwigshafen am Rhein. Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam.</p>
           </div>
-
           <div class="card legal langBlock" id="agb_en">
             <h3>General Terms and Conditions (GTC)</h3>
-
             <h4>1. Scope</h4>
             <p>These GTC apply to contracts between <strong>LunaVision</strong> and the customer regarding the offered services (<strong>Basic Landingpage</strong> and optional additional services). Unless otherwise agreed, the services are primarily intended for entrepreneurs.</p>
-
             <h4>2. Description of Services</h4>
-            <p>Depending on the agreement, the Provider shall in particular deliver the following services:
-              <br>• <strong>Basic Landingpage</strong>: creation and setup of a modern one-page landing page including mobile optimization, contact button, SEO basics and live launch.
-              <br>• <strong>Optional additional services</strong>: for example online booking, additional sections, extra subpages, later maintenance or custom expansions.
-              <br>Larger changes, new functions or extensive expansions are not part of the Basic package and shall be agreed separately.
-            </p>
-
+            <p>Depending on the agreement, the Provider shall in particular deliver the following services:<br>• <strong>Basic Landingpage</strong>: creation and setup of a modern one-page landing page including mobile optimization, contact button, SEO basics and live launch.<br>• <strong>Optional additional services</strong>: for example online booking, additional sections, extra subpages, later maintenance or custom expansions.<br>Larger changes, new functions or extensive expansions are not part of the Basic package and shall be agreed separately.</p>
             <h4>3. Customer's Obligations to Cooperate</h4>
             <p>The customer shall provide all required content and information in a timely manner, including logo, texts, images, location details, contact information and any necessary access credentials. Delays caused by missing cooperation shall extend delivery deadlines accordingly.</p>
-
             <h4>4. Acceptance</h4>
             <p>After delivery, the customer must review the service within 7 days. If no notice of material defects is given within this period, the service shall be deemed accepted. Minor deviations do not entitle the customer to refuse acceptance.</p>
-
             <h4>5. Prices & Payment</h4>
             <p>The agreed prices apply. One-time services are due upon invoicing or as otherwise agreed. Additional services are charged separately.</p>
-
             <h4>6. Rights of Use</h4>
             <p>The customer receives a non-exclusive right to use the delivered results for their own business operations. Resale or transfer to third parties is not permitted without written consent unless explicitly agreed otherwise.</p>
-
             <h4>7. Third-Party Providers & Platforms</h4>
             <p>If services involve the use of third-party providers such as hosting, domain providers, Google services or other platforms, their respective terms and conditions shall also apply. The Provider does not guarantee the permanent availability of these platforms.</p>
-
             <h4>8. Warranty</h4>
             <p>The Provider shall remedy justified defects within a reasonable period of time. No defect shall be deemed to exist if a limitation is caused by circumstances beyond the Provider's control, especially disruptions involving external services or platforms.</p>
-
             <h4>9. Liability</h4>
             <p>The Provider shall be liable without limitation in cases of intent and gross negligence as well as for injury to life, body or health. In cases of ordinary negligence, the Provider shall only be liable for breaches of essential contractual obligations and limited to the typical, foreseeable damage.</p>
-
             <h4>10. Data Protection</h4>
             <p>Each party shall comply with applicable data protection laws. The exact data protection setup depends on the chosen implementation and the services used. If required, a data processing agreement may be concluded.</p>
-
             <h4>11. Final Provisions</h4>
             <p>German law shall apply, excluding the UN Convention on Contracts for the International Sale of Goods. The place of jurisdiction – where legally permissible – is Ludwigshafen am Rhein. Should individual provisions be invalid, the remainder of the contract shall remain unaffected.</p>
           </div>
-
           <div class="card legal langBlock" id="impressum_de">
             <h3 data-i18n="imp_title">Impressum</h3>
             <p>
@@ -759,7 +655,6 @@
             </p>
             <p class="tiny">Als Kleingewerbe wird keine USt-IdNr. angegeben, sofern keine vorhanden oder erforderlich ist.</p>
           </div>
-
           <div class="card legal langBlock" id="impressum_en">
             <h3>Imprint</h3>
             <p>
@@ -786,6 +681,7 @@
     <div class="wrap">
       <div class="tiny">
         © <span id="year"></span> LunaVision — <span class="muted" data-i18n="tagline">Moderne Landingpages für lokale Businesses</span>
+        · <a href="datenschutz.html" style="color:inherit;text-decoration:none">Datenschutz</a>
       </div>
     </div>
   </footer>
@@ -800,6 +696,7 @@
         nav_pricing: "Angebot",
         nav_faq: "FAQ",
         nav_legal: "AGB & Impressum",
+        nav_privacy: "Datenschutz",
         cta_demo: "Projekt anfragen",
         cta_pricing: "Angebot ansehen",
         pill: "🌙 Für Handwerker, Friseure, Studios und lokale Dienstleister • Modern • Mobil optimiert • Schnell live",
@@ -865,6 +762,7 @@
         nav_pricing: "Offer",
         nav_faq: "FAQ",
         nav_legal: "Terms & Imprint",
+        nav_privacy: "Privacy",
         cta_demo: "Request project",
         cta_pricing: "View offer",
         pill: "🌙 For trades, salons, studios and local service businesses • Modern • Mobile optimized • Fast launch",
@@ -950,11 +848,9 @@
         if(key === "hero_title") node.innerHTML = val;
         else node.textContent = val;
       });
-
       document.title = I18N[lang].page_title;
       const metaDesc = document.querySelector('meta[name="description"]');
       if(metaDesc) metaDesc.setAttribute("content", I18N[lang].page_desc);
-
       if(langBtn) langBtn.textContent = (lang === "de") ? "EN" : "DE";
       document.documentElement.lang = lang;
       toggleLegalBlocks();
