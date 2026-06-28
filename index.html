@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Moderne Landingpages für lokale Businesses – mobil optimiert, schnell live." />
 <meta name="twitter:image" content="https://lunavision.org/assets/og-image.png" />
 
-<!-- Schema Markup – erweitert für GEO / KI-Suche -->
+<!-- Schema Markup -->
 <script type="application/ld+json">
 {
 "@context": "https://schema.org",
@@ -39,18 +39,9 @@
 "addressCountry": "DE"
 },
 "areaServed": [
-{
-"@type": "Country",
-"name": "Deutschland"
-},
-{
-"@type": "Country",
-"name": "Österreich"
-},
-{
-"@type": "Country",
-"name": "Schweiz"
-}
+{"@type": "Country", "name": "Deutschland"},
+{"@type": "Country", "name": "Österreich"},
+{"@type": "Country", "name": "Schweiz"}
 ],
 "knowsLanguage": ["de", "en"],
 "hasOfferCatalog": {
@@ -62,24 +53,18 @@
 "itemOffered": {
 "@type": "Service",
 "name": "Basic Landingpage",
-"description": "Moderne, mobil optimierte Onepage-Landingpage für lokale Businesses – inklusive SEO-Basics, Kontaktbutton und Liveschaltung auf die eigene Domain.",
+"description": "Moderne, mobil optimierte Onepage-Landingpage für lokale Businesses.",
 "serviceType": "Webdesign"
 },
 "price": "599",
-"priceCurrency": "EUR",
-"priceSpecification": {
-"@type": "UnitPriceSpecification",
-"price": "599",
-"priceCurrency": "EUR",
-"unitText": "einmalig"
-}
+"priceCurrency": "EUR"
 },
 {
 "@type": "Offer",
 "itemOffered": {
 "@type": "Service",
 "name": "KI-Rechnungsautomatisierung",
-"description": "Automatische Erkennung, Benennung und Ablage von Eingangsrechnungen in Google Drive via n8n-Workflow und KI. Für Selbstständige und kleine Unternehmen.",
+"description": "Automatische Erkennung, Benennung und Ablage von Eingangsrechnungen in Google Drive.",
 "serviceType": "KI-Automatisierung"
 }
 },
@@ -88,8 +73,8 @@
 "itemOffered": {
 "@type": "Service",
 "name": "Generative Engine Optimization (GEO)",
-"description": "Optimierung der Website und Inhalte für Sichtbarkeit in KI-Suchanfragen bei ChatGPT, Claude und Perplexity. Inkl. Schema Markup, strukturierte Daten und KI-gerechte Inhaltsstruktur.",
-"serviceType": "GEO / KI-Sichtbarkeit"
+"description": "Optimierung für Sichtbarkeit in KI-Suchanfragen bei ChatGPT, Claude und Perplexity.",
+"serviceType": "GEO"
 }
 },
 {
@@ -97,19 +82,16 @@
 "itemOffered": {
 "@type": "Service",
 "name": "Marketing-Toolset",
-"description": "KI-gestützte Marketing-Tools: Ad-Copy-Generator, Social-Kalender-Bot, Persona-Generator, Kampagnen-Briefing-Bot und Live-Marketing-Dashboard.",
+"description": "KI-gestützte Marketing-Tools: Ad-Copy-Generator, Social-Kalender-Bot, Persona-Generator und Live-Dashboard.",
 "serviceType": "Digitales Marketing"
 }
 }
 ]
-},
-"sameAs": [
-"https://lunavision.org"
-]
+}
 }
 </script>
 
-<!-- Inter Font lokal gehostet – kein Google Fonts -->
+<!-- Inter Font lokal gehostet -->
 <style>
 @font-face {
 font-family: 'Inter';
@@ -293,11 +275,7 @@ cursor:pointer;
 .h1{font-size:38px}
 nav a.link{display:none}
 }
-.hero{
-padding:12px 0 20px;
-position:relative;
-overflow:hidden;
-}
+.hero{padding:12px 0 20px; position:relative; overflow:hidden}
 .heroGrid{
 position:relative;
 display:grid;
@@ -306,18 +284,8 @@ gap:24px;
 align-items:center;
 min-height:640px;
 }
-.hero-copy{
-position:relative;
-z-index:3;
-max-width:620px;
-min-width:0;
-}
-.ctaRow{
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-margin-top:18px;
-}
+.hero-copy{position:relative; z-index:3; max-width:620px; min-width:0}
+.ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
 .hero-visual{
 position:absolute;
 right:-70px;
@@ -332,13 +300,7 @@ overflow:hidden;
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(
-to right,
-rgba(11,15,28,0.95) 0%,
-rgba(11,15,28,0.85) 35%,
-rgba(11,15,28,0.4) 60%,
-rgba(11,15,28,0) 80%
-);
+background:linear-gradient(to right, rgba(11,15,28,0.95) 0%, rgba(11,15,28,0.85) 35%, rgba(11,15,28,0.4) 60%, rgba(11,15,28,0) 80%);
 z-index:2;
 pointer-events:none;
 }
@@ -348,61 +310,26 @@ height:auto;
 display:block;
 border-radius:28px;
 filter:drop-shadow(0 40px 120px rgba(0,0,0,.55));
-opacity:1;
 }
 @media (max-width:1100px){
-.heroGrid{
-min-height:auto;
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-.hero-visual{
-position:relative;
-order:-1;
-right:auto;
-top:auto;
-transform:none;
-width:100%;
-margin-top:8px;
-pointer-events:auto;
-}
+.heroGrid{min-height:auto; display:flex; flex-direction:column; gap:18px}
+.hero-visual{position:relative; order:-1; right:auto; top:auto; transform:none; width:100%; margin-top:8px; pointer-events:auto}
 .hero-copy{max-width:100%}
 .hero-mockup{width:100%; max-width:100%; border-radius:22px}
 }
 .grid{display:grid; gap:18px}
 .features{grid-template-columns:repeat(3,1fr)}
 @media (max-width:900px){.features{grid-template-columns:1fr}}
-.pricing{
-grid-template-columns:repeat(2, minmax(0, 1fr));
-align-items:stretch;
-}
+.pricing{grid-template-columns:repeat(2, minmax(0, 1fr)); align-items:stretch}
 @media (max-width:760px){.pricing{grid-template-columns:1fr}}
-ul.clean{
-margin:10px 0 0;
-padding:0;
-list-style:none;
-display:grid;
-gap:8px;
-}
-li.item{
-display:flex;
-gap:10px;
-color:var(--muted);
-line-height:1.45;
-}
+ul.clean{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:8px}
+li.item{display:flex; gap:10px; color:var(--muted); line-height:1.45}
 .check{
-width:18px;
-height:18px;
-border-radius:6px;
+width:18px; height:18px; border-radius:6px;
 background:rgba(16,185,129,.16);
 border:1px solid rgba(16,185,129,.32);
-display:grid;
-place-items:center;
-flex:0 0 auto;
-color:#a7f3d0;
-font-size:12px;
-margin-top:2px;
+display:grid; place-items:center;
+flex:0 0 auto; color:#a7f3d0; font-size:12px; margin-top:2px;
 }
 .price{padding:20px; position:relative}
 .price.featured{
@@ -411,79 +338,166 @@ background:
 linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)),
 radial-gradient(700px 260px at 10% 0%, rgba(199,167,90,.12), transparent 60%);
 }
-.amount{
-font-size:34px;
-font-weight:900;
-letter-spacing:-.4px;
-margin:10px 0 6px;
-}
+.amount{font-size:34px; font-weight:900; letter-spacing:-.4px; margin:10px 0 6px}
 .sub{color:var(--muted); margin:0 0 10px}
 .badge{
-display:inline-flex;
-align-items:center;
+display:inline-flex; align-items:center;
 border:1px solid rgba(199,167,90,.32);
 background:rgba(199,167,90,.14);
 color:var(--accent2);
-padding:6px 10px;
-border-radius:999px;
-font-size:12px;
-font-weight:900;
-width:fit-content;
+padding:6px 10px; border-radius:999px;
+font-size:12px; font-weight:900; width:fit-content;
 }
-.priceRow{
-display:flex;
-align-items:flex-end;
-gap:12px;
-flex-wrap:wrap;
-margin:10px 0 4px;
-}
+.priceRow{display:flex; align-items:flex-end; gap:12px; flex-wrap:wrap; margin:10px 0 4px}
 .launchTag{
-display:inline-flex;
-align-items:center;
-gap:8px;
-margin-top:8px;
-padding:7px 10px;
-border-radius:999px;
+display:inline-flex; align-items:center; gap:8px; margin-top:8px;
+padding:7px 10px; border-radius:999px;
 border:1px solid rgba(199,167,90,.26);
 background:rgba(199,167,90,.10);
-color:var(--accent2);
-font-size:12px;
-font-weight:900;
-width:fit-content;
+color:var(--accent2); font-size:12px; font-weight:900; width:fit-content;
 }
-.smallNote{
-margin-top:10px;
-color:rgba(245,247,250,.68);
-font-size:13px;
-line-height:1.55;
-}
-details{
-border:1px solid rgba(255,255,255,.08);
-border-radius:16px;
-background:rgba(255,255,255,.03);
-padding:14px;
-}
-details summary{
-cursor:pointer;
-font-weight:900;
-list-style:none;
-}
+.smallNote{margin-top:10px; color:rgba(245,247,250,.68); font-size:13px; line-height:1.55}
+details{border:1px solid rgba(255,255,255,.08); border-radius:16px; background:rgba(255,255,255,.03); padding:14px}
+details summary{cursor:pointer; font-weight:900; list-style:none}
 details summary::-webkit-details-marker{display:none}
 details p{margin:10px 0 0; color:var(--muted); line-height:1.55}
-.legal{
-font-size:13px;
-color:rgba(245,247,250,.78);
-line-height:1.55;
-}
+.legal{font-size:13px; color:rgba(245,247,250,.78); line-height:1.55}
 .legal h3{margin:0 0 10px; font-size:16px}
 .legal h4{margin:18px 0 8px; font-size:14px}
-footer{
-padding:46px 0 64px;
-border-top:1px solid rgba(255,255,255,.06);
-}
+footer{padding:46px 0 64px; border-top:1px solid rgba(255,255,255,.06)}
 .tiny{font-size:12px; color:rgba(245,247,250,.62); line-height:1.45}
 .langBlock{display:none}
 .langBlock.active{display:block}
+
+/* ── SERVICES SECTION ── */
+.services-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:24px;
+margin-top:48px;
+}
+@media (max-width:760px){.services-grid{grid-template-columns:1fr}}
+
+.service-card{
+border:1px solid var(--border);
+background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+border-radius:var(--r);
+overflow:hidden;
+transition:border-color .2s, transform .2s;
+}
+.service-card:hover{
+border-color:rgba(199,167,90,.35);
+transform:translateY(-3px);
+}
+.service-card.featured{
+grid-column:1 / -1;
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+@media (max-width:760px){.service-card.featured{grid-template-columns:1fr; grid-column:1}}
+
+.service-img{
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
+}
+.service-card.featured .service-img{
+height:100%;
+min-height:260px;
+}
+@media (max-width:760px){
+.service-card.featured .service-img{height:200px}
+}
+
+.service-body{padding:24px}
+.service-tag{
+display:inline-flex;
+align-items:center;
+border:1px solid rgba(199,167,90,.3);
+background:rgba(199,167,90,.10);
+color:var(--accent2);
+padding:4px 12px;
+border-radius:999px;
+font-size:11px;
+font-weight:700;
+letter-spacing:.05em;
+text-transform:uppercase;
+margin-bottom:12px;
+}
+.service-title{
+font-size:20px;
+font-weight:700;
+margin:0 0 8px;
+letter-spacing:-.3px;
+}
+.service-tagline{
+font-size:13px;
+color:var(--accent2);
+font-weight:600;
+margin-bottom:10px;
+}
+.service-desc{
+font-size:14px;
+color:var(--muted);
+line-height:1.6;
+margin-bottom:16px;
+}
+.service-bullets{
+list-style:none;
+padding:0;
+margin:0 0 20px;
+display:grid;
+gap:7px;
+}
+.service-bullets li{
+display:flex;
+gap:8px;
+font-size:13px;
+color:var(--muted);
+line-height:1.4;
+}
+.service-bullets li::before{
+content:"✓";
+color:#a7f3d0;
+font-size:12px;
+margin-top:1px;
+flex-shrink:0;
+}
+.service-price{
+display:flex;
+align-items:baseline;
+gap:8px;
+margin-bottom:16px;
+flex-wrap:wrap;
+}
+.service-price .amount{
+font-size:26px;
+font-weight:900;
+letter-spacing:-.4px;
+margin:0;
+color:var(--text);
+}
+.service-price .period{
+font-size:13px;
+color:var(--muted);
+}
+.service-cta{
+display:inline-flex;
+align-items:center;
+gap:8px;
+background:linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+color:#0B0F1C;
+font-size:13px;
+font-weight:800;
+padding:10px 20px;
+border-radius:10px;
+text-decoration:none;
+border:none;
+cursor:pointer;
+transition:opacity .15s;
+}
+.service-cta:hover{opacity:.9}
 </style>
 </head>
 <body>
@@ -499,6 +513,7 @@ border-top:1px solid rgba(255,255,255,.06);
 </a>
 <nav aria-label="Navigation">
 <a class="link" href="#features" data-i18n="nav_features">Vorteile</a>
+<a class="link" href="#services" data-i18n="nav_services">Services</a>
 <a class="link" href="#offers" data-i18n="nav_pricing">Angebot</a>
 <a class="link" href="#faq" data-i18n="nav_faq">FAQ</a>
 <a class="link" href="#legal" data-i18n="nav_legal">AGB & Impressum</a>
@@ -524,7 +539,7 @@ Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftrit
 </p>
 <div class="ctaRow">
 <a class="btn primary" href="https://wa.me/?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20f%C3%BCr%20mein%20Business." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
-<a class="btn" href="#offers" data-i18n="cta_pricing">Angebot ansehen</a>
+<a class="btn" href="#services" data-i18n="cta_services">Alle Services</a>
 </div>
 </div>
 <div class="hero-visual">
@@ -567,6 +582,123 @@ Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftrit
 </div>
 </section>
 
+<!-- ── SERVICES ── -->
+<section class="section" id="services">
+<div class="wrap">
+<h2 class="h2">Unsere Services</h2>
+<p class="lead">Alles was dein Business digital nach vorne bringt — klar, bezahlbar und sofort einsetzbar.</p>
+
+<div class="services-grid">
+
+<!-- Service 1: Automatisierung (featured) -->
+<div class="service-card featured">
+<img src="assets/service-automatisierung.png" alt="KI-Rechnungsautomatisierung" class="service-img" />
+<div class="service-body">
+<div class="service-tag">KI-Automatisierung</div>
+<div class="service-title">Rechnungs- & E-Mail-Automatisierung</div>
+<div class="service-tagline">Deine Rechnungen. Automatisch sortiert. Du machst nichts.</div>
+<p class="service-desc">Jede eingehende Rechnung landet automatisch in Google Drive — richtig benannt, richtig einsortiert, sofort auffindbar. Einmal einrichten, für immer laufen lassen.</p>
+<ul class="service-bullets">
+<li>KI erkennt Absender, Betrag, Datum und Kategorie automatisch</li>
+<li>Eindeutige Dateibenennung z.B. 2025-06-Telekom-89,99€.pdf</li>
+<li>24/7 aktiv — auch wenn du schläfst oder im Urlaub bist</li>
+</ul>
+<div class="service-price">
+<span class="amount">ab 299 €</span>
+<span class="period">Setup · danach ab 29 €/Monat</span>
+</div>
+<a class="service-cta" href="https://wa.me/?text=Ich%20interessiere%20mich%20f%C3%BCr%20die%20Rechnungsautomatisierung." target="_blank" rel="noopener">Jetzt anfragen →</a>
+</div>
+</div>
+
+<!-- Service 2: Landingpage -->
+<div class="service-card">
+<img src="assets/service-landingpage.png" alt="Moderne Landingpage" class="service-img" />
+<div class="service-body">
+<div class="service-tag">Webdesign</div>
+<div class="service-title">Landingpage</div>
+<div class="service-tagline">Online sichtbar. In 48 Stunden.</div>
+<p class="service-desc">Eine moderne, mobil optimierte Landingpage die Vertrauen schafft und Kunden direkt zur Kontaktaufnahme führt.</p>
+<ul class="service-bullets">
+<li>Professionelles Design für alle Geräte</li>
+<li>WhatsApp, Telefon oder Kontaktformular eingebunden</li>
+<li>SEO-Basics für bessere Google-Sichtbarkeit</li>
+</ul>
+<div class="service-price">
+<span class="amount">599 €</span>
+<span class="period">einmalig</span>
+</div>
+<a class="service-cta" href="https://wa.me/?text=Ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage." target="_blank" rel="noopener">Jetzt anfragen →</a>
+</div>
+</div>
+
+<!-- Service 3: GEO -->
+<div class="service-card">
+<img src="assets/service-geo.png" alt="Generative Engine Optimization" class="service-img" />
+<div class="service-body">
+<div class="service-tag">GEO</div>
+<div class="service-title">Generative Engine Optimization</div>
+<div class="service-tagline">Sichtbar wenn KI gefragt wird.</div>
+<p class="service-desc">ChatGPT, Claude und Perplexity sind die neue Suchmaschine. GEO sorgt dafür dass dein Business dort auftaucht wo Kunden heute suchen.</p>
+<ul class="service-bullets">
+<li>Schema Markup und strukturierte Daten für KI-Lesbarkeit</li>
+<li>Inhalte die KI-Modelle direkt zitieren</li>
+<li>Monatliches Monitoring deiner KI-Sichtbarkeit</li>
+</ul>
+<div class="service-price">
+<span class="amount">499 €</span>
+<span class="period">Setup · danach 149 €/Monat</span>
+</div>
+<a class="service-cta" href="https://wa.me/?text=Ich%20interessiere%20mich%20f%C3%BCr%20GEO." target="_blank" rel="noopener">Jetzt anfragen →</a>
+</div>
+</div>
+
+<!-- Service 4: Marketing-Toolset -->
+<div class="service-card">
+<img src="assets/service-toolset.png" alt="Marketing-Toolset" class="service-img" />
+<div class="service-body">
+<div class="service-tag">Marketing</div>
+<div class="service-title">Marketing-Toolset</div>
+<div class="service-tagline">Dein KI-Marketing-Team. Ohne Agenturkosten.</div>
+<p class="service-desc">Ein komplettes Set an KI-gestützten Marketing-Tools — vom Ad-Copy-Generator bis zum Social-Kalender-Bot. Einmal einrichten, dauerhaft nutzen.</p>
+<ul class="service-bullets">
+<li>Ad-Copy-Generator, Persona-Generator, Briefing-Bot</li>
+<li>Live Marketing-Dashboard mit allen KPIs</li>
+<li>Social-Kalender-Bot für konsistenten Content</li>
+</ul>
+<div class="service-price">
+<span class="amount">199 €</span>
+<span class="period">einmalig · danach 99 €/Monat</span>
+</div>
+<a class="service-cta" href="https://wa.me/?text=Ich%20interessiere%20mich%20f%C3%BCr%20das%20Marketing-Toolset." target="_blank" rel="noopener">Jetzt anfragen →</a>
+</div>
+</div>
+
+<!-- Service 5: Bewertungsbooster -->
+<div class="service-card featured">
+<img src="assets/service-bewertungsbooster.png" alt="Bewertungsbooster WhatsApp" class="service-img" />
+<div class="service-body">
+<div class="service-tag">Automatisierung</div>
+<div class="service-title">Bewertungsbooster WhatsApp</div>
+<div class="service-tagline">Mehr Google-Bewertungen. Vollautomatisch.</div>
+<p class="service-desc">Nach jedem Kauf oder Termin bekommt dein Kunde automatisch eine freundliche WhatsApp-Nachricht mit der Bitte um eine Google-Bewertung. Mehr Bewertungen, mehr Vertrauen, mehr Kunden.</p>
+<ul class="service-bullets">
+<li>Automatischer Versand nach Kaufabschluss oder Terminende</li>
+<li>Persönliche, anpassbare Nachricht in deinem Ton</li>
+<li>Direkt-Link zur Google-Bewertungsseite</li>
+</ul>
+<div class="service-price">
+<span class="amount">29 €</span>
+<span class="period">pro Monat</span>
+</div>
+<a class="service-cta" href="https://wa.me/?text=Ich%20interessiere%20mich%20f%C3%BCr%20den%20Bewertungsbooster." target="_blank" rel="noopener">Jetzt anfragen →</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
 <section class="section" id="offers">
 <div class="wrap">
 <h2 class="h2" data-i18n="pricing_title">Angebot</h2>
@@ -587,7 +719,7 @@ Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftrit
 <li class="item"><span class="check">✓</span><span data-i18n="p1e">Liveschaltung auf deine Domain</span></li>
 <li class="item"><span class="check">✓</span><span data-i18n="p1f">1 Korrekturrunde inklusive</span></li>
 </ul>
-<p class="smallNote" data-i18n="p1note">Ideal für lokale Betriebe mit veralteter Website oder ohne professionellen Online-Auftritt. Schnell, klar und bezahlbar umgesetzt.</p>
+<p class="smallNote" data-i18n="p1note">Ideal für lokale Betriebe mit veralteter Website oder ohne professionellen Online-Auftritt.</p>
 <div style="margin-top:12px">
 <a class="btn primary" href="https://wa.me/?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Basic%20Landingpage%20Paket%20von%20LunaVision." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
 </div>
@@ -603,7 +735,7 @@ Ideal für Betriebe mit veralteter Website oder gar keinem klaren Online-Auftrit
 <li class="item"><span class="check">✓</span><span data-i18n="p2d">Spätere Pflege und kleine Änderungen</span></li>
 <li class="item"><span class="check">✓</span><span data-i18n="p2e">Individuelle Lösungen für besondere Anforderungen</span></li>
 </ul>
-<p class="smallNote" data-i18n="p2note">Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden. Du startest aber erstmal mit einem klaren, einfachen Paket.</p>
+<p class="smallNote" data-i18n="p2note">Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden.</p>
 <div style="margin-top:12px">
 <a class="btn primary" href="https://wa.me/?text=Hallo%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage%20und%20m%C3%B6chte%20mehr%20zu%20m%C3%B6glichen%20Extras%20wissen." target="_blank" rel="noopener" data-i18n="cta_demo">Projekt anfragen</a>
 </div>
@@ -752,12 +884,14 @@ page_title: "LunaVision – Moderne Landingpages für lokale Businesses",
 page_desc: "LunaVision erstellt moderne Landingpages für lokale Businesses – mobil optimiert, professionell gestaltet und schnell live. Für Handwerker, Friseure, Studios und lokale Dienstleister.",
 tagline: "Moderne Landingpages für lokale Businesses",
 nav_features: "Vorteile",
+nav_services: "Services",
 nav_pricing: "Angebot",
 nav_faq: "FAQ",
 nav_legal: "AGB & Impressum",
 nav_privacy: "Datenschutz",
 cta_demo: "Projekt anfragen",
 cta_pricing: "Angebot ansehen",
+cta_services: "Alle Services",
 pill: "🌙 Für Handwerker, Friseure, Studios und lokale Dienstleister • Modern • Mobil optimiert • Schnell live",
 hero_title: "Moderne Landingpages<br>für lokale Businesses.",
 hero_lead: "LunaVision erstellt moderne, mobil optimierte Landingpages für lokale Unternehmen, die online professioneller auftreten und einfacher erreichbar sein wollen.",
@@ -796,7 +930,7 @@ p2b: "Zusätzliche Abschnitte oder Unterseiten",
 p2c: "Erweiterte Texte oder Anpassungen",
 p2d: "Spätere Pflege und kleine Änderungen",
 p2e: "Individuelle Lösungen für besondere Anforderungen",
-p2note: "Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden. Du startest aber erstmal mit einem klaren, einfachen Paket.",
+p2note: "Wenn mehr als eine einfache Landingpage gebraucht wird, kann das Projekt jederzeit individuell erweitert werden.",
 faq_title: "FAQ",
 q1: "Was ist im Basic Paket enthalten?",
 a1: "Das Basic Paket umfasst eine moderne Landingpage, mobile Optimierung, einen Kontaktbutton, SEO-Basics, die Liveschaltung auf deine Domain sowie eine Korrekturrunde.",
@@ -815,19 +949,21 @@ imp_title: "Impressum"
 },
 en: {
 page_title: "LunaVision – Modern Landing Pages for Local Businesses",
-page_desc: "LunaVision creates modern landing pages for local businesses – mobile-optimized, professionally designed and quickly launched. For trades, salons, studios and local service businesses.",
+page_desc: "LunaVision creates modern landing pages for local businesses – mobile-optimized, professionally designed and quickly launched.",
 tagline: "Modern landing pages for local businesses",
 nav_features: "Benefits",
+nav_services: "Services",
 nav_pricing: "Offer",
 nav_faq: "FAQ",
 nav_legal: "Terms & Imprint",
 nav_privacy: "Privacy",
 cta_demo: "Request project",
 cta_pricing: "View offer",
+cta_services: "All Services",
 pill: "🌙 For trades, salons, studios and local service businesses • Modern • Mobile optimized • Fast launch",
 hero_title: "Modern landing pages<br>for local businesses.",
 hero_lead: "LunaVision creates modern, mobile-optimized landing pages for local businesses that want to appear more professional online and be easier to reach.",
-hero_seo: "Ideal for businesses with an outdated website or no clear online presence at all: salons, barbershops, trades, studios, cleaning companies and other local service providers. You get a clean one-page solution with contact options, professional presentation and SEO basics – fast and uncomplicated.",
+hero_seo: "Ideal for businesses with an outdated website or no clear online presence at all: salons, barbershops, trades, studios, cleaning companies and other local service providers.",
 features_title: "What LunaVision improves for your business",
 features_lead: "A modern online presence creates more trust, better accessibility and a stronger first impression.",
 f1t: "Professional first impression",
@@ -862,7 +998,7 @@ p2b: "Additional sections or subpages",
 p2c: "Extended texts or adjustments",
 p2d: "Later maintenance and small changes",
 p2e: "Individual solutions for special requirements",
-p2note: "If more than a simple landing page is needed, the project can be expanded individually at any time. But you start with one clear and simple package.",
+p2note: "If more than a simple landing page is needed, the project can be expanded individually at any time.",
 faq_title: "FAQ",
 q1: "What is included in the Basic package?",
 a1: "The Basic package includes a modern landing page, mobile optimization, a contact button, SEO basics, launch on your domain and one revision.",
