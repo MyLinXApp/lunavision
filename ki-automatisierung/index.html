@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KI-Automatisierung für Rechnungen & E-Mails | LunaVision</title>
+  <meta name="description" content="KI-gestützte Rechnungs- und E-Mail-Automatisierung für Selbstständige und KMU: Rechnungen werden automatisch erkannt, benannt und in Google Drive einsortiert. Ab 499 € Setup, danach ab 39 €/Monat." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://lunavision.org/ki-automatisierung" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lunavision.org/ki-automatisierung" />
+  <meta property="og:title" content="KI-Automatisierung für Rechnungen & E-Mails | LunaVision" />
+  <meta property="og:description" content="Rechnungen werden automatisch erkannt, benannt und einsortiert – ab 499 € Setup, danach ab 39 €/Monat." />
+  <meta property="og:image" content="https://lunavision.org/assets/og-image.png" />
+  <meta property="og:locale" content="de_DE" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KI-Automatisierung für Rechnungen & E-Mails | LunaVision" />
+  <meta name="twitter:description" content="Rechnungen werden automatisch erkannt, benannt und einsortiert – ab 499 € Setup, danach ab 39 €/Monat." />
+  <meta name="twitter:image" content="https://lunavision.org/assets/og-image.png" />
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "KI-Rechnungsautomatisierung",
+    "serviceType": "KI-Automatisierung",
+    "description": "Rechnungs- und E-Mail-Automatisierung: Jede eingehende Rechnung wird automatisch erkannt, korrekt benannt und in Google Drive einsortiert.",
+    "provider": {
+      "@type": "ProfessionalService",
+      "name": "LunaVision",
+      "url": "https://lunavision.org"
+    },
+    "areaServed": [
+      {"@type": "Country", "name": "Deutschland"},
+      {"@type": "Country", "name": "Österreich"},
+      {"@type": "Country", "name": "Schweiz"}
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "EUR",
+      "price": "499",
+      "description": "Setup einmalig ab 499 €, danach ab 39 €/Monat"
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('/assets/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root{
+      --bg:#0B0F1C;
+      --bg2:#0f1730;
+      --border:rgba(255,255,255,.10);
+      --text:#F5F7FA;
+      --muted:rgba(245,247,250,.75);
+      --accent:#C7A75A;
+      --accent2:#E7D19B;
+      --r:18px;
+      --max:1100px;
+      --font:'Inter', ui-sans-serif, system-ui, -apple-system, Helvetica, Arial;
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 18% 10%, rgba(199,167,90,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(231,209,155,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* TOPBAR */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(11,15,28,.60);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      padding:14px 20px;
+    }
+    .topbar .inner{max-width:var(--max); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:14px}
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:900; font-size:15px}
+    .brand img{width:30px; height:30px; border-radius:12px; object-fit:contain; background:rgba(255,255,255,.06); border:1px solid var(--border); padding:4px}
+    nav{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+    nav a{text-decoration:none; font-size:13px; color:var(--muted); padding:8px 10px; border-radius:10px; transition:background .12s, color .12s}
+    nav a:hover{background:rgba(255,255,255,.04); color:var(--text)}
+    @media(max-width:760px){nav a.hide-mobile{display:none}}
+
+    /* HERO */
+    .hero{padding:48px 0 32px}
+    .heroGrid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center}
+    @media(max-width:900px){.heroGrid{grid-template-columns:1fr} .hero-visual{order:-1}}
+    .service-tag{
+      display:inline-flex; align-items:center;
+      border:1px solid rgba(199,167,90,.3);
+      background:rgba(199,167,90,.10);
+      color:var(--accent2);
+      padding:6px 14px; border-radius:999px;
+      font-size:12px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    h1{
+      font-size:clamp(1.9rem, 3.4vw, 2.85rem);
+      font-weight:800; letter-spacing:-.03em; line-height:1.15;
+      margin-bottom:16px;
+    }
+    .hero-sub{font-size:1.05rem; color:var(--muted); line-height:1.6; margin-bottom:28px; max-width:56ch}
+    .hero-visual-media{
+      position:relative; width:100%; min-height:260px;
+      background:#0d1224; border:1px solid var(--border); border-radius:var(--r); overflow:hidden;
+    }
+    .hero-visual-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block}
+
+    /* BUTTONS */
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:13px 24px; border-radius:14px; border:1px solid var(--border);
+      text-decoration:none; cursor:pointer; font-weight:800; font-size:0.95rem;
+      background:linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+      color:#0B0F1C; border-color:transparent;
+      box-shadow:0 12px 26px rgba(199,167,90,.16);
+      transition:opacity .15s;
+    }
+    .btn:hover{opacity:.9}
+
+    /* CONTENT SECTIONS */
+    .section{padding:40px 0; border-top:1px solid rgba(255,255,255,.06)}
+    .section h2{font-size:1.5rem; font-weight:700; letter-spacing:-.02em; margin-bottom:16px}
+    .section p{color:var(--muted); line-height:1.7; font-size:0.98rem; max-width:70ch}
+    .bullets{list-style:none; display:grid; gap:12px; margin-top:8px; max-width:60ch}
+    .bullets li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:0.95rem; line-height:1.5}
+    .bullets li::before{content:"✓"; color:#a7f3d0; font-weight:700; flex-shrink:0; margin-top:1px}
+
+    /* PRICE */
+    .price-card{
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px;
+      border:1px solid rgba(199,167,90,.25); border-radius:var(--r);
+      background:linear-gradient(135deg, rgba(199,167,90,.08), rgba(255,255,255,.03));
+      padding:24px 28px; margin-top:8px;
+    }
+    .price-amount{font-size:2rem; font-weight:800; letter-spacing:-.03em; color:var(--text)}
+    .price-period{font-size:0.9rem; color:var(--muted)}
+
+    /* CTA SECTION */
+    .cta-section{padding:48px 0 60px; text-align:center}
+    .cta-section h2{margin-bottom:12px}
+    .cta-section p{color:var(--muted); margin:0 auto 24px; max-width:56ch}
+
+    footer{border-top:1px solid rgba(255,255,255,.06); padding:28px 20px; text-align:center; font-size:12px; color:rgba(245,247,250,.45)}
+    footer a{color:inherit}
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="inner">
+      <a class="brand" href="/">
+        <img src="/assets/logo.png" alt="LunaVision Logo" />
+        LunaVision
+      </a>
+      <nav aria-label="Navigation">
+        <a class="hide-mobile" href="/#services">Alle Services</a>
+        <a class="hide-mobile" href="/#faq">FAQ</a>
+        <a href="/">← Zurück zur Website</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="heroGrid">
+          <div>
+            <div class="service-tag">KI-Automatisierung</div>
+            <h1>KI-Automatisierung für Rechnungen & E-Mails</h1>
+            <p class="hero-sub">Ihre Rechnungen. Automatisch sortiert. Sie müssen nichts mehr tun.</p>
+            <a class="btn" href="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20die%20Rechnungsautomatisierung." target="_blank" rel="noopener">Jetzt anfragen →</a>
+          </div>
+          <div class="hero-visual-media">
+            <img src="/assets/service-automatisierung.png" alt="KI-Rechnungsautomatisierung" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BESCHREIBUNG -->
+    <section class="section">
+      <div class="wrap">
+        <h2>So funktioniert die Automatisierung</h2>
+        <p>Jede eingehende Rechnung wird automatisch erkannt und landet richtig benannt und einsortiert in Ihrem Google Drive – sofort auffindbar. Einmal eingerichtet, läuft die Automatisierung dauerhaft, ohne dass Sie manuell eingreifen müssen.</p>
+      </div>
+    </section>
+
+    <!-- VORTEILE -->
+    <section class="section">
+      <div class="wrap">
+        <h2>Vorteile auf einen Blick</h2>
+        <ul class="bullets">
+          <li>Die KI erkennt Absender, Betrag, Datum und Kategorie automatisch</li>
+          <li>Eindeutige Dateibenennung, z. B. 2025-06-Telekom-89,99€.pdf</li>
+          <li>24/7 aktiv – auch wenn Sie schlafen oder im Urlaub sind</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PREIS -->
+    <section class="section">
+      <div class="wrap">
+        <h2>Preis</h2>
+        <div class="price-card">
+          <span class="price-amount">ab 499 €</span>
+          <span class="price-period">Setup · danach ab 39 €/Monat</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="wrap">
+        <h2>Bereit, Ihre Rechnungen automatisch zu sortieren?</h2>
+        <p>Schreiben Sie uns kurz über WhatsApp – wir melden uns zeitnah mit den nächsten Schritten.</p>
+        <a class="btn" href="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20die%20Rechnungsautomatisierung." target="_blank" rel="noopener">Jetzt anfragen →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> LunaVision ·
+    <a href="/">Startseite</a> ·
+    <a href="/#services">Alle Services</a> ·
+    <a href="/datenschutz.html">Datenschutz</a>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
