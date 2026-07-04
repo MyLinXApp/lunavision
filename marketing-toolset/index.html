@@ -233,23 +233,36 @@
     .faq-mini h3{font-size:1.05rem; font-weight:700; margin-bottom:6px}
     .faq-mini p{max-width:70ch}
 
-    /* RELATED SERVICES */
+    /* RELATED SERVICES (styled like the main service cards) */
     .related-services{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:8px}
     .related-card{
-      display:block; border:1px solid rgba(199,167,90,.22); border-radius:var(--r);
-      padding:20px; text-decoration:none; color:inherit;
+      display:block; border:1px solid var(--border); border-radius:var(--r);
       background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow:0 8px 20px rgba(0,0,0,.18);
-      transition:border-color .2s, transform .2s, box-shadow .2s;
+      overflow:hidden; text-decoration:none; color:inherit;
+      transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
     .related-card:hover{
-      border-color:rgba(199,167,90,.55);
-      transform:translateY(-3px);
-      box-shadow:0 14px 28px rgba(0,0,0,.28);
+      border-color:rgba(199,167,90,.4);
+      transform:translateY(-4px);
+      box-shadow:0 16px 32px rgba(199,167,90,.12), 0 8px 20px rgba(0,0,0,.25);
     }
-    .related-card .related-title{font-weight:700; font-size:1.02rem; margin-bottom:6px; color:var(--text)}
-    .related-card .related-title::after{content:" \2192"; color:var(--accent); font-weight:700}
-    .related-card .related-tagline{font-size:0.85rem; color:var(--muted); line-height:1.45}
+    .related-card img{width:100%; height:130px; object-fit:cover; display:block}
+    .related-body{padding:18px}
+    .related-tag{
+      display:inline-flex; align-items:center;
+      border:1px solid rgba(199,167,90,.3); background:rgba(199,167,90,.10); color:var(--accent2);
+      padding:3px 10px; border-radius:999px; font-size:10px; font-weight:700;
+      letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px; width:fit-content;
+    }
+    .related-title{font-weight:700; font-size:1rem; margin-bottom:6px; color:var(--text)}
+    .related-tagline{font-size:0.82rem; color:var(--muted); line-height:1.4; margin-bottom:14px}
+    .related-cta{
+      display:inline-flex; align-items:center; gap:6px;
+      background:linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+      color:#0B0F1C; font-size:0.78rem; font-weight:800;
+      padding:8px 14px; border-radius:8px; transition:box-shadow .25s ease;
+    }
+    .related-card:hover .related-cta{box-shadow:0 8px 20px rgba(199,167,90,.35)}
 
     footer{border-top:1px solid rgba(255,255,255,.06); padding:28px 20px; text-align:center; font-size:12px; color:rgba(245,247,250,.45)}
     footer a{color:inherit}
@@ -396,20 +409,40 @@
         <h2><span class="lang-de">Weitere Services</span><span class="lang-en">More Services</span></h2>
         <div class="related-services">
           <a class="related-card" href="/ki-automatisierung">
+            <img src="/assets/service-automatisierung.png" alt="KI-Rechnungsautomatisierung" />
+            <div class="related-body">
+              <div class="related-tag"><span class="lang-de">KI-Automatisierung</span><span class="lang-en">AI Automation</span></div>
             <div class="related-title"><span class="lang-de">Rechnungs- & E-Mail-Automatisierung</span><span class="lang-en">Invoice & Email Automation</span></div>
             <div class="related-tagline"><span class="lang-de">Ihre Rechnungen. Automatisch sortiert. Sie müssen nichts mehr tun.</span><span class="lang-en">Your invoices. Automatically sorted. You don't have to do anything.</span></div>
+              <span class="related-cta"><span class="lang-de">Mehr erfahren</span><span class="lang-en">Learn more</span>&nbsp;→</span>
+            </div>
           </a>
           <a class="related-card" href="/landingpage-erstellen">
+            <img src="/assets/service-landingpage.png" alt="Landingpage" />
+            <div class="related-body">
+              <div class="related-tag"><span class="lang-de">Webdesign</span><span class="lang-en">Web Design</span></div>
             <div class="related-title"><span class="lang-de">Landingpage</span><span class="lang-en">Landing Page</span></div>
             <div class="related-tagline"><span class="lang-de">Ihr Business online sichtbar. Modern, mobil optimiert, sofort einsatzbereit.</span><span class="lang-en">Your business visible online. Modern, mobile-optimized, ready to go.</span></div>
+              <span class="related-cta"><span class="lang-de">Mehr erfahren</span><span class="lang-en">Learn more</span>&nbsp;→</span>
+            </div>
           </a>
           <a class="related-card" href="/geo-optimierung">
+            <img src="/assets/service-geo.png" alt="Generative Engine Optimization" />
+            <div class="related-body">
+              <div class="related-tag">GEO</div>
             <div class="related-title">Generative Engine Optimization</div>
             <div class="related-tagline"><span class="lang-de">ChatGPT, Claude und Perplexity sind die neue Suchmaschine.</span><span class="lang-en">ChatGPT, Claude and Perplexity are the new search engines.</span></div>
+              <span class="related-cta"><span class="lang-de">Mehr erfahren</span><span class="lang-en">Learn more</span>&nbsp;→</span>
+            </div>
           </a>
           <a class="related-card" href="/bewertungsbooster">
+            <img src="/assets/service-bewertungsbooster.png" alt="Bewertungsbooster WhatsApp" />
+            <div class="related-body">
+              <div class="related-tag"><span class="lang-de">Automatisierung</span><span class="lang-en">Automation</span></div>
             <div class="related-title"><span class="lang-de">Bewertungsbooster WhatsApp</span><span class="lang-en">WhatsApp Review Booster</span></div>
             <div class="related-tagline"><span class="lang-de">Nach jedem Kauf oder Termin automatisch um eine Google-Bewertung bitten.</span><span class="lang-en">Automatically ask for a Google review after every purchase or appointment.</span></div>
+              <span class="related-cta"><span class="lang-de">Mehr erfahren</span><span class="lang-en">Learn more</span>&nbsp;→</span>
+            </div>
           </a>
         </div>
       </div>
