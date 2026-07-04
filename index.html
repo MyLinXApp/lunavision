@@ -66,6 +66,13 @@
       font-style: normal;
       font-display: swap;
     }
+    @font-face {
+      font-family: 'Fraunces';
+      src: url('assets/Fraunces-VariableFont.ttf') format('truetype');
+      font-weight: 300 900;
+      font-style: normal;
+      font-display: swap;
+    }
   </style>
 
   <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -83,6 +90,7 @@
       --r:18px;
       --max:1100px;
       --font:'Inter', ui-sans-serif, system-ui, -apple-system, Helvetica, Arial;
+      --font-display:'Fraunces', Georgia, serif;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -120,17 +128,24 @@
       font-weight:700;
       white-space:nowrap;
       background:rgba(255,255,255,.03);
-      transition:transform .12s, border-color .12s;
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
     }
-    .btn:hover{transform:translateY(-1px); border-color:rgba(199,167,90,.55)}
+    .btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(199,167,90,.55);
+      box-shadow:0 10px 24px rgba(199,167,90,.16);
+    }
     .btn.primary{
       background:linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
       color:#0B0F1C;
       border-color:transparent;
       box-shadow:0 12px 26px rgba(199,167,90,.16);
     }
-    .btn.primary:hover{opacity:.92}
-    .h2{font-size:30px; margin:0 0 12px; font-weight:700; letter-spacing:-.4px}
+    .btn.primary:hover{
+      opacity:.96;
+      box-shadow:0 16px 34px rgba(199,167,90,.32);
+    }
+    .h2{font-family:var(--font-display); font-size:32px; margin:0 0 12px; font-weight:600; letter-spacing:-.3px}
     .lead{font-size:17px; color:var(--muted); line-height:1.6; max-width:62ch}
 
     /* NAV */
@@ -147,7 +162,7 @@
     }
     .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
     .brandText{display:flex; flex-direction:column; line-height:1.05}
-    .brandName{font-size:15px; font-weight:900; letter-spacing:.3px}
+    .brandName{font-family:var(--font-display); font-size:16px; font-weight:600; letter-spacing:.2px}
     .brandTag{font-size:11px; color:var(--muted)}
     .logo{width:30px; height:30px; border-radius:12px; object-fit:contain; background:rgba(255,255,255,.06); border:1px solid var(--border); padding:4px; flex:0 0 auto}
     nav{display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end}
@@ -198,9 +213,10 @@
       letter-spacing:.02em;
     }
     .hero h1{
-      font-size:clamp(1.9rem, 3.4vw, 2.85rem);
-      font-weight:800;
-      letter-spacing:-.03em;
+      font-family:var(--font-display);
+      font-size:clamp(2rem, 3.6vw, 3rem);
+      font-weight:600;
+      letter-spacing:-.01em;
       line-height:1.15;
       margin:0 0 18px;
       color:var(--text);
@@ -255,11 +271,12 @@
       margin-bottom:20px;
       border-color:rgba(199,167,90,.25);
       text-decoration:none; color:inherit;
-      transition:border-color .2s, transform .2s;
+      transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
     .services-hero-card:hover{
-      border-color:rgba(199,167,90,.45);
-      transform:translateY(-3px);
+      border-color:rgba(199,167,90,.5);
+      transform:translateY(-4px);
+      box-shadow:0 20px 40px rgba(199,167,90,.14), 0 10px 24px rgba(0,0,0,.28);
     }
     @media(max-width:760px){.services-hero-card{grid-template-columns:1fr}}
     .services-hero-media{
@@ -280,7 +297,7 @@
       letter-spacing:.06em; text-transform:uppercase;
       margin-bottom:14px; width:fit-content;
     }
-    .service-title{font-size:1.5rem; font-weight:700; letter-spacing:-.03em; margin:0 0 8px}
+    .service-title{font-family:var(--font-display); font-size:1.55rem; font-weight:600; letter-spacing:-.01em; margin:0 0 8px}
     .service-tagline{font-size:0.88rem; color:var(--accent2); font-weight:600; margin-bottom:14px}
     .service-desc{font-size:0.875rem; color:var(--muted); line-height:1.65; margin-bottom:18px}
     .service-bullets{list-style:none; padding:0; margin:0 0 22px; display:grid; gap:8px}
@@ -295,9 +312,12 @@
       color:#0B0F1C; font-size:0.875rem; font-weight:800;
       padding:11px 22px; border-radius:10px;
       text-decoration:none; width:fit-content;
-      transition:opacity .15s;
+      transition:box-shadow .25s ease;
     }
-    .service-cta:hover{opacity:.88}
+    .services-hero-card:hover .service-cta,
+    .service-small-card:hover .service-cta{
+      box-shadow:0 8px 20px rgba(199,167,90,.35);
+    }
 
     .services-small-grid{
       display:grid;
@@ -313,11 +333,12 @@
       border-radius:var(--r);
       overflow:hidden;
       text-decoration:none; color:inherit;
-      transition:border-color .2s, transform .2s;
+      transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
     }
     .service-small-card:hover{
-      border-color:rgba(199,167,90,.3);
-      transform:translateY(-3px);
+      border-color:rgba(199,167,90,.4);
+      transform:translateY(-4px);
+      box-shadow:0 16px 32px rgba(199,167,90,.12), 0 8px 20px rgba(0,0,0,.25);
     }
     .service-small-card img{
       width:100%; height:180px;
