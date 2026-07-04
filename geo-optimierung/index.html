@@ -47,6 +47,45 @@
   }
   </script>
 
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://lunavision.org/"},
+      {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://lunavision.org/#services"},
+      {"@type": "ListItem", "position": 3, "name": "Generative Engine Optimization (GEO)", "item": "https://lunavision.org/geo-optimierung"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist GEO und warum brauche ich das?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Generative Engine Optimization sorgt dafür, dass Ihr Business in KI-Antworten von ChatGPT, Claude und Perplexity auftaucht. Immer mehr Menschen suchen direkt über KI-Assistenten statt über Google – GEO ist die Investition in die Sichtbarkeit von morgen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was passiert, wenn ich kündigen möchte?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der monatliche Service ist monatlich kündbar. Keine Mindestlaufzeit, kein Kleingedrucktes."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="icon" type="image/png" href="/assets/favicon.png" />
 
   <style>
@@ -170,6 +209,29 @@
     .cta-section h2{margin-bottom:12px}
     .cta-section p{color:var(--muted); margin:0 auto 24px; max-width:56ch}
 
+    /* BREADCRUMB */
+    .breadcrumb{font-size:0.8rem; color:var(--muted); padding-top:20px}
+    .breadcrumb a{color:var(--muted); text-decoration:none}
+    .breadcrumb a:hover{color:var(--text); text-decoration:underline}
+    .breadcrumb .sep{margin:0 6px; opacity:.5}
+
+    /* FAQ (mini) */
+    .faq-mini .faq-item{margin-bottom:20px}
+    .faq-mini .faq-item:last-child{margin-bottom:0}
+    .faq-mini h3{font-size:1.05rem; font-weight:700; margin-bottom:6px}
+    .faq-mini p{max-width:70ch}
+
+    /* RELATED SERVICES */
+    .related-services{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:8px}
+    .related-card{
+      display:block; border:1px solid var(--border); border-radius:var(--r);
+      padding:18px; text-decoration:none; color:inherit;
+      background:rgba(255,255,255,.02); transition:border-color .15s;
+    }
+    .related-card:hover{border-color:rgba(199,167,90,.4)}
+    .related-card .related-title{font-weight:700; font-size:0.95rem; margin-bottom:4px}
+    .related-card .related-tagline{font-size:0.85rem; color:var(--muted); line-height:1.4}
+
     footer{border-top:1px solid rgba(255,255,255,.06); padding:28px 20px; text-align:center; font-size:12px; color:rgba(245,247,250,.45)}
     footer a{color:inherit}
   </style>
@@ -192,6 +254,13 @@
   </header>
 
   <main>
+    <!-- BREADCRUMB -->
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span class="sep">›</span><a href="/#services">Services</a><span class="sep">›</span>Generative Engine Optimization
+      </nav>
+    </div>
+
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
@@ -254,6 +323,27 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section">
+      <div class="wrap faq-mini">
+        <h2><span class="lang-de">Häufige Fragen</span><span class="lang-en">Frequently Asked Questions</span></h2>
+        <div class="faq-item">
+          <h3><span class="lang-de">Was ist GEO und warum brauche ich das?</span><span class="lang-en">What is GEO and why do I need it?</span></h3>
+          <p>
+            <span class="lang-de">Generative Engine Optimization sorgt dafür, dass Ihr Business in KI-Antworten von ChatGPT, Claude und Perplexity auftaucht. Immer mehr Menschen suchen direkt über KI-Assistenten statt über Google – GEO ist die Investition in die Sichtbarkeit von morgen.</span>
+            <span class="lang-en">Generative Engine Optimization makes sure your business appears in AI answers from ChatGPT, Claude and Perplexity. More and more people search directly through AI assistants instead of Google – GEO is the investment in tomorrow's visibility.</span>
+          </p>
+        </div>
+        <div class="faq-item">
+          <h3><span class="lang-de">Was passiert, wenn ich kündigen möchte?</span><span class="lang-en">What happens if I want to cancel?</span></h3>
+          <p>
+            <span class="lang-de">Der monatliche Service ist monatlich kündbar. Keine Mindestlaufzeit, kein Kleingedrucktes.</span>
+            <span class="lang-en">The monthly service can be canceled monthly. No minimum term, no fine print.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
       <div class="wrap">
@@ -271,6 +361,31 @@
            data-href-en="https://wa.me/491742555178?text=I%27m%20interested%20in%20GEO.">
           <span class="lang-de">Jetzt anfragen</span><span class="lang-en">Request now</span>&nbsp;→
         </a>
+      </div>
+    </section>
+
+    <!-- WEITERE SERVICES -->
+    <section class="section">
+      <div class="wrap">
+        <h2><span class="lang-de">Weitere Services</span><span class="lang-en">More Services</span></h2>
+        <div class="related-services">
+          <a class="related-card" href="/ki-automatisierung">
+            <div class="related-title"><span class="lang-de">Rechnungs- & E-Mail-Automatisierung</span><span class="lang-en">Invoice & Email Automation</span></div>
+            <div class="related-tagline"><span class="lang-de">Ihre Rechnungen. Automatisch sortiert. Sie müssen nichts mehr tun.</span><span class="lang-en">Your invoices. Automatically sorted. You don't have to do anything.</span></div>
+          </a>
+          <a class="related-card" href="/landingpage-erstellen">
+            <div class="related-title"><span class="lang-de">Landingpage</span><span class="lang-en">Landing Page</span></div>
+            <div class="related-tagline"><span class="lang-de">Ihr Business online sichtbar. Modern, mobil optimiert, sofort einsatzbereit.</span><span class="lang-en">Your business visible online. Modern, mobile-optimized, ready to go.</span></div>
+          </a>
+          <a class="related-card" href="/marketing-toolset">
+            <div class="related-title"><span class="lang-de">Marketing-Toolset</span><span class="lang-en">Marketing Toolset</span></div>
+            <div class="related-tagline"><span class="lang-de">Ad-Copy, Personas, Social-Kalender und Dashboard – einmal eingerichtet, dauerhaft nutzbar.</span><span class="lang-en">Ad copy, personas, social calendar and dashboard – set up once, use forever.</span></div>
+          </a>
+          <a class="related-card" href="/bewertungsbooster">
+            <div class="related-title"><span class="lang-de">Bewertungsbooster WhatsApp</span><span class="lang-en">WhatsApp Review Booster</span></div>
+            <div class="related-tagline"><span class="lang-de">Nach jedem Kauf oder Termin automatisch um eine Google-Bewertung bitten.</span><span class="lang-en">Automatically ask for a Google review after every purchase or appointment.</span></div>
+          </a>
+        </div>
       </div>
     </section>
   </main>
