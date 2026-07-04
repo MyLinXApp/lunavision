@@ -211,15 +211,10 @@
     .bullets li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:0.95rem; line-height:1.5}
     .bullets li::before{content:"✓"; color:#a7f3d0; font-weight:700; flex-shrink:0; margin-top:1px}
 
-    /* PRICE */
-    .price-card{
-      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px;
-      border:1px solid rgba(199,167,90,.25); border-radius:var(--r);
-      background:linear-gradient(135deg, rgba(199,167,90,.08), rgba(255,255,255,.03));
-      padding:24px 28px; margin-top:8px;
-    }
-    .price-amount{font-size:2rem; font-weight:800; letter-spacing:-.03em; color:var(--text)}
-    .price-period{font-size:0.9rem; color:var(--muted)}
+    /* PRICE (compact, placed next to the CTAs) */
+    .price-inline{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:22px}
+    .price-amount{font-size:1.6rem; font-weight:800; letter-spacing:-.03em; color:var(--text)}
+    .price-period{font-size:0.85rem; color:var(--muted)}
 
     /* CTA SECTION */
     .cta-section{padding:48px 0 60px; text-align:center}
@@ -302,6 +297,10 @@
               <span class="lang-de">Ihr Business online sichtbar. Modern, mobil optimiert, sofort einsatzbereit.</span>
               <span class="lang-en">Your business visible online. Modern, mobile-optimized, ready to go.</span>
             </p>
+            <div class="price-inline">
+              <span class="price-amount"><span class="lang-de">599 €</span><span class="lang-en">€599</span></span>
+              <span class="price-period"><span class="lang-de">Projektpreis</span><span class="lang-en">one-time project price</span></span>
+            </div>
             <a class="btn" target="_blank" rel="noopener"
                href="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage."
                data-href-de="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage."
@@ -339,17 +338,6 @@
       </div>
     </section>
 
-    <!-- PREIS -->
-    <section class="section">
-      <div class="wrap">
-        <h2><span class="lang-de">Preis</span><span class="lang-en">Price</span></h2>
-        <div class="price-card">
-          <span class="price-amount"><span class="lang-de">599 €</span><span class="lang-en">€599</span></span>
-          <span class="price-period"><span class="lang-de">Projektpreis</span><span class="lang-en">one-time project price</span></span>
-        </div>
-      </div>
-    </section>
-
     <!-- FAQ -->
     <section class="section">
       <div class="wrap faq-mini">
@@ -382,6 +370,10 @@
           <span class="lang-de">Schreiben Sie uns kurz über WhatsApp – wir melden uns zeitnah mit den nächsten Schritten.</span>
           <span class="lang-en">Send us a quick message on WhatsApp – we'll get back to you shortly with next steps.</span>
         </p>
+        <div class="price-inline" style="justify-content:center">
+          <span class="price-amount"><span class="lang-de">599 €</span><span class="lang-en">€599</span></span>
+          <span class="price-period"><span class="lang-de">Projektpreis</span><span class="lang-en">one-time project price</span></span>
+        </div>
         <a class="btn" target="_blank" rel="noopener"
            href="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage."
            data-href-de="https://wa.me/491742555178?text=Ich%20interessiere%20mich%20f%C3%BCr%20eine%20Landingpage."
