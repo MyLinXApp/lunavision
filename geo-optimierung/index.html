@@ -234,15 +234,22 @@
     .faq-mini p{max-width:70ch}
 
     /* RELATED SERVICES */
-    .related-services{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:8px}
+    .related-services{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-top:8px}
     .related-card{
-      display:block; border:1px solid var(--border); border-radius:var(--r);
-      padding:18px; text-decoration:none; color:inherit;
-      background:rgba(255,255,255,.02); transition:border-color .15s;
+      display:block; border:1px solid rgba(199,167,90,.22); border-radius:var(--r);
+      padding:20px; text-decoration:none; color:inherit;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow:0 8px 20px rgba(0,0,0,.18);
+      transition:border-color .2s, transform .2s, box-shadow .2s;
     }
-    .related-card:hover{border-color:rgba(199,167,90,.4)}
-    .related-card .related-title{font-weight:700; font-size:0.95rem; margin-bottom:4px}
-    .related-card .related-tagline{font-size:0.85rem; color:var(--muted); line-height:1.4}
+    .related-card:hover{
+      border-color:rgba(199,167,90,.55);
+      transform:translateY(-3px);
+      box-shadow:0 14px 28px rgba(0,0,0,.28);
+    }
+    .related-card .related-title{font-weight:700; font-size:1.02rem; margin-bottom:6px; color:var(--text)}
+    .related-card .related-title::after{content:" \2192"; color:var(--accent); font-weight:700}
+    .related-card .related-tagline{font-size:0.85rem; color:var(--muted); line-height:1.45}
 
     footer{border-top:1px solid rgba(255,255,255,.06); padding:28px 20px; text-align:center; font-size:12px; color:rgba(245,247,250,.45)}
     footer a{color:inherit}
