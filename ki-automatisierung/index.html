@@ -139,6 +139,23 @@
     nav a{text-decoration:none; font-size:13px; color:var(--muted); padding:8px 10px; border-radius:10px; transition:background .12s, color .12s}
     nav a:hover{background:rgba(255,255,255,.04); color:var(--text)}
     @media(max-width:760px){nav a.hide-mobile{display:none}}
+
+    /* NAV DROPDOWN (Services) */
+    .nav-dropdown{position:relative; display:flex; align-items:center}
+    .dropdown-toggle{
+      background:none; border:none; color:var(--muted); cursor:pointer;
+      padding:8px 6px; font-size:11px; font-family:inherit; line-height:1;
+    }
+    .dropdown-toggle:hover{color:var(--text)}
+    .dropdown-menu{
+      display:none; position:absolute; top:100%; left:0; margin-top:6px;
+      background:#10162b; border:1px solid var(--border); border-radius:12px;
+      padding:8px; min-width:260px; box-shadow:0 12px 26px rgba(0,0,0,.35); z-index:60;
+    }
+    .dropdown-menu a{display:block; padding:8px 10px; border-radius:8px; font-size:13px; color:var(--muted); text-decoration:none; white-space:normal}
+    .dropdown-menu a:hover{background:rgba(255,255,255,.05); color:var(--text)}
+    .nav-dropdown.open .dropdown-menu, .nav-dropdown:hover .dropdown-menu{display:block}
+    @media(max-width:760px){.nav-dropdown{display:none}}
     .lang{border:1px solid var(--border); background:rgba(255,255,255,.03); color:var(--text); border-radius:12px; padding:9px 12px; font-weight:900; cursor:pointer; font-family:inherit; font-size:13px}
     .lang:hover{border-color:rgba(199,167,90,.55)}
 
@@ -245,7 +262,17 @@
         LunaVision
       </a>
       <nav aria-label="Navigation">
-        <a class="hide-mobile" href="/#services"><span class="lang-de">Alle Services</span><span class="lang-en">All Services</span></a>
+        <div class="nav-dropdown hide-mobile">
+          <a class="link" href="/#services"><span class="lang-de">Alle Services</span><span class="lang-en">All Services</span></a>
+          <button class="dropdown-toggle" aria-label="Service-Liste anzeigen" aria-expanded="false">▾</button>
+          <div class="dropdown-menu">
+            <a href="/ki-automatisierung"><span class="lang-de">Rechnungs- & E-Mail-Automatisierung</span><span class="lang-en">Invoice & Email Automation</span></a>
+            <a href="/landingpage-erstellen"><span class="lang-de">Landingpage</span><span class="lang-en">Landing Page</span></a>
+            <a href="/geo-optimierung">Generative Engine Optimization</a>
+            <a href="/marketing-toolset"><span class="lang-de">Marketing-Toolset</span><span class="lang-en">Marketing Toolset</span></a>
+            <a href="/bewertungsbooster"><span class="lang-de">Bewertungsbooster WhatsApp</span><span class="lang-en">WhatsApp Review Booster</span></a>
+          </div>
+        </div>
         <a class="hide-mobile" href="/#faq">FAQ</a>
         <a href="/">← <span class="lang-de">Zurück zur Website</span><span class="lang-en">Back to website</span></a>
         <button class="lang" id="langBtn">EN</button>
@@ -431,6 +458,23 @@
     }
 
     applyLangState();
+
+    // Services nav dropdown: click to toggle (works on touch), hover still works via CSS.
+    document.querySelectorAll(".dropdown-toggle").forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        const wrap = btn.closest(".nav-dropdown");
+        const isOpen = wrap.classList.toggle("open");
+        btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    });
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".nav-dropdown.open").forEach(el => {
+        el.classList.remove("open");
+        const btn = el.querySelector(".dropdown-toggle");
+        if(btn) btn.setAttribute("aria-expanded", "false");
+      });
+    });
   </script>
 
 </body>
