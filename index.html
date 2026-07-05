@@ -44,6 +44,10 @@
       {"@type": "Country", "name": "Schweiz"}
     ],
     "knowsLanguage": ["de", "en"],
+    "sameAs": [
+      "https://instagram.com/lunavision.ai",
+      "https://facebook.com/lunavision.org"
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "LunaVision Leistungen",
@@ -424,6 +428,11 @@
     /* FOOTER */
     footer{padding:40px 0 60px; border-top:1px solid rgba(255,255,255,.06)}
     .tiny{font-size:12px; color:rgba(245,247,250,.55); line-height:1.5}
+    .footer-row{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px}
+    .footer-social{display:flex; gap:16px}
+    .footer-social a{color:rgba(245,247,250,.55); transition:color .15s; line-height:0}
+    .footer-social a:hover{color:var(--accent)}
+    .footer-social svg{width:18px; height:18px; display:block}
     .langBlock{display:none}
     .langBlock.active{display:block}
 
@@ -986,7 +995,7 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap footer-row">
     <div class="tiny">
       © <span id="year"></span> LunaVision ·
       <span class="lang-de">KI-Automatisierung & digitales Marketing</span>
@@ -995,6 +1004,14 @@
       <a href="datenschutz.html" style="color:inherit;text-decoration:none">
         <span class="lang-de">Datenschutz</span>
         <span class="lang-en">Privacy Policy</span>
+      </a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/lunavision.ai" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://facebook.com/lunavision.org" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8.5h-2a2 2 0 0 0-2 2V13H9v3h2v5h3v-5h2.2l.5-3H14v-2a.7.7 0 0 1 .7-.7H15z"/></svg>
       </a>
     </div>
   </div>
