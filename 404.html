@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Seite nicht gefunden | LunaVision</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+
+  <style>
+    @font-face {
+      font-family: 'Inter';
+      src: url('/assets/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Source Serif 4';
+      src: url('/assets/SourceSerif4-VariableFont.ttf') format('truetype');
+      font-weight: 200 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    :root{
+      --bg:#0B0F1C;
+      --bg2:#0f1730;
+      --border:rgba(255,255,255,.10);
+      --text:#F5F7FA;
+      --muted:rgba(245,247,250,.75);
+      --accent:#C7A75A;
+      --accent2:#E7D19B;
+      --font:'Inter', ui-sans-serif, system-ui, -apple-system, Helvetica, Arial;
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{height:100%}
+    body{
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 18% 10%, rgba(199,167,90,.18), transparent 60%),
+        radial-gradient(900px 600px at 85% 25%, rgba(231,209,155,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:24px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{max-width:520px}
+    .brand{
+      display:inline-flex; align-items:center; gap:10px;
+      text-decoration:none; font-weight:900; font-size:15px; color:var(--text);
+      margin-bottom:48px;
+    }
+    .brand img{width:30px; height:30px; border-radius:12px; object-fit:contain; background:rgba(255,255,255,.06); border:1px solid var(--border); padding:4px}
+    .code{
+      font-family:'Source Serif 4', serif;
+      font-weight:600;
+      font-size:clamp(3rem, 8vw, 4.5rem);
+      color:var(--accent);
+      letter-spacing:-.02em;
+      margin-bottom:8px;
+    }
+    h1{
+      font-family:'Source Serif 4', serif;
+      font-weight:600;
+      font-size:clamp(1.5rem, 3vw, 2rem);
+      letter-spacing:-.02em;
+      margin-bottom:16px;
+    }
+    p{
+      color:var(--muted);
+      line-height:1.6;
+      font-size:1rem;
+      margin-bottom:32px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:13px 24px; border-radius:14px; border:1px solid transparent;
+      text-decoration:none; cursor:pointer; font-weight:800; font-size:0.95rem;
+      background:linear-gradient(135deg, rgba(199,167,90,.95), rgba(231,209,155,.90));
+      color:#0B0F1C;
+      box-shadow:0 12px 26px rgba(199,167,90,.16);
+      transition:opacity .15s;
+    }
+    .btn:hover{opacity:.9}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="LunaVision Logo" />
+      LunaVision
+    </a>
+    <div class="code">404</div>
+    <h1>Diese Seite gibt es nicht.</h1>
+    <p>Der Link ist entweder veraltet oder falsch geschrieben. Auf der Startseite findest du alle Services und Kontaktmöglichkeiten.</p>
+    <a class="btn" href="/">Zurück zur Startseite →</a>
+  </div>
+</body>
+</html>
