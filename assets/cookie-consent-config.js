@@ -122,4 +122,18 @@
       }
     }
   });
+
+  // Hält die Cookie-Banner-Sprache synchron mit dem DE/EN-Umschalter der Seite.
+  // Die Bibliothek liest die Sprache nur einmal beim Start (siehe "lang" oben) –
+  // ohne diesen Beobachter bleibt das Banner auf Deutsch, auch wenn der Besucher
+  // später auf Englisch umschaltet. CookieConsent.setLanguage() aktualisiert die
+  // bereits sichtbaren/gespeicherten Texte nachträglich.
+  var currentCcLang = lang;
+  new MutationObserver(function () {
+    var newLang = document.documentElement.lang === 'en' ? 'en' : 'de';
+    if (newLang !== currentCcLang) {
+      currentCcLang = newLang;
+      CookieConsent.setLanguage(newLang);
+    }
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
 })();
