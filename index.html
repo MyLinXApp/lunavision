@@ -469,7 +469,15 @@
     .tool-consent{display:flex; align-items:flex-start; gap:10px; font-size:0.8rem; color:var(--muted); margin:16px 0; line-height:1.5}
     .tool-consent input{margin-top:3px; flex-shrink:0}
     .tool-consent a{color:var(--accent2); text-decoration:underline}
-    .tool-turnstile-wrap{margin:20px 0; padding-top:16px; border-top:1px solid rgba(255,255,255,.06)}
+    /* Standardmäßig ausgeblendet: Turnstile hängt aktuell reproduzierbar mit
+       Error 400020 (siehe Dokumentation/Cloudflare-Support-Turnstile-400020.md)
+       und zeigt dabei einen blauen "Troubleshooting"-Link, den wir wegen des
+       Cross-Origin-iFrames nicht umstylen können. Der Block wird nur sichtbar,
+       wenn das Widget wirklich erfolgreich lädt (siehe onTurnstileReady/
+       onTurnstileProblem weiter unten). Bis Cloudflare das Problem behebt,
+       trägt allein der Honeypot den Spam-Schutz. */
+    .tool-turnstile-wrap{display:none; margin:20px 0; padding-top:16px; border-top:1px solid rgba(255,255,255,.06)}
+    .tool-turnstile-wrap.tool-turnstile-ready{display:block}
     .tool-turnstile-label{font-size:0.72rem; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em}
     .tool-submit{width:100%; justify-content:center}
     .tool-result{
@@ -536,7 +544,12 @@
     .elegant-divider .diamond{width:6px; height:6px; background:var(--accent); transform:rotate(45deg); flex-shrink:0}
 
     /* SCROLL-BOUNCE Pfeil im Hero */
-    .scroll-indicator{display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:36px; opacity:.45; animation:scrollBounce 2.2s ease-in-out infinite}
+    /* inline-flex statt flex: die Box schrumpft auf ihren eigenen Inhalt statt
+       auf die volle Breite von .hero-copy (506px) zu stretchen. Sonst zentriert
+       align-items den Text in einer unsichtbaren Box, die viel breiter ist als
+       der sichtbare Button-Block links - auf Desktop wirkte "SCROLL" dadurch
+       zufällig verschoben statt unter Headline/Buttons ausgerichtet. */
+    .scroll-indicator{display:inline-flex; flex-direction:column; align-items:center; gap:6px; margin-top:36px; opacity:.45; animation:scrollBounce 2.2s ease-in-out infinite}
     .scroll-indicator span{font-size:11px; text-transform:uppercase; letter-spacing:3px; color:var(--muted)}
     .scroll-indicator .scroll-line{width:1px; height:34px; background:linear-gradient(to bottom, var(--accent), transparent)}
     @keyframes scrollBounce{0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)}}
@@ -1119,7 +1132,9 @@
             <span class="lang-de">Sicherheitsprüfung (Spam-Schutz)</span>
             <span class="lang-en">Security check (spam protection)</span>
           </div>
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAAAD6kYU2ea0Q3Atq4" id="lvTurnstile"></div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAAD6kYU2ea0Q3Atq4" id="lvTurnstile"
+               data-callback="onTurnstileReady" data-error-callback="onTurnstileProblem"
+               data-expired-callback="onTurnstileProblem"></div>
         </div>
       </div>
     </div>
@@ -1409,6 +1424,17 @@
     function resetTurnstile(){
       try{ if(window.turnstile) window.turnstile.reset(); }
       catch(e){ /* noop */ }
+    }
+
+    // Turnstile-Block bleibt per CSS (.tool-turnstile-wrap) unsichtbar, bis das
+    // Widget nachweislich erfolgreich lädt - siehe Cloudflare-Support-Turnstile-
+    // 400020.md. So sehen Besucher nie den blauen "Troubleshooting"-Fehlerlink
+    // aus Cloudflares iFrame, den wir per CSS ohnehin nicht stylen könnten.
+    function onTurnstileReady(){
+      document.querySelectorAll(".tool-turnstile-wrap").forEach(w => w.classList.add("tool-turnstile-ready"));
+    }
+    function onTurnstileProblem(){
+      document.querySelectorAll(".tool-turnstile-wrap").forEach(w => w.classList.remove("tool-turnstile-ready"));
     }
 
     function getUtm(){
