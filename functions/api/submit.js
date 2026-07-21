@@ -11,31 +11,42 @@ export async function onRequestPost(context) {
   try {
     const data = await request.json();
 
-    // 1. Turnstile-Token serverseitig verifizieren
-    const token = data.turnstileToken;
-    if (!token) {
-      return jsonResponse({ success: false, error: "Sicherheitsprüfung fehlt" }, 400);
+    // 0. Honeypot: unsichtbares "website"-Feld, das nur Bots ausfüllen.
+    // Bei Treffer wird ein Fake-Erfolg zurückgegeben (damit Bots nichts
+    // merken), aber NICHTS gespeichert/weitergeleitet.
+    if (data.website) {
+      return jsonResponse({ success: true });
     }
 
-    const ip = request.headers.get("CF-Connecting-IP") || "";
+    // 1. Turnstile-Token serverseitig verifizieren - TEMPORÄR OPTIONAL.
+    // Cloudflares Challenge-Plattform liefert aktuell reproduzierbar HTTP 400
+    // beim Laden des Widgets (Fehler 400020, browser-/geräteunabhängig,
+    // auch mit frisch angelegtem Widget) - wird bei Cloudflare Support
+    // gemeldet. Bis das geklärt ist, blockiert ein fehlendes Token die
+    // Einreichung nicht mehr; der Honeypot oben ist die primäre Spam-Bremse.
+    // Falls doch ein Token mitkommt, wird es weiterhin echt geprüft.
+    const token = data.turnstileToken;
+    if (token) {
+      const ip = request.headers.get("CF-Connecting-IP") || "";
 
-    const turnstileRes = await fetch(
-      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          secret: env.TURNSTILE_SECRET_KEY,
-          response: token,
-          remoteip: ip,
-        }),
+      const turnstileRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            secret: env.TURNSTILE_SECRET_KEY,
+            response: token,
+            remoteip: ip,
+          }),
+        }
+      );
+
+      const turnstileResult = await turnstileRes.json();
+
+      if (!turnstileResult.success) {
+        return jsonResponse({ success: false, error: "Sicherheitsprüfung fehlgeschlagen" }, 403);
       }
-    );
-
-    const turnstileResult = await turnstileRes.json();
-
-    if (!turnstileResult.success) {
-      return jsonResponse({ success: false, error: "Sicherheitsprüfung fehlgeschlagen" }, 403);
     }
 
     // 2. Tool-spezifische Pflichtfeld-Validierung
@@ -64,6 +75,7 @@ export async function onRequestPost(context) {
     // 3. An Google-Sheet-Webhook weiterleiten (Apps Script)
     const payload = { ...data };
     delete payload.turnstileToken;
+    delete payload.website;
 
     try {
       await fetch(env.APPS_SCRIPT_URL, {

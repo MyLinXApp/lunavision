@@ -992,6 +992,10 @@
           </p>
 
           <form id="geoCheckForm" novalidate>
+            <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+              <label for="geoWebsite">Website</label>
+              <input type="text" id="geoWebsite" name="website" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="tool-row">
               <div class="tool-field">
                 <label for="geoFirmenname">
@@ -1079,6 +1083,10 @@
             </div>
 
             <form class="tool-optin" id="roiOptinForm">
+              <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                <label for="roiWebsite">Website</label>
+                <input type="text" id="roiWebsite" name="website" tabindex="-1" autocomplete="off" />
+              </div>
               <p class="tool-intro" style="margin-bottom:14px">
                 <span class="lang-de">Willst du dieses Ergebnis per Mail und eine kurze persönliche Einschätzung dazu? Optional, unverbindlich.</span>
                 <span class="lang-en">Want this result by email plus a short personal assessment? Optional, no obligation.</span>
@@ -1422,12 +1430,12 @@
     });
 
     async function submitTool(payload, formEl, statusEl, successMsgKey){
+      // Turnstile ist temporär NICHT Pflicht (Cloudflare-seitiges Problem wird
+      // untersucht, Fehler 400020 beim Widget-Laden). Falls doch ein Token da
+      // ist, wird es trotzdem mitgeschickt und serverseitig geprüft - der
+      // Honeypot ("website"-Feld) ist aktuell die primäre Spam-Bremse.
       const token = getTurnstileToken();
-      if(!token){
-        showStatus(statusEl, MSG.turnstileMissing[currentLang()], "error");
-        return;
-      }
-      payload.turnstileToken = token;
+      if(token) payload.turnstileToken = token;
 
       const submitBtn = formEl.querySelector('button[type="submit"]');
       if(submitBtn) submitBtn.disabled = true;
@@ -1465,6 +1473,7 @@
           branche: document.getElementById("geoBranche").value.trim(),
           email: document.getElementById("geoEmail").value.trim(),
           consent: document.getElementById("geoConsent").checked,
+          website: document.getElementById("geoWebsite").value,
           ...getUtm()
         };
         const statusEl = document.getElementById("geoStatus");
@@ -1526,7 +1535,8 @@
           showStatus(statusEl, MSG.error[currentLang()], "error");
           return;
         }
-        const payload = { tool: "roi-rechner", ...lastRoiCalc, email, consent, ...getUtm() };
+        const website = document.getElementById("roiWebsite").value;
+        const payload = { tool: "roi-rechner", ...lastRoiCalc, email, consent, website, ...getUtm() };
         submitTool(payload, roiOptinForm, statusEl, "roiSuccess");
       });
     }
