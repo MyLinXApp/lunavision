@@ -1392,7 +1392,18 @@
 </script>
 
 <!-- TOOLS: GEO-Check + ROI-Rechner -->
+<!-- Turnstile-Skript temporär deaktiviert: solange Error 400020 besteht
+     (siehe Dokumentation/Cloudflare-Support-Turnstile-400020.md), kann
+     Cloudflare bei "Managed"-Challenges ein eigenes Popup/Fehlerelement
+     direkt in <body> einfügen, außerhalb von .tool-turnstile-wrap - das
+     lässt sich per CSS nicht zuverlässig verstecken (z.B. auf iOS Safari
+     weiterhin sichtbar). Da Turnstile aktuell nicht Pflicht ist (Honeypot
+     übernimmt den Spam-Schutz, siehe submitTool()), wird das Skript gar
+     nicht erst geladen - window.turnstile bleibt undefined, getTurnstileToken()
+     und resetTurnstile() fangen das bereits ab. Sobald Cloudflare das Problem
+     behoben hat: Zeile wieder einkommentieren.
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+-->
 <script>
   (function(){
     function currentLang(){
