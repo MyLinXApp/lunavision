@@ -1383,12 +1383,17 @@
     }
 
     function getTurnstileToken(){
-      try{ return window.turnstile ? window.turnstile.getResponse("lvTurnstile") : null; }
+      // Nur ein Turnstile-Widget auf der Seite (implizites Auto-Render via
+      // class="cf-turnstile") - ohne Argument aufrufen. Die HTML-Element-ID
+      // ("lvTurnstile") ist NICHT dasselbe wie die von Turnstile intern
+      // vergebene Widget-ID, die man nur bei explizitem turnstile.render()
+      // zurückbekommt.
+      try{ return window.turnstile ? window.turnstile.getResponse() : null; }
       catch(e){ return null; }
     }
 
     function resetTurnstile(){
-      try{ if(window.turnstile) window.turnstile.reset("lvTurnstile"); }
+      try{ if(window.turnstile) window.turnstile.reset(); }
       catch(e){ /* noop */ }
     }
 
