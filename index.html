@@ -544,12 +544,12 @@
     .elegant-divider .diamond{width:6px; height:6px; background:var(--accent); transform:rotate(45deg); flex-shrink:0}
 
     /* SCROLL-BOUNCE Pfeil im Hero */
-    /* inline-flex statt flex: die Box schrumpft auf ihren eigenen Inhalt statt
-       auf die volle Breite von .hero-copy (506px) zu stretchen. Sonst zentriert
-       align-items den Text in einer unsichtbaren Box, die viel breiter ist als
-       der sichtbare Button-Block links - auf Desktop wirkte "SCROLL" dadurch
-       zufällig verschoben statt unter Headline/Buttons ausgerichtet. */
-    .scroll-indicator{display:inline-flex; flex-direction:column; align-items:center; gap:6px; margin-top:36px; opacity:.45; animation:scrollBounce 2.2s ease-in-out infinite}
+    /* Liegt im HTML jetzt als Geschwister nach .heroGrid (volle Breite von
+       .wrap), nicht mehr in .hero-copy. Vorher zentrierte align-items den Text
+       nur innerhalb der linken Textspalte (506px) - das ist auf Desktop nicht
+       die Mitte der Seite, sondern die Mitte der halben Spalte, wirkte also
+       nach links verschoben. Jetzt zentriert über beide Spalten hinweg. */
+    .scroll-indicator{display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:32px; opacity:.45; animation:scrollBounce 2.2s ease-in-out infinite}
     .scroll-indicator span{font-size:11px; text-transform:uppercase; letter-spacing:3px; color:var(--muted)}
     .scroll-indicator .scroll-line{width:1px; height:34px; background:linear-gradient(to bottom, var(--accent), transparent)}
     @keyframes scrollBounce{0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)}}
@@ -662,15 +662,17 @@
               <span class="lang-en">All Services</span>
             </a>
           </div>
-          <div class="scroll-indicator" aria-hidden="true">
-            <span class="lang-de">Scroll</span>
-            <span class="lang-en">Scroll</span>
-            <div class="scroll-line"></div>
-          </div>
         </div>
         <div class="hero-visual">
           <img src="assets/hero-mockup-final.webp" alt="LunaVision – KI-Automatisierung und digitales Marketing" width="700" height="500" />
         </div>
+      </div>
+      <!-- Bewusst außerhalb von .hero-copy: soll über die gesamte Breite (beide
+           Spalten) zentriert sein, nicht nur innerhalb der linken Textspalte -->
+      <div class="scroll-indicator" aria-hidden="true">
+        <span class="lang-de">Scroll</span>
+        <span class="lang-en">Scroll</span>
+        <div class="scroll-line"></div>
       </div>
     </div>
   </section>
@@ -1022,7 +1024,7 @@
                   <span class="lang-de">Branche</span>
                   <span class="lang-en">Industry</span>
                 </label>
-                <input type="text" id="geoBranche" name="branche" placeholder="z. B. Friseur, Handwerk, Beratung" />
+                <input type="text" id="geoBranche" name="branche" placeholder="z. B. Handwerk, Beratung, Kanzlei" />
               </div>
             </div>
             <div class="tool-field">
