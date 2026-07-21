@@ -443,6 +443,102 @@
     .lang-en{display:none}
     html[lang="en"] .lang-en{display:revert}
     html[lang="en"] .lang-de{display:none}
+
+    /* TOOLS (GEO-Check / ROI-Rechner) */
+    .tools-card{padding:0; overflow:hidden}
+    .tool-tabs{display:flex; border-bottom:1px solid var(--border)}
+    .tool-tab{
+      flex:1; padding:16px 20px; background:none; border:none; cursor:pointer;
+      font-family:inherit; font-size:0.9rem; font-weight:700; color:var(--muted);
+      border-bottom:2px solid transparent; transition:color .2s ease, border-color .2s ease;
+    }
+    .tool-tab:hover{color:var(--text)}
+    .tool-tab.active{color:var(--accent); border-bottom-color:var(--accent)}
+    .tool-panel{display:none; padding:32px}
+    .tool-panel.active{display:block}
+    .tool-intro{font-size:0.9rem; color:var(--muted); line-height:1.6; margin-bottom:20px}
+    .tool-field{margin-bottom:16px}
+    .tool-field label{display:block; font-size:0.8rem; font-weight:700; color:var(--muted); margin-bottom:6px}
+    .tool-field input{
+      width:100%; padding:12px 14px; border-radius:10px; border:1px solid var(--border);
+      background:rgba(255,255,255,.03); color:var(--text); font-family:inherit; font-size:0.9rem;
+    }
+    .tool-field input:focus{outline:none; border-color:rgba(199,167,90,.55)}
+    .tool-row{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media(max-width:560px){.tool-row{grid-template-columns:1fr}}
+    .tool-consent{display:flex; align-items:flex-start; gap:10px; font-size:0.8rem; color:var(--muted); margin:16px 0; line-height:1.5}
+    .tool-consent input{margin-top:3px; flex-shrink:0}
+    .tool-consent a{color:var(--accent2); text-decoration:underline}
+    .tool-turnstile-wrap{margin:20px 0; padding-top:16px; border-top:1px solid rgba(255,255,255,.06)}
+    .tool-turnstile-label{font-size:0.72rem; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em}
+    .tool-submit{width:100%; justify-content:center}
+    .tool-result{
+      display:none; margin-top:20px; padding:20px; border-radius:14px;
+      border:1px solid rgba(199,167,90,.3); background:rgba(199,167,90,.06);
+    }
+    .tool-result.show{display:block}
+    .tool-result-row{display:flex; justify-content:space-between; align-items:baseline; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.06)}
+    .tool-result-row:last-child{border-bottom:none}
+    .tool-result-label{font-size:0.82rem; color:var(--muted)}
+    .tool-result-value{font-size:1.1rem; font-weight:800; color:var(--accent)}
+    .tool-result-value.big{font-size:1.5rem; color:#a7f3d0}
+    .tool-status{font-size:0.85rem; margin-top:14px; display:none}
+    .tool-status.show{display:block}
+    .tool-status.error{color:#fca5a5}
+    .tool-status.success{color:#a7f3d0}
+    .tool-optin{margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08)}
+
+    /* AMBIENT BACKGROUND: schwebende Licht-Orbs + feines Noise, rein dekorativ,
+       markenkonform in Gold-/Navy-Tönen (kein Fremdfarben-Mix). */
+    .ambient-bg{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+    .ambient-orb{position:absolute; border-radius:50%; filter:blur(120px); opacity:.14; animation:orbFloat 24s ease-in-out infinite}
+    .ambient-orb.o1{width:560px; height:560px; background:radial-gradient(circle, var(--accent) 0%, transparent 70%); top:-180px; left:15%}
+    .ambient-orb.o2{width:420px; height:420px; background:radial-gradient(circle, var(--accent2) 0%, transparent 70%); top:35%; right:-120px; animation-delay:-8s; animation-duration:28s}
+    .ambient-orb.o3{width:480px; height:480px; background:radial-gradient(circle, var(--accent) 0%, transparent 70%); bottom:-160px; left:45%; animation-delay:-15s; animation-duration:26s}
+    @keyframes orbFloat{
+      0%,100%{transform:translate(0,0) scale(1)}
+      25%{transform:translate(26px,-18px) scale(1.04)}
+      50%{transform:translate(-18px,26px) scale(.96)}
+      75%{transform:translate(18px,18px) scale(1.02)}
+    }
+    @media(prefers-reduced-motion:reduce){.ambient-orb{animation:none}}
+    .noise-overlay{
+      position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.025;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat:repeat; background-size:256px 256px;
+    }
+    body > *:not(.ambient-bg):not(.noise-overlay){position:relative; z-index:2}
+
+    /* SHIMMER HOVER: wiederkehrendes Markenzeichen auf Buttons + Service-Cards.
+       Ergänzt die bestehenden Hover-Effekte (Anheben/Border), ersetzt sie nicht. */
+    .btn, .services-hero-card, .service-small-card, .tools-card{position:relative; overflow:hidden}
+    .btn::after, .services-hero-card::after, .service-small-card::after{
+      content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(199,167,90,.18), transparent);
+      transition:left .6s ease; pointer-events:none;
+    }
+    .btn:hover::after, .services-hero-card:hover::after, .service-small-card:hover::after{left:120%}
+
+    /* SCROLL-REVEAL: dezentes Einblenden von Sections/Cards beim Scrollen */
+    .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1)}
+    .reveal.visible{opacity:1; transform:translateY(0)}
+    @media(prefers-reduced-motion:reduce){.reveal{opacity:1; transform:none; transition:none}}
+
+    /* DIAMOND DIVIDER zwischen Sektionen */
+    .elegant-divider{display:flex; align-items:center; justify-content:center; gap:14px; padding:8px 0; opacity:.35}
+    .elegant-divider .line{width:56px; height:1px; background:linear-gradient(90deg, transparent, var(--accent), transparent)}
+    .elegant-divider .diamond{width:6px; height:6px; background:var(--accent); transform:rotate(45deg); flex-shrink:0}
+
+    /* SCROLL-BOUNCE Pfeil im Hero */
+    .scroll-indicator{display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:36px; opacity:.45; animation:scrollBounce 2.2s ease-in-out infinite}
+    .scroll-indicator span{font-size:11px; text-transform:uppercase; letter-spacing:3px; color:var(--muted)}
+    .scroll-indicator .scroll-line{width:1px; height:34px; background:linear-gradient(to bottom, var(--accent), transparent)}
+    @keyframes scrollBounce{0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)}}
+    @media(prefers-reduced-motion:reduce){.scroll-indicator{animation:none}}
+
+    /* NAV: dezent kompakter/opaker beim Scrollen */
+    .topbar.scrolled{background:rgba(11,15,28,.88)}
+    .topbar.scrolled .inner{padding:10px 0}
   </style>
 
   <!-- Cookie Consent (selbst gehostet, orestbida/cookieconsent v3.1.0, MIT-Lizenz) -->
@@ -461,7 +557,14 @@
   </head>
 <body>
 
-<header class="topbar">
+<div class="ambient-bg" aria-hidden="true">
+  <div class="ambient-orb o1"></div>
+  <div class="ambient-orb o2"></div>
+  <div class="ambient-orb o3"></div>
+</div>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
   <div class="wrap">
     <div class="inner">
       <a class="brand" href="/" aria-label="LunaVision Home">
@@ -540,6 +643,11 @@
               <span class="lang-en">All Services</span>
             </a>
           </div>
+          <div class="scroll-indicator" aria-hidden="true">
+            <span class="lang-de">Scroll</span>
+            <span class="lang-en">Scroll</span>
+            <div class="scroll-line"></div>
+          </div>
         </div>
         <div class="hero-visual">
           <img src="assets/hero-mockup-final.webp" alt="LunaVision – KI-Automatisierung und digitales Marketing" width="700" height="500" />
@@ -581,6 +689,8 @@
       </div>
     </div>
   </div>
+
+  <div class="elegant-divider" aria-hidden="true"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
 
   <!-- SERVICES -->
   <section class="services-section" id="services">
@@ -838,6 +948,171 @@
     </div>
   </section>
 
+  <div class="elegant-divider" aria-hidden="true"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
+  <!-- TOOLS -->
+  <section class="section" id="tools">
+    <div class="wrap">
+      <div class="section-eyebrow">
+        <span class="lang-de">Kostenlose Tools</span>
+        <span class="lang-en">Free Tools</span>
+      </div>
+      <h2 class="h2">
+        <span class="lang-de">Teste unsere Tools</span>
+        <span class="lang-en">Try our tools</span>
+      </h2>
+      <p class="lead" style="margin-bottom:28px">
+        <span class="lang-de">Zwei kleine Werkzeuge, die dir sofort etwas bringen — kein Konto, keine Verpflichtung.</span>
+        <span class="lang-en">Two small tools that give you immediate value — no account, no obligation.</span>
+      </p>
+
+      <div class="card tools-card">
+        <div class="tool-tabs">
+          <button class="tool-tab active" data-tool-tab="geo-check" type="button">
+            <span class="lang-de">GEO-Check</span>
+            <span class="lang-en">GEO Check</span>
+          </button>
+          <button class="tool-tab" data-tool-tab="roi-rechner" type="button">
+            <span class="lang-de">ROI-Rechner</span>
+            <span class="lang-en">ROI Calculator</span>
+          </button>
+        </div>
+
+        <!-- GEO-CHECK PANEL -->
+        <div class="tool-panel active" data-tool-panel="geo-check">
+          <p class="tool-intro">
+            <span class="lang-de">Trag deinen Firmennamen und deine Branche ein. Wir schauen uns dein Business kurz an und schicken dir eine kostenlose Ersteinschätzung, wie sichtbar du aktuell in KI-Antworten (ChatGPT, Claude, Perplexity) bist.</span>
+            <span class="lang-en">Enter your company name and industry. We'll take a quick look at your business and send you a free initial assessment of how visible you currently are in AI answers (ChatGPT, Claude, Perplexity).</span>
+          </p>
+
+          <form id="geoCheckForm" novalidate>
+            <div class="tool-row">
+              <div class="tool-field">
+                <label for="geoFirmenname">
+                  <span class="lang-de">Firmenname *</span>
+                  <span class="lang-en">Company name *</span>
+                </label>
+                <input type="text" id="geoFirmenname" name="firmenname" required autocomplete="organization" />
+              </div>
+              <div class="tool-field">
+                <label for="geoBranche">
+                  <span class="lang-de">Branche</span>
+                  <span class="lang-en">Industry</span>
+                </label>
+                <input type="text" id="geoBranche" name="branche" placeholder="z. B. Friseur, Handwerk, Beratung" />
+              </div>
+            </div>
+            <div class="tool-field">
+              <label for="geoEmail">
+                <span class="lang-de">E-Mail *</span>
+                <span class="lang-en">Email *</span>
+              </label>
+              <input type="email" id="geoEmail" name="email" required autocomplete="email" />
+            </div>
+
+            <label class="tool-consent">
+              <input type="checkbox" id="geoConsent" name="consent" required />
+              <span>
+                <span class="lang-de">Ich bin einverstanden, dass LunaVision mich bezüglich meiner GEO-Ersteinschätzung per E-Mail kontaktiert. Details in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+                <span class="lang-en">I agree that LunaVision may contact me by email regarding my GEO assessment. Details in the <a href="datenschutz.html" target="_blank" rel="noopener">privacy policy</a>.</span>
+              </span>
+            </label>
+
+            <button type="submit" class="btn primary tool-submit">
+              <span class="lang-de">Kostenlose Ersteinschätzung anfordern</span>
+              <span class="lang-en">Request free assessment</span>
+            </button>
+
+            <div class="tool-status" id="geoStatus"></div>
+          </form>
+        </div>
+
+        <!-- ROI-RECHNER PANEL -->
+        <div class="tool-panel" data-tool-panel="roi-rechner">
+          <p class="tool-intro">
+            <span class="lang-de">Wie viel Zeit und Geld sparst du mit KI-Automatisierung? Trag deine Zahlen ein und sieh den Effekt sofort.</span>
+            <span class="lang-en">How much time and money do you save with AI automation? Enter your numbers and see the effect immediately.</span>
+          </p>
+
+          <form id="roiForm" novalidate>
+            <div class="tool-row">
+              <div class="tool-field">
+                <label for="roiHours">
+                  <span class="lang-de">Stunden/Woche mit manuellen Aufgaben *</span>
+                  <span class="lang-en">Hours/week on manual tasks *</span>
+                </label>
+                <input type="number" id="roiHours" name="hours" min="0" step="0.5" required />
+              </div>
+              <div class="tool-field">
+                <label for="roiRate">
+                  <span class="lang-de">Dein Stundensatz (€) *</span>
+                  <span class="lang-en">Your hourly rate (€) *</span>
+                </label>
+                <input type="number" id="roiRate" name="rate" min="0" step="1" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn primary tool-submit" id="roiCalcBtn">
+              <span class="lang-de">ROI berechnen</span>
+              <span class="lang-en">Calculate ROI</span>
+            </button>
+          </form>
+
+          <div class="tool-result" id="roiResult">
+            <div class="tool-result-row">
+              <span class="tool-result-label"><span class="lang-de">Monatlicher Wert deiner Zeit</span><span class="lang-en">Monthly value of your time</span></span>
+              <span class="tool-result-value" id="roiMonthly">–</span>
+            </div>
+            <div class="tool-result-row">
+              <span class="tool-result-label"><span class="lang-de">Beispiel-Automatisierung</span><span class="lang-en">Example automation</span></span>
+              <span class="tool-result-value" id="roiCost">–</span>
+            </div>
+            <div class="tool-result-row">
+              <span class="tool-result-label"><span class="lang-de">Mögliche Netto-Ersparnis/Monat</span><span class="lang-en">Possible net savings/month</span></span>
+              <span class="tool-result-value big" id="roiNet">–</span>
+            </div>
+
+            <form class="tool-optin" id="roiOptinForm">
+              <p class="tool-intro" style="margin-bottom:14px">
+                <span class="lang-de">Willst du dieses Ergebnis per Mail und eine kurze persönliche Einschätzung dazu? Optional, unverbindlich.</span>
+                <span class="lang-en">Want this result by email plus a short personal assessment? Optional, no obligation.</span>
+              </p>
+              <div class="tool-field">
+                <label for="roiEmail">
+                  <span class="lang-de">E-Mail (optional)</span>
+                  <span class="lang-en">Email (optional)</span>
+                </label>
+                <input type="email" id="roiEmail" name="email" autocomplete="email" />
+              </div>
+              <label class="tool-consent">
+                <input type="checkbox" id="roiConsent" name="consent" />
+                <span>
+                  <span class="lang-de">Ich bin einverstanden, dass LunaVision mich bezüglich dieses Ergebnisses per E-Mail kontaktiert. Details in der <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+                  <span class="lang-en">I agree that LunaVision may contact me by email regarding this result. Details in the <a href="datenschutz.html" target="_blank" rel="noopener">privacy policy</a>.</span>
+                </span>
+              </label>
+              <button type="submit" class="btn tool-submit">
+                <span class="lang-de">Ergebnis per Mail anfordern</span>
+                <span class="lang-en">Request result by email</span>
+              </button>
+              <div class="tool-status" id="roiStatus"></div>
+            </form>
+          </div>
+        </div>
+
+        <div class="tool-turnstile-wrap">
+          <div class="tool-turnstile-label">
+            <span class="lang-de">Sicherheitsprüfung (Spam-Schutz)</span>
+            <span class="lang-en">Security check (spam protection)</span>
+          </div>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAAD6TC06vjgVu1hqa" id="lvTurnstile"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="elegant-divider" aria-hidden="true"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+
   <!-- FAQ -->
   <section class="section" id="faq">
     <div class="wrap">
@@ -1083,6 +1358,201 @@
       if(btn) btn.setAttribute("aria-expanded", "false");
     });
   });
+</script>
+
+<!-- TOOLS: GEO-Check + ROI-Rechner -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  (function(){
+    function currentLang(){
+      return document.documentElement.lang === "en" ? "en" : "de";
+    }
+
+    const MSG = {
+      sending: { de: "Wird gesendet …", en: "Sending …" },
+      geoSuccess: { de: "Danke! Wir melden uns innerhalb von 1–2 Werktagen mit deiner Ersteinschätzung.", en: "Thanks! We'll get back to you within 1–2 business days with your assessment." },
+      roiSuccess: { de: "Danke! Wir schicken dir das Ergebnis per Mail.", en: "Thanks! We'll send you the result by email." },
+      error: { de: "Etwas ist schiefgelaufen. Bitte versuch es später nochmal oder schreib uns direkt.", en: "Something went wrong. Please try again later or contact us directly." },
+      turnstileMissing: { de: "Bitte warte kurz, bis die Sicherheitsprüfung geladen ist, und versuch es dann nochmal.", en: "Please wait a moment for the security check to load, then try again." }
+    };
+
+    function showStatus(el, msg, type){
+      if(!el) return;
+      el.textContent = msg;
+      el.className = "tool-status show " + type;
+    }
+
+    function getTurnstileToken(){
+      try{ return window.turnstile ? window.turnstile.getResponse("lvTurnstile") : null; }
+      catch(e){ return null; }
+    }
+
+    function resetTurnstile(){
+      try{ if(window.turnstile) window.turnstile.reset("lvTurnstile"); }
+      catch(e){ /* noop */ }
+    }
+
+    function getUtm(){
+      const params = new URLSearchParams(window.location.search);
+      return {
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || ""
+      };
+    }
+
+    // Tab-Umschaltung
+    document.querySelectorAll("[data-tool-tab]").forEach(tab => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.toolTab;
+        document.querySelectorAll("[data-tool-tab]").forEach(t => t.classList.toggle("active", t === tab));
+        document.querySelectorAll("[data-tool-panel]").forEach(p => p.classList.toggle("active", p.dataset.toolPanel === target));
+      });
+    });
+
+    async function submitTool(payload, formEl, statusEl, successMsgKey){
+      const token = getTurnstileToken();
+      if(!token){
+        showStatus(statusEl, MSG.turnstileMissing[currentLang()], "error");
+        return;
+      }
+      payload.turnstileToken = token;
+
+      const submitBtn = formEl.querySelector('button[type="submit"]');
+      if(submitBtn) submitBtn.disabled = true;
+      showStatus(statusEl, MSG.sending[currentLang()], "success");
+
+      try{
+        const res = await fetch("/api/submit", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        if(result.success){
+          showStatus(statusEl, MSG[successMsgKey][currentLang()], "success");
+          formEl.reset();
+        } else {
+          showStatus(statusEl, result.error || MSG.error[currentLang()], "error");
+        }
+      } catch(err){
+        showStatus(statusEl, MSG.error[currentLang()], "error");
+      } finally {
+        if(submitBtn) submitBtn.disabled = false;
+        resetTurnstile();
+      }
+    }
+
+    // GEO-CHECK
+    const geoForm = document.getElementById("geoCheckForm");
+    if(geoForm){
+      geoForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const payload = {
+          tool: "geo-check",
+          firmenname: document.getElementById("geoFirmenname").value.trim(),
+          branche: document.getElementById("geoBranche").value.trim(),
+          email: document.getElementById("geoEmail").value.trim(),
+          consent: document.getElementById("geoConsent").checked,
+          ...getUtm()
+        };
+        const statusEl = document.getElementById("geoStatus");
+        if(!payload.firmenname || !payload.email || !payload.consent){
+          showStatus(statusEl, MSG.error[currentLang()], "error");
+          return;
+        }
+        submitTool(payload, geoForm, statusEl, "geoSuccess");
+      });
+    }
+
+    // ROI-RECHNER: Berechnung ist rein clientseitig (echte Mathematik, kein
+    // Fake), die Nutzung wird zusätzlich anonym geloggt (nur wenn ein
+    // Turnstile-Token schon verfügbar ist - das Widget lädt asynchron und
+    // löst im Managed-Modus meist automatisch im Hintergrund).
+    const roiForm = document.getElementById("roiForm");
+    const roiResult = document.getElementById("roiResult");
+    let lastRoiCalc = null;
+
+    if(roiForm){
+      roiForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const hours = parseFloat(document.getElementById("roiHours").value);
+        const rate = parseFloat(document.getElementById("roiRate").value);
+        if(!hours || !rate || hours <= 0 || rate <= 0) return;
+
+        const monthlyValue = hours * rate * 4;
+        const automationCost = 199; // Beispielwert: KI-Content-Agent Monatspreis
+        const netSaving = Math.max(monthlyValue - automationCost, 0);
+        const roi = automationCost > 0 ? Math.round((netSaving / automationCost) * 100) : 0;
+
+        document.getElementById("roiMonthly").textContent = monthlyValue.toFixed(0) + " €";
+        document.getElementById("roiCost").textContent = automationCost + " €/Monat";
+        document.getElementById("roiNet").textContent = netSaving.toFixed(0) + " €/Monat";
+        roiResult.classList.add("show");
+
+        lastRoiCalc = { hours, rate, netSaving: Math.round(netSaving), roi };
+
+        const anonToken = getTurnstileToken();
+        if(anonToken){
+          fetch("/api/submit", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ tool: "roi-rechner", ...lastRoiCalc, turnstileToken: anonToken, ...getUtm() })
+          }).catch(() => {});
+        }
+      });
+    }
+
+    const roiOptinForm = document.getElementById("roiOptinForm");
+    if(roiOptinForm){
+      roiOptinForm.addEventListener("submit", e => {
+        e.preventDefault();
+        if(!lastRoiCalc) return;
+        const email = document.getElementById("roiEmail").value.trim();
+        const consent = document.getElementById("roiConsent").checked;
+        const statusEl = document.getElementById("roiStatus");
+        if(email && !consent){
+          showStatus(statusEl, MSG.error[currentLang()], "error");
+          return;
+        }
+        const payload = { tool: "roi-rechner", ...lastRoiCalc, email, consent, ...getUtm() };
+        submitTool(payload, roiOptinForm, statusEl, "roiSuccess");
+      });
+    }
+  })();
+</script>
+
+<!-- MOTION/TEXTUR: Scroll-Reveal + Nav-Kompaktierung beim Scrollen -->
+<script>
+  (function(){
+    // Cards und Section-Headlines automatisch fürs Scroll-Reveal markieren,
+    // statt jede Stelle im HTML einzeln anzufassen.
+    document.querySelectorAll(
+      ".services-hero-card, .service-small-card, .tools-card, " +
+      ".services-section .h2, .services-section .section-eyebrow, .services-section .lead, " +
+      "#tools .h2, #tools .section-eyebrow, #tools .lead, " +
+      "#faq .h2"
+    ).forEach(el => el.classList.add("reveal"));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -60px 0px" });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    // Nav wird beim Scrollen dezent kompakter/opaker
+    const topbar = document.getElementById("topbar");
+    if(topbar){
+      window.addEventListener("scroll", () => {
+        topbar.classList.toggle("scrolled", window.scrollY > 40);
+      }, { passive: true });
+    }
+  })();
 </script>
 
 <!-- Cookie Consent (selbst gehostet, MIT-Lizenz) -->
