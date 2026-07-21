@@ -510,8 +510,11 @@
     body > *:not(.ambient-bg):not(.noise-overlay){position:relative; z-index:2}
 
     /* SHIMMER HOVER: wiederkehrendes Markenzeichen auf Buttons + Service-Cards.
-       Ergänzt die bestehenden Hover-Effekte (Anheben/Border), ersetzt sie nicht. */
-    .btn, .services-hero-card, .service-small-card, .tools-card{position:relative; overflow:hidden}
+       Ergänzt die bestehenden Hover-Effekte (Anheben/Border), ersetzt sie nicht.
+       .tools-card bewusst NICHT hier rein (kein Shimmer nötig, und das
+       zusätzliche overflow:hidden/position:relative kann dem Turnstile-Widget
+       beim Rendern einer echten Sicherheits-Challenge in die Quere kommen). */
+    .btn, .services-hero-card, .service-small-card{position:relative; overflow:hidden}
     .btn::after, .services-hero-card::after, .service-small-card::after{
       content:''; position:absolute; top:0; left:-120%; width:60%; height:100%;
       background:linear-gradient(90deg, transparent, rgba(199,167,90,.18), transparent);
