@@ -489,8 +489,12 @@
     .tool-optin{margin-top:20px; padding-top:20px; border-top:1px solid rgba(255,255,255,.08)}
 
     /* AMBIENT BACKGROUND: schwebende Licht-Orbs + feines Noise, rein dekorativ,
-       markenkonform in Gold-/Navy-Tönen (kein Fremdfarben-Mix). */
-    .ambient-bg{position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden}
+       markenkonform in Gold-/Navy-Tönen (kein Fremdfarben-Mix). Negativer
+       z-index statt einer body-weiten position/z-index-Regel auf allen
+       Kindelementen - letzteres hätte auch dynamisch von Drittanbieter-
+       Skripten (z.B. Turnstile-Challenge-Popup) in <body> eingefügte
+       Elemente erfasst und deren eigene Positionierung durcheinandergebracht. */
+    .ambient-bg{position:fixed; inset:0; pointer-events:none; z-index:-2; overflow:hidden}
     .ambient-orb{position:absolute; border-radius:50%; filter:blur(120px); opacity:.14; animation:orbFloat 24s ease-in-out infinite}
     .ambient-orb.o1{width:560px; height:560px; background:radial-gradient(circle, var(--accent) 0%, transparent 70%); top:-180px; left:15%}
     .ambient-orb.o2{width:420px; height:420px; background:radial-gradient(circle, var(--accent2) 0%, transparent 70%); top:35%; right:-120px; animation-delay:-8s; animation-duration:28s}
@@ -503,11 +507,10 @@
     }
     @media(prefers-reduced-motion:reduce){.ambient-orb{animation:none}}
     .noise-overlay{
-      position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.025;
+      position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.025;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-repeat:repeat; background-size:256px 256px;
     }
-    body > *:not(.ambient-bg):not(.noise-overlay){position:relative; z-index:2}
 
     /* SHIMMER HOVER: wiederkehrendes Markenzeichen auf Buttons + Service-Cards.
        Ergänzt die bestehenden Hover-Effekte (Anheben/Border), ersetzt sie nicht.
